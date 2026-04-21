@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+/* ── Tailwind v4 theme extensions ────────────────────────────────────────── */
+
+@theme {
+  /* Handwritten font (Caveat via next/font) */
+  --font-handwritten: var(--font-handwritten), "Caveat", cursive;
+
+  /* shadcn-compatible color tokens — used by button.tsx and ui primitives */
+  --color-background:          #ffffff;
+  --color-foreground:          #09090b;
+  --color-primary:             #18181b;
+  --color-primary-foreground:  #fafafa;
+  --color-secondary:           #f4f4f5;
+  --color-secondary-foreground:#18181b;
+  --color-destructive:         #ef4444;
+  --color-destructive-foreground:#fafafa;
+  --color-muted:               #f4f4f5;
+  --color-muted-foreground:    #71717a;
+  --color-accent:              #f4f4f5;
+  --color-accent-foreground:   #18181b;
+  --color-border:              #e4e4e7;
+  --color-input:               #e4e4e7;
+  --color-ring:                #18181b;
+}
+
+/* ── Class-based dark mode (html.dark activates dark: variants) ──────────── */
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ── Base ────────────────────────────────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  /* Semantic color tokens — clavo-pro design system */
+  --color-primary: #06b6d4;        /* cyan-500  */
+  --color-primary-light: #67e8f9;  /* cyan-300  */
+  --color-accent: #7c3aed;         /* purple-700 */
+  --color-accent-light: #a78bfa;   /* purple-400 */
+  --color-surface: rgba(255, 255, 255, 0.04);
+  --color-surface-hover: rgba(255, 255, 255, 0.07);
+  --color-border: rgba(255, 255, 255, 0.10);
+  --color-text: #ffffff;
+  --color-text-muted: rgba(255, 255, 255, 0.55);
+  --color-text-subtle: rgba(255, 255, 255, 0.35);
+
+  /* Spacing tokens (4dp grid) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  /* Typography */
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --text-base: 1rem;
+  --leading-body: 1.65;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
+  color: var(--color-text);
+  background: #0e0420;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ── Focus Styles — never hide focus rings ──────────────────────────────── */
+
+:focus-visible {
+  outline: 2px solid var(--color-primary-light);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── Reduced Motion ─────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Scrollbar (Webkit) ─────────────────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0e0420;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(124, 58, 237, 0.4);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(6, 182, 212, 0.5);
+}
+
+/* ── Selection ──────────────────────────────────────────────────────────── */
+
+::selection {
+  background: rgba(6, 182, 212, 0.25);
+  color: #ffffff;
+}
