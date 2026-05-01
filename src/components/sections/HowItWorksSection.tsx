@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion, useReducedMotion } from "framer-motion";
 import { Upload, Cpu, ListOrdered, ArrowRight } from "lucide-react";
@@ -43,7 +43,7 @@ export default function HowItWorksSection() {
     <section
       aria-labelledby="how-it-works-heading"
       className="relative overflow-hidden py-28 px-4"
-      style={{ background: "linear-gradient(180deg, #030608 0%, #040b10 50%, #030608 100%)" }}
+      style={{ background: "radial-gradient(ellipse 60% 50% at 0% 0%, rgba(124,58,237,0.1) 0%, transparent 50%), radial-gradient(ellipse 60% 50% at 100% 100%, rgba(167,139,250,0.08) 0%, transparent 50%), #030608" }}
     >
       {/* Layered background lighting */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">

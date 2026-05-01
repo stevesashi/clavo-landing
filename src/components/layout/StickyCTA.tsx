@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
@@ -51,13 +51,13 @@ export default function StickyCTA() {
             <span
               aria-hidden="true"
               className="absolute inset-y-0 left-0 w-[3px] rounded-l-2xl"
-              style={{ background: "linear-gradient(180deg, #f59e0b, #d97706)" }}
+              style={{ background: "linear-gradient(180deg, #9333ea, #7c3aed)" }}
             />
 
             {/* Icon */}
             <div
               className="flex h-7 w-7 md:h-9 md:w-9 shrink-0 items-center justify-center rounded-lg md:rounded-xl"
-              style={{ background: "rgba(217,119,6,0.15)", color: "#fbbf24" }}
+              style={{ background: "rgba(139,92,246,0.15)", color: "#c084fc" }}
               aria-hidden="true"
             >
               <CalendarDays size={14} className="md:hidden" />
@@ -70,7 +70,7 @@ export default function StickyCTA() {
                 See Clavo AI live — 15-min personalised demo
               </p>
               <p className="text-[10px] md:text-[11px] text-white/35 mt-0.5 leading-tight truncate">
-                GCC & APAC hiring teams · No credit card required
+                GCC hiring teams · No credit card required
               </p>
             </div>
 
@@ -78,13 +78,13 @@ export default function StickyCTA() {
             <motion.a
               href="/book-demo"
               aria-label="Book a live demo of Clavo AI"
-              className="group inline-flex shrink-0 cursor-pointer items-center gap-1 md:gap-1.5 rounded-lg md:rounded-xl px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm font-semibold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400"
+              className="group inline-flex shrink-0 cursor-pointer items-center gap-1 md:gap-1.5 rounded-lg md:rounded-xl px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm font-semibold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-400"
               style={{
-                background: "linear-gradient(135deg, #d97706 0%, #b45309 100%)",
-                boxShadow: "0 0 16px rgba(217,119,6,0.45)",
+                background: "linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)",
+                boxShadow: "0 0 16px rgba(139,92,246,0.45)",
                 touchAction: "manipulation",
               }}
-              whileHover={shouldReduce ? {} : { scale: 1.04, boxShadow: "0 0 26px rgba(217,119,6,0.7)" }}
+              whileHover={shouldReduce ? {} : { scale: 1.04, boxShadow: "0 0 26px rgba(139,92,246,0.7)" }}
               whileTap={shouldReduce ? {} : { scale: 0.96 }}
               transition={{ type: "spring", stiffness: 380, damping: 22 }}
             >

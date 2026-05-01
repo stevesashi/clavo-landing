@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -23,7 +23,7 @@ function ContactBackground() {
         style={{
           top: "20%", left: "50%", transform: "translateX(-50%)",
           width: 560, height: 560,
-          background: "radial-gradient(circle, rgba(217,119,6,0.055) 0%, transparent 65%)",
+          background: "radial-gradient(circle, rgba(139,92,246,0.055) 0%, transparent 65%)",
           filter: "blur(40px)",
         }} />
       {/* Subtle grid */}
@@ -157,8 +157,8 @@ function ContactForm() {
         disabled={!canSubmit}
         className="group mt-1 flex w-full items-center justify-center gap-2.5 rounded-xl py-4 text-sm font-bold text-white transition-opacity hover:opacity-90"
         style={{
-          background:  canSubmit ? "linear-gradient(135deg, #d97706 0%, #b45309 55%, #7c3aed 100%)" : "rgba(255,255,255,0.06)",
-          boxShadow:   canSubmit ? "0 0 28px rgba(217,119,6,0.32)" : "none",
+          background:  canSubmit ? "linear-gradient(135deg, #7c3aed 0%, #6d28d9 55%, #7c3aed 100%)" : "rgba(255,255,255,0.06)",
+          boxShadow:   canSubmit ? "0 0 28px rgba(139,92,246,0.32)" : "none",
           color:       canSubmit ? "#fff" : "rgba(255,255,255,0.22)",
           cursor:      canSubmit ? "pointer" : "not-allowed",
           transition:  "background 0.3s, box-shadow 0.3s, color 0.3s",
@@ -186,7 +186,7 @@ const CONTACT_ITEMS = [
     label: "Sales & Partnerships",
     value: "sales@clavo-ai.com",
     href: "mailto:sales@clavo-ai.com",
-    color: "#fbbf24",
+    color: "#c084fc",
   },
 ];
 
@@ -209,7 +209,7 @@ export default function ContactPage() {
           </div>
 
           <h1 className="mb-4 text-5xl font-extrabold tracking-tight text-white sm:text-6xl"
-            style={{ lineHeight: 1.07, textShadow: "0 0 60px rgba(217,119,6,0.15)" }}>
+            style={{ lineHeight: 1.07, textShadow: "0 0 60px rgba(139,92,246,0.15)" }}>
             Get in Touch
           </h1>
 
@@ -254,7 +254,7 @@ export default function ContactPage() {
               </p>
               <p className="mt-4 text-sm font-medium text-white/35">
                 We usually reply within{" "}
-                <span className="font-bold text-amber-400/70">24 hours.</span>
+                <span className="font-bold text-purple-400/70">24 hours.</span>
               </p>
             </div>
 
@@ -278,7 +278,7 @@ export default function ContactPage() {
             }}>
             {/* Top shimmer */}
             <span aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px rounded-t-2xl"
-              style={{ background: "linear-gradient(90deg, transparent, rgba(167,139,250,0.45) 40%, rgba(217,119,6,0.40) 60%, transparent)" }} />
+              style={{ background: "linear-gradient(90deg, transparent, rgba(167,139,250,0.45) 40%, rgba(139,92,246,0.40) 60%, transparent)" }} />
 
             <div className="mb-6">
               <p className="text-lg font-bold text-white">Send us a message</p>
@@ -305,17 +305,17 @@ export default function ContactPage() {
           </p>
           <h2 className="mb-5 text-2xl font-extrabold text-white sm:text-3xl">
             Talk to us{" "}
-            <span className="bg-gradient-to-r from-amber-300 to-purple-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-purple-300 to-purple-400 bg-clip-text text-transparent">
               live.
             </span>
           </h2>
 
           <Link
             href="/book-demo"
-            className="group inline-flex items-center gap-2.5 rounded-full px-8 py-4 text-sm font-bold text-white transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-400"
+            className="group inline-flex items-center gap-2.5 rounded-full px-8 py-4 text-sm font-bold text-white transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-purple-400"
             style={{
-              background: "linear-gradient(135deg, #d97706 0%, #b45309 55%, #7c3aed 100%)",
-              boxShadow: "0 0 24px rgba(217,119,6,0.38), 0 0 48px rgba(217,119,6,0.10)",
+              background: "linear-gradient(135deg, #7c3aed 0%, #6d28d9 55%, #7c3aed 100%)",
+              boxShadow: "0 0 24px rgba(139,92,246,0.38), 0 0 48px rgba(139,92,246,0.10)",
             }}
             aria-label="Book a live demo with Clavo AI"
           >

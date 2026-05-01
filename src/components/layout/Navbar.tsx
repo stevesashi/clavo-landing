@@ -1,156 +1,165 @@
 "use client";
 
-import Link from "next/link";
-import { motion, useReducedMotion, useScroll, useMotionValueEvent } from "framer-motion";
 import { useState } from "react";
-import { ArrowRight, Menu, X } from "lucide-react";
 
 const NAV_LINKS = [
-  { label: "Pricing",   href: "/pricing"   },
-  { label: "About Us",  href: "/about"     },
-  { label: "Contact",   href: "/contact"   },
-  { label: "Privacy",   href: "/privacy"   },
-  { label: "Terms",     href: "/terms"     },
+  { label: "Home",       href: "/"        },
+  { label: "Pricing",    href: "/pricing" },
+  { label: "Why Clavo",  href: "/about"   },
+  { label: "Contact",    href: "/contact" },
+  { label: "Privacy",    href: "/privacy" },
+  { label: "Terms",      href: "/terms"   },
 ];
 
 export default function Navbar() {
-  const shouldReduce = useReducedMotion();
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const { scrollY } = useScroll();
-
-  useMotionValueEvent(scrollY, "change", (y) => setScrolled(y > 40));
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <header
-      role="banner"
-      aria-label="Clavo AI site navigation"
-      className="fixed inset-x-0 top-0 z-[100] px-4 py-3"
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 50,
+        background: "rgba(3,6,8,0.6)",
+        backdropFilter: "blur(20px)",
+        WebkitBackdropFilter: "blur(20px)",
+      }}
     >
-      {/* Glass pill */}
-      <motion.div
-        className="relative z-50 mx-auto flex h-20 max-w-6xl items-center justify-between rounded-2xl px-5"
-        animate={{
-          background: scrolled ? "rgba(5, 8, 10, 0.82)" : "rgba(5, 8, 10, 0.35)",
-          backdropFilter: "blur(20px)",
-          WebkitBackdropFilter: "blur(20px)",
-          boxShadow: scrolled
-            ? "0 0 0 1px rgba(255,255,255,0.07) inset, 0 8px 32px rgba(0,0,0,0.5)"
-            : "0 0 0 1px rgba(255,255,255,0.04) inset",
-        }}
-        transition={{ duration: 0.35, ease: "easeOut" }}
-      >
-        {/* Logo */}
-        <Link
-          href="/"
-          aria-label="Clavo AI — go to homepage"
-          className="relative inline-flex h-[60px] w-[60px] shrink-0 items-center justify-center overflow-visible focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-purple-400"
-        >
-          <span
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 rounded-full"
-            style={{ background: "radial-gradient(circle, rgba(217,119,6,0.35) 0%, transparent 70%)", filter: "blur(6px)" }}
-          />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/clavo-icon.png"
-            alt="Clavo AI"
-            className="relative z-10 block h-[60px] w-[60px] object-contain scale-[0.86]"
-          />
-        </Link>
+      <div className="mx-6">
+        <div className="flex items-center justify-between pt-4">
 
-        {/* Desktop nav */}
-        <nav aria-label="Primary navigation" className="hidden items-center gap-1 md:flex">
-          {NAV_LINKS.map(({ label, href }) => (
-            <Link
-              key={label}
-              href={href}
-              className="rounded-lg px-3.5 py-2 text-sm font-medium text-white/50 transition-colors duration-150 hover:bg-white/[0.05] hover:text-white/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-400"
-            >
-              {label}
-            </Link>
-          ))}
-        </nav>
-
-        {/* CTA */}
-        <div className="hidden items-center gap-3 md:flex">
-          <Link
-            href="/book-demo"
-            aria-label="Book a live demo of Clavo AI"
-            className="group relative inline-flex cursor-pointer items-center gap-2 overflow-hidden rounded-xl px-4 py-2 text-sm font-semibold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-400"
-            style={{
-              background: "linear-gradient(135deg, #d97706 0%, #b45309 100%)",
-              boxShadow: "0 0 16px rgba(217,119,6,0.40)",
-              touchAction: "manipulation",
-            }}
-          >
-            <span
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-0 rounded-xl"
-              style={{ background: "linear-gradient(160deg, rgba(255,255,255,0.18) 0%, transparent 60%)" }}
+          {/* Logo */}
+          <a href="/" className="inline-flex items-center">
+            <img
+              src="/logo-purple.png"
+              alt="Clavo AI"
+              style={{ height: 100, width: "auto", objectFit: "contain" }}
             />
-            <span className="relative">Book Demo</span>
-            <ArrowRight size={14} aria-hidden="true" className="relative transition-transform duration-200 group-hover:translate-x-0.5" />
-          </Link>
-        </div>
+          </a>
 
-        {/* Mobile hamburger */}
-        <button
-          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
-          aria-expanded={menuOpen}
-          aria-controls="mobile-menu"
-          className="flex h-9 w-9 items-center justify-center rounded-lg text-white/60 hover:bg-white/[0.06] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-400 md:hidden"
-          onClick={() => setMenuOpen((v) => !v)}
-          style={{ touchAction: "manipulation" }}
-        >
-          {menuOpen ? <X size={18} /> : <Menu size={18} />}
-        </button>
-      </motion.div>
+          {/* Desktop — glass pill */}
+          <nav className="hidden md:flex items-center gap-2">
+            <div className="flex items-center gap-1 rounded-full bg-white/5 px-1 py-1 ring-1 ring-white/10 backdrop-blur">
+              {NAV_LINKS.map((link, index) => (
+                <a
+                  key={index}
+                  href={link.href}
+                  className="px-3 py-2 text-sm font-medium text-white/80 hover:text-white transition-colors"
+                >
+                  {link.label}
+                </a>
+              ))}
+              <a
+                href="/early-access"
+                className="ml-1 inline-flex items-center rounded-full px-3.5 py-2 text-sm font-medium transition-colors"
+                style={{
+                  color: "#a78bfa",
+                  border: "1px solid rgba(167,139,250,0.35)",
+                  background: "rgba(167,139,250,0.08)",
+                }}
+              >
+                Join Early Access
+              </a>
+              <a
+                href="/book-demo"
+                className="ml-1 inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-2 text-sm font-medium text-neutral-900 hover:bg-white/90 transition-colors"
+              >
+                Book Demo
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M7 7h10v10" />
+                  <path d="M7 17 17 7" />
+                </svg>
+              </a>
+            </div>
+          </nav>
 
-      {/* Mobile menu */}
-      <motion.div
-        id="mobile-menu"
-        aria-label="Mobile navigation"
-        role="navigation"
-        className="relative z-50 mx-auto mt-2 max-w-6xl overflow-hidden rounded-2xl md:hidden"
-        style={{
-          background: "rgba(5, 8, 10, 0.92)",
-          backdropFilter: "blur(20px)",
-          WebkitBackdropFilter: "blur(20px)",
-          border: "1px solid rgba(255,255,255,0.07)",
-        }}
-        initial={false}
-        animate={
-          shouldReduce
-            ? { opacity: menuOpen ? 1 : 0, display: menuOpen ? "block" : "none" }
-            : { height: menuOpen ? "auto" : 0, opacity: menuOpen ? 1 : 0 }
-        }
-        transition={{ duration: 0.22, ease: "easeOut" }}
-      >
-        <div className="flex flex-col gap-1 p-3">
-          {NAV_LINKS.map(({ label, href }) => (
-            <Link
-              key={label}
-              href={href}
-              onClick={() => setMenuOpen(false)}
-              className="rounded-xl px-4 py-3 text-sm font-medium text-white/60 transition-colors hover:bg-white/[0.05] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-400"
+          {/* Mobile hamburger */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={mobileMenuOpen}
+            className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/15 backdrop-blur"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="text-white/90"
+              aria-hidden="true"
             >
-              {label}
-            </Link>
+              {mobileMenuOpen ? (
+                <>
+                  <path d="M18 6 6 18" />
+                  <path d="m6 6 12 12" />
+                </>
+              ) : (
+                <>
+                  <path d="M4 5h16" />
+                  <path d="M4 12h16" />
+                  <path d="M4 19h16" />
+                </>
+              )}
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile dropdown */}
+      {mobileMenuOpen && (
+        <div
+          className="md:hidden border-t mx-6 pb-4 flex flex-col gap-1"
+          style={{ borderColor: "rgba(255,255,255,0.06)" }}
+        >
+          {NAV_LINKS.map((link, index) => (
+            <a
+              key={index}
+              href={link.href}
+              className="px-3 py-2.5 text-sm font-medium text-white/80 hover:text-white transition-colors rounded-lg hover:bg-white/5"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {link.label}
+            </a>
           ))}
-          <Link
-            href="/book-demo"
-            onClick={() => setMenuOpen(false)}
-            className="mt-1 rounded-xl px-4 py-3 text-center text-sm font-semibold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400"
+          <a
+            href="/early-access"
+            className="mt-1 inline-flex items-center rounded-full px-4 py-2.5 text-sm font-medium transition-colors"
             style={{
-              background: "linear-gradient(135deg, #d97706 0%, #b45309 100%)",
-              boxShadow: "0 0 16px rgba(217,119,6,0.35)",
+              color: "#a78bfa",
+              border: "1px solid rgba(167,139,250,0.35)",
+              background: "rgba(167,139,250,0.08)",
             }}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Join Early Access
+          </a>
+          <a
+            href="/book-demo"
+            className="mt-1 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-medium text-neutral-900 hover:bg-white/90 transition-colors"
+            onClick={() => setMobileMenuOpen(false)}
           >
             Book Demo
-          </Link>
+          </a>
         </div>
-      </motion.div>
+      )}
     </header>
   );
 }

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useRef, useEffect, useState } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
@@ -6,6 +6,7 @@ import {
   Clock, TrendingUp, TrendingDown, Users, AlertTriangle,
   ArrowRight, Building2, Activity, Zap, Target, Radio,
 } from "lucide-react";
+import AnimatedSection from "@/components/AnimatedSection";
 
 // ─── Count-up hook ────────────────────────────────────────────────────────────
 
@@ -39,11 +40,13 @@ function useCountUp(target: number, duration = 1.8, decimals = 0) {
 // ─── Shared card style ────────────────────────────────────────────────────────
 
 const CARD =
-  "relative overflow-hidden rounded-2xl border border-white/[0.07] p-5";
+  "relative overflow-hidden rounded-2xl border border-white/[0.08] p-5";
 const CARD_BG: React.CSSProperties = {
-  background: "rgba(10, 14, 26, 0.82)",
-  backdropFilter: "blur(20px)",
-  WebkitBackdropFilter: "blur(20px)",
+  background: "rgba(255,255,255,0.04)",
+  backdropFilter: "blur(12px)",
+  WebkitBackdropFilter: "blur(12px)",
+  boxShadow: "0 0 20px rgba(139,92,246,0.04)",
+  transition: "all 0.3s ease",
 };
 
 // ─── Radial Gauge ─────────────────────────────────────────────────────────────
@@ -157,8 +160,8 @@ function LineChart() {
       >
         <defs>
           <linearGradient id="hGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#f59e0b" stopOpacity="0.32" />
-            <stop offset="100%" stopColor="#f59e0b" stopOpacity="0.01" />
+            <stop offset="0%" stopColor="#a78bfa" stopOpacity="0.32" />
+            <stop offset="100%" stopColor="#a78bfa" stopOpacity="0.01" />
           </linearGradient>
           <linearGradient id="cGrad" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="#818cf8" stopOpacity="0.22" />
@@ -211,7 +214,7 @@ function LineChart() {
         {/* Hours line */}
         <motion.path
           d={HOURS_LINE}
-          fill="none" stroke="#f59e0b" strokeWidth={2.2}
+          fill="none" stroke="#a78bfa" strokeWidth={2.2}
           strokeLinecap="round" strokeLinejoin="round"
           filter="url(#lineGlow)"
           initial={{ pathLength: 0, opacity: 0 }}
@@ -221,11 +224,11 @@ function LineChart() {
 
         {/* Dots on hours line */}
         {HOURS_PTS.map(([x, y], i) => (
-          <motion.circle key={i} cx={x} cy={y} r={2.8} fill="#f59e0b"
+          <motion.circle key={i} cx={x} cy={y} r={2.8} fill="#a78bfa"
             initial={{ scale: 0, opacity: 0 }}
             animate={inView ? { scale: 1, opacity: 1 } : {}}
             transition={{ delay: 0.3 + i * 0.17, type: "spring", stiffness: 400 }}
-            style={{ filter: "drop-shadow(0 0 3px rgba(245,158,11,0.8))" }}
+            style={{ filter: "drop-shadow(0 0 3px rgba(167,139,250,0.8))" }}
           />
         ))}
 
@@ -233,7 +236,7 @@ function LineChart() {
         {inView && (
           <circle
             cx={HOURS_PTS[9][0]} cy={HOURS_PTS[9][1]} r={5} fill="none"
-            stroke="#f59e0b" strokeWidth={1.2} strokeOpacity={0.5}
+            stroke="#a78bfa" strokeWidth={1.2} strokeOpacity={0.5}
           />
         )}
       </svg>
@@ -241,12 +244,12 @@ function LineChart() {
       {/* Legend */}
       <div className="mt-2 flex items-center gap-5 px-1">
         <div className="flex items-center gap-1.5">
-          <span className="block h-0.5 w-5 rounded bg-amber-400"
-            style={{ boxShadow: "0 0 4px rgba(245,158,11,0.7)" }} />
+          <span className="block h-0.5 w-5 rounded"
+            style={{ background: "#a78bfa", boxShadow: "0 0 4px rgba(167,139,250,0.7)" }} />
           <span className="text-[10px] text-white/38">Recruiter Hours</span>
         </div>
         <div className="flex items-center gap-1.5">
-          <span className="block h-0.5 w-5 rounded bg-indigo-400" />
+          <span className="block h-0.5 w-5 rounded" style={{ background: "#818cf8" }} />
           <span className="text-[10px] text-white/38">Candidates Screened</span>
         </div>
       </div>
@@ -298,7 +301,7 @@ function BottleneckRow({
   const tagColor =
     severity === "high"
       ? { bg: "rgba(239,68,68,0.12)", border: "rgba(239,68,68,0.35)", text: "#f87171" }
-      : { bg: "rgba(245,158,11,0.10)", border: "rgba(245,158,11,0.30)", text: "#fbbf24" };
+      : { bg: "rgba(147,51,234,0.10)", border: "rgba(147,51,234,0.30)", text: "#c084fc" };
 
   return (
     <div className="flex items-start gap-3 rounded-xl border border-white/[0.05] bg-white/[0.02] px-4 py-3">
@@ -346,27 +349,145 @@ function FadeCard({
 // ─── Main Section ─────────────────────────────────────────────────────────────
 
 export default function ForensicIntelligenceSection() {
-  const { count: hoursCount, ref: hoursRef } = useCountUp(1245, 2.0);
-  const { count: matchCount, ref: matchRef } = useCountUp(29, 1.8);
-  const { count: candidatesCount, ref: candidatesRef } = useCountUp(10000, 2.2);
+  const fireCanvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = fireCanvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const resize = () => {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    };
+    resize();
+    window.addEventListener('resize', resize);
+
+    const drops = Array.from({ length: 60 }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      length: Math.random() * 30 + 10,
+      speedY: Math.random() * 2 + 0.5,
+      speedX: (Math.random() - 0.5) * 0.3,
+      opacity: Math.random() * 0.5 + 0.1,
+      width: Math.random() * 1.5 + 0.5,
+      hue: Math.random() > 0.5 ? '167,139,250' : '192,132,252',
+    }));
+
+    let animId: number;
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      drops.forEach(d => {
+        d.y += d.speedY;
+        d.x += d.speedX;
+
+        if (d.y > canvas.height) {
+          d.y = -d.length;
+          d.x = Math.random() * canvas.width;
+        }
+
+        const gradient = ctx.createLinearGradient(d.x, d.y, d.x, d.y + d.length);
+        gradient.addColorStop(0, `rgba(${d.hue},${d.opacity})`);
+        gradient.addColorStop(0.5, `rgba(${d.hue},${d.opacity * 0.6})`);
+        gradient.addColorStop(1, `rgba(${d.hue},0)`);
+
+        ctx.beginPath();
+        ctx.moveTo(d.x, d.y);
+        ctx.lineTo(d.x, d.y + d.length);
+        ctx.strokeStyle = gradient;
+        ctx.lineWidth = d.width;
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(d.x, d.y, d.width + 0.5, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${d.hue},${d.opacity * 1.5})`;
+        ctx.fill();
+      });
+
+      animId = requestAnimationFrame(animate);
+    };
+    animate();
+
+    return () => {
+      cancelAnimationFrame(animId);
+      window.removeEventListener('resize', resize);
+    };
+  }, []);
 
   return (
     <section
       aria-labelledby="forensic-heading"
       className="relative overflow-hidden px-4 py-24"
-      style={{ background: "linear-gradient(180deg, #030608 0%, #07091a 50%, #030608 100%)" }}
     >
+      {/* Background image — Ken Burns */}
+      <div style={{ position: "absolute", inset: 0, overflow: "hidden", zIndex: 0 }}>
+        <img
+          src="/solar-bg-forensic.jpg"
+          alt=""
+          style={{
+            width: "100%", height: "100%",
+            objectFit: "cover", objectPosition: "top center",
+            animation: "kenBurnsForensic 20s ease-in-out infinite",
+          }}
+        />
+      </div>
+
+      {/* Purple tint overlay */}
+      <div style={{
+        position: "absolute", inset: 0, zIndex: 1,
+        pointerEvents: "none",
+        background: "linear-gradient(135deg, rgba(88,28,220,0.55) 0%, rgba(124,58,237,0.45) 40%, rgba(167,139,250,0.35) 70%, rgba(196,181,253,0.2) 100%)",
+        mixBlendMode: "color" as any,
+      }}/>
+
+      {/* Dark overlay for text readability */}
+      <div style={{
+        position: "absolute", inset: 0, zIndex: 2,
+        background: "linear-gradient(to bottom, rgba(3,6,8,0.85) 0%, rgba(3,6,8,0.7) 40%, rgba(3,6,8,0.7) 60%, rgba(3,6,8,0.85) 100%)",
+        pointerEvents: "none",
+      }}/>
+
+      {/* Fire drip canvas */}
+      <canvas
+        ref={fireCanvasRef}
+        aria-hidden="true"
+        style={{
+          position: "absolute", inset: 0,
+          width: "100%", height: "100%",
+          pointerEvents: "none", zIndex: 3,
+        }}
+      />
+
+      {/* Top fade */}
+      <div aria-hidden="true" style={{
+        position: "absolute", top: 0, left: 0, right: 0,
+        height: "200px",
+        background: "linear-gradient(to bottom, #030608, transparent)",
+        pointerEvents: "none", zIndex: 4,
+      }} />
+
+      {/* Bottom fade */}
+      <div aria-hidden="true" style={{
+        position: "absolute", bottom: 0, left: 0, right: 0,
+        height: "200px",
+        background: "linear-gradient(to top, #030608, transparent)",
+        pointerEvents: "none", zIndex: 4,
+      }} />
+
       {/* Ambient glows */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
         <div className="absolute left-1/4 top-1/3 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl"
-          style={{ background: "radial-gradient(circle, rgba(139,92,246,0.07) 0%, transparent 65%)" }} />
+          style={{ background: "radial-gradient(circle, rgba(167,139,250,0.06) 0%, transparent 65%)" }} />
         <div className="absolute right-1/4 bottom-1/3 h-[500px] w-[500px] translate-x-1/2 translate-y-1/2 rounded-full blur-3xl"
-          style={{ background: "radial-gradient(circle, rgba(217,119,6,0.06) 0%, transparent 65%)" }} />
+          style={{ background: "radial-gradient(circle, rgba(139,92,246,0.06) 0%, transparent 65%)" }} />
       </div>
 
       <div className="relative z-10 mx-auto max-w-6xl space-y-6">
 
         {/* ── Header ─────────────────────────────────────────────────────── */}
+        <AnimatedSection>
         <motion.div
           className="mb-10 text-center"
           initial={{ opacity: 0, y: 24 }}
@@ -374,16 +495,16 @@ export default function ForensicIntelligenceSection() {
           viewport={{ once: true, amount: 0.4 }}
           transition={{ type: "spring", stiffness: 220, damping: 26 }}
         >
-          <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-amber-400/55">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-purple-400/55">
             From CV to CEO-level hiring decisions
           </p>
           <h2
             id="forensic-heading"
-            className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl"
-            style={{ textShadow: "0 0 60px rgba(139,92,246,0.18)" }}
+            className="text-4xl font-extrabold text-white sm:text-5xl md:text-6xl lg:text-7xl"
+            style={{ lineHeight: 1.1, letterSpacing: "-0.02em", textShadow: "0 0 60px rgba(167,139,250,0.15)" }}
           >
             Forensic Hiring{" "}
-            <span className="bg-gradient-to-r from-purple-400 to-amber-300 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-purple-300 to-purple-400 bg-clip-text text-transparent">
               Intelligence
             </span>
           </h2>
@@ -392,51 +513,56 @@ export default function ForensicIntelligenceSection() {
             hiring team sees live.
           </p>
         </motion.div>
+        </AnimatedSection>
 
         {/* ── ROW 1 — 4 metric cards ──────────────────────────────────────── */}
         <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
 
           {/* Hours Saved */}
-          <FadeCard delay={0.0} className={CARD} style={CARD_BG}>
-            <span aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px"
-              style={{ background: "linear-gradient(90deg,transparent,rgba(245,158,11,0.55) 50%,transparent)" }} />
-            <div className="mb-2 flex items-center gap-2">
-              <Clock size={13} className="text-amber-400/70" />
-              <span className="text-[10px] font-semibold uppercase tracking-widest text-white/35">
-                Total Hours Saved
-              </span>
+          <AnimatedSection delay={0.1}>
+          <FadeCard delay={0} className="relative overflow-hidden rounded-2xl" style={{
+            ...CARD_BG,
+            border: "1px solid rgba(255,255,255,0.08)",
+            padding: "24px 28px",
+          }}>
+            <div style={{
+              fontSize: 11, fontWeight: 700, letterSpacing: 1.5,
+              color: "rgba(255,255,255,0.35)",
+              textTransform: "uppercase", marginBottom: 12,
+              display: "flex", alignItems: "center", gap: 8,
+            }}>
+              <Clock size={13} style={{ color: "rgba(167,139,250,0.7)" }} /> TOTAL HOURS SAVED
             </div>
-            <motion.span
-              ref={hoursRef as React.RefObject<HTMLSpanElement>}
-              className="block text-5xl font-black leading-none"
-              style={{
-                background: "linear-gradient(135deg, #f59e0b 0%, #fbbf24 60%, #fff 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                filter: "drop-shadow(0 0 14px rgba(245,158,11,0.55))",
-              }}
-              aria-label={`${hoursCount.toLocaleString()} hours saved`}
-            >
-              {hoursCount.toLocaleString()}
-            </motion.span>
-            <p className="mt-2 text-[11px] font-semibold text-white/55">Recruiter hours saved</p>
-            <p className="mt-0.5 text-[10px] text-white/28">AI screenings fully automated</p>
+            <div style={{
+              fontSize: 48, fontWeight: 900, color: "#a78bfa",
+              lineHeight: 1, letterSpacing: -2, marginBottom: 8,
+            }}>
+              1,245
+            </div>
+            <div style={{ fontSize: 13, color: "rgba(255,255,255,0.4)" }}>
+              Recruiter hours saved
+            </div>
+            <div style={{ fontSize: 11, color: "rgba(255,255,255,0.25)", marginTop: 4 }}>
+              Screenings fully automated
+            </div>
           </FadeCard>
+          </AnimatedSection>
 
           {/* Avg Time to Fill */}
+          <AnimatedSection delay={0.2}>
           <FadeCard delay={0.08} className={CARD} style={CARD_BG}>
             <span aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px"
-              style={{ background: "linear-gradient(90deg,transparent,rgba(34,211,238,0.5) 50%,transparent)" }} />
+              style={{ background: "linear-gradient(90deg,transparent,rgba(6,182,212,0.5) 50%,transparent)" }} />
             <div className="mb-2 flex items-center gap-2">
-              <Target size={13} className="text-cyan-400/70" />
+              <Target size={13} style={{ color: "rgba(6,182,212,0.7)" }} />
               <span className="text-[10px] font-semibold uppercase tracking-widest text-white/35">
                 Avg Time to Fill
               </span>
             </div>
             <div className="flex items-center gap-4">
-              <RadialGauge value={19.5} max={40} color="#22d3ee" unit="Days" />
+              <RadialGauge value={19.5} max={40} color="#06b6d4" unit="Days" />
               <div className="flex flex-col gap-1.5">
-                <span className="rounded-full bg-emerald-400/10 px-2 py-0.5 text-[10px] font-bold text-emerald-400">
+                <span className="rounded-full px-2 py-0.5 text-[10px] font-bold" style={{ background: "rgba(6,182,212,0.1)", color: "#06b6d4" }}>
                   On Track
                 </span>
                 <span className="text-[10px] text-white/30">Market avg:</span>
@@ -444,70 +570,77 @@ export default function ForensicIntelligenceSection() {
               </div>
             </div>
           </FadeCard>
+          </AnimatedSection>
 
           {/* High-Match Rate */}
-          <FadeCard delay={0.16} className={CARD} style={CARD_BG}>
-            <span aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px"
-              style={{ background: "linear-gradient(90deg,transparent,rgba(251,191,36,0.5) 50%,transparent)" }} />
-            <div className="mb-2 flex items-center gap-2">
-              <TrendingUp size={13} className="text-amber-300/70" />
-              <span className="text-[10px] font-semibold uppercase tracking-widest text-white/35">
-                High-Match Rate
-              </span>
+          <AnimatedSection delay={0.3}>
+          <FadeCard delay={0.16} className="relative overflow-hidden rounded-2xl" style={{
+            ...CARD_BG,
+            border: "1px solid rgba(255,255,255,0.08)",
+            padding: "24px 28px",
+          }}>
+            <div style={{
+              fontSize: 11, fontWeight: 700, letterSpacing: 1.5,
+              color: "rgba(255,255,255,0.35)",
+              textTransform: "uppercase", marginBottom: 12,
+              display: "flex", alignItems: "center", gap: 8,
+            }}>
+              <TrendingUp size={13} style={{ color: "rgba(167,139,250,0.7)" }} /> HIGH-MATCH RATE
             </div>
-            <motion.span
-              ref={matchRef as React.RefObject<HTMLSpanElement>}
-              className="block text-5xl font-black leading-none"
-              style={{
-                background: "linear-gradient(135deg, #fbbf24 0%, #fff 70%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                filter: "drop-shadow(0 0 14px rgba(251,191,36,0.5))",
-              }}
-            >
-              {matchCount}%
-            </motion.span>
-            <p className="mt-2 text-[11px] font-semibold text-white/55">Top candidate match rate</p>
-            <p className="mt-0.5 text-[10px] text-white/28">Avg match score for top 5</p>
+            <div style={{
+              fontSize: 48, fontWeight: 900, color: "#a78bfa",
+              lineHeight: 1, letterSpacing: -2, marginBottom: 8,
+            }}>
+              29%
+            </div>
+            <div style={{ fontSize: 13, color: "rgba(255,255,255,0.4)" }}>
+              Top candidate match rate
+            </div>
+            <div style={{ fontSize: 11, color: "rgba(255,255,255,0.25)", marginTop: 4 }}>
+              Avg match score for top 5
+            </div>
           </FadeCard>
+          </AnimatedSection>
 
           {/* Candidates Processed */}
-          <FadeCard delay={0.24} className={CARD} style={CARD_BG}>
-            <span aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px"
-              style={{ background: "linear-gradient(90deg,transparent,rgba(167,139,250,0.5) 50%,transparent)" }} />
-            <div className="mb-2 flex items-center gap-2">
-              <Users size={13} className="text-purple-400/70" />
-              <span className="text-[10px] font-semibold uppercase tracking-widest text-white/35">
-                Candidates Processed
-              </span>
+          <AnimatedSection delay={0.4}>
+          <FadeCard delay={0.24} className="relative overflow-hidden rounded-2xl" style={{
+            ...CARD_BG,
+            border: "1px solid rgba(255,255,255,0.08)",
+            padding: "24px 28px",
+          }}>
+            <div style={{
+              fontSize: 11, fontWeight: 700, letterSpacing: 1.5,
+              color: "rgba(255,255,255,0.35)",
+              textTransform: "uppercase", marginBottom: 12,
+              display: "flex", alignItems: "center", gap: 8,
+            }}>
+              <Users size={13} style={{ color: "rgba(167,139,250,0.7)" }} /> CANDIDATES PROCESSED
             </div>
-            <div className="flex items-end gap-2">
-              <motion.span
-                ref={candidatesRef as React.RefObject<HTMLSpanElement>}
-                className="block text-5xl font-black leading-none"
-                style={{
-                  background: "linear-gradient(135deg, #a78bfa 0%, #fff 70%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  filter: "drop-shadow(0 0 14px rgba(167,139,250,0.45))",
-                }}
-              >
-                {candidatesCount >= 10000 ? "10k" : candidatesCount.toLocaleString()}
-              </motion.span>
-              <span className="mb-2 text-2xl font-bold text-purple-400/60">+</span>
+            <div style={{
+              fontSize: 48, fontWeight: 900, color: "#a78bfa",
+              lineHeight: 1, letterSpacing: -2, marginBottom: 8,
+            }}>
+              10K+
             </div>
-            <p className="mt-2 text-[11px] font-semibold text-white/55">Across all active roles</p>
-            <p className="mt-0.5 text-[10px] text-white/28">GCC &amp; APAC pipelines</p>
+            <div style={{ fontSize: 13, color: "rgba(255,255,255,0.4)" }}>
+              Across all active roles
+            </div>
+            <div style={{ fontSize: 11, color: "rgba(255,255,255,0.25)", marginTop: 4 }}>
+              GCC pipelines
+            </div>
           </FadeCard>
+          </AnimatedSection>
         </div>
 
         {/* ── ROW 2 — Line chart + Pipeline ───────────────────────────────── */}
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-[3fr_2fr]">
 
           {/* Line chart */}
+          <AnimatedSection delay={0.2} direction="scale">
           <FadeCard delay={0.05} className={CARD} style={CARD_BG}>
             <span aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px"
-              style={{ background: "linear-gradient(90deg,transparent,rgba(245,158,11,0.45) 50%,transparent)" }} />
+              style={{ background: "linear-gradient(90deg,transparent,rgba(147,51,234,0.45) 50%,transparent)" }} />
             <div className="mb-4 flex items-center justify-between">
               <div>
                 <p className="text-[10px] font-semibold uppercase tracking-widest text-white/30">
@@ -515,14 +648,16 @@ export default function ForensicIntelligenceSection() {
                 </p>
                 <h3 className="text-sm font-bold text-white/80">Recruiter Hours Saved Trend</h3>
               </div>
-              <span className="rounded-full border border-amber-400/20 bg-amber-400/08 px-2.5 py-1 text-[10px] font-semibold text-amber-400">
+              <span className="rounded-full border border-amber-400/20 bg-purple-400/08 px-2.5 py-1 text-[10px] font-semibold text-purple-400">
                 ↑ +730% / 10wk
               </span>
             </div>
             <LineChart />
           </FadeCard>
+          </AnimatedSection>
 
           {/* Pipeline Health */}
+          <AnimatedSection delay={0.3} direction="right">
           <FadeCard delay={0.12} className={CARD} style={CARD_BG}>
             <span aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px"
               style={{ background: "linear-gradient(90deg,transparent,rgba(167,139,250,0.45) 50%,transparent)" }} />
@@ -536,15 +671,15 @@ export default function ForensicIntelligenceSection() {
                 label="5 pipelines"
                 value="5 Active Pipelines"
                 pct={88}
-                color="linear-gradient(90deg, #f59e0b, #d97706)"
+                color="linear-gradient(90deg, #a78bfa, #7c3aed)"
                 delay={0.1}
               />
               <PipelineBar
                 label="2 roles"
                 value="2 Roles Filled"
-                icon={<span className="text-emerald-400">✓</span>}
+                icon={<span style={{ color: "#4ade80" }}>✓</span>}
                 pct={40}
-                color="linear-gradient(90deg, #10b981, #059669)"
+                color="linear-gradient(90deg, #4ade80, #22c55e)"
                 delay={0.22}
               />
               <PipelineBar
@@ -552,7 +687,7 @@ export default function ForensicIntelligenceSection() {
                 value="3 Roles Interviewing"
                 icon={<Users size={11} />}
                 pct={60}
-                color="linear-gradient(90deg, #8b5cf6, #7c3aed)"
+                color="linear-gradient(90deg, #a78bfa, #7c3aed)"
                 delay={0.34}
               />
             </div>
@@ -571,12 +706,14 @@ export default function ForensicIntelligenceSection() {
               ))}
             </div>
           </FadeCard>
+          </AnimatedSection>
         </div>
 
         {/* ── ROW 3 — Bottlenecks + CEO Insight ───────────────────────────── */}
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
 
           {/* Bottleneck table */}
+          <AnimatedSection delay={0.2} direction="left">
           <FadeCard delay={0.05} className={CARD} style={CARD_BG}>
             <span aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px"
               style={{ background: "linear-gradient(90deg,transparent,rgba(239,68,68,0.4) 50%,transparent)" }} />
@@ -614,33 +751,29 @@ export default function ForensicIntelligenceSection() {
                 severity="medium" />
             </div>
           </FadeCard>
+          </AnimatedSection>
 
           {/* CEO Strategic Action Summary */}
+          <AnimatedSection delay={0.3} direction="right">
           <FadeCard
             delay={0.14}
             className={`${CARD} group`}
-            style={{
-              background: "rgba(22, 12, 48, 0.90)",
-              backdropFilter: "blur(24px)",
-              WebkitBackdropFilter: "blur(24px)",
-              border: "1px solid rgba(139,92,246,0.22)",
-              boxShadow: "0 0 60px rgba(139,92,246,0.12), 0 0 0 1px rgba(139,92,246,0.06) inset",
-            }}
+            style={CARD_BG}
           >
             {/* Top streak */}
             <span aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px rounded-t-2xl"
-              style={{ background: "linear-gradient(90deg,transparent,rgba(167,139,250,0.65) 50%,transparent)" }} />
+              style={{ background: "linear-gradient(90deg,transparent,rgba(167,139,250,0.55) 50%,transparent)" }} />
             {/* Ambient hover glow */}
             <div aria-hidden="true" className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-              style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(139,92,246,0.10) 0%, transparent 65%)" }} />
+              style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(167,139,250,0.08) 0%, transparent 65%)" }} />
 
             <div className="relative">
               <div className="mb-3 flex items-center gap-2">
-                <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-purple-500/15">
-                  <Zap size={13} className="text-purple-400" />
+                <div className="flex h-7 w-7 items-center justify-center rounded-lg" style={{ background: "rgba(167,139,250,0.12)" }}>
+                  <Zap size={13} style={{ color: "#a78bfa" }} />
                 </div>
                 <div>
-                  <p className="text-[10px] font-semibold uppercase tracking-widest text-purple-400/60">
+                  <p className="text-[10px] font-semibold uppercase tracking-widest" style={{ color: "rgba(167,139,250,0.6)" }}>
                     AI Executive Insight
                   </p>
                   <p className="text-[9px] text-white/25 italic">[Live Summary]</p>
@@ -651,15 +784,15 @@ export default function ForensicIntelligenceSection() {
 
               <p className="text-[13px] leading-relaxed text-white/62">
                 Talent scarcity detected for{" "}
-                <span className="font-semibold text-amber-300/85">backend engineering</span> across
-                GCC &amp; APAC. Limited qualified candidates and high competitor demand are slowing
+                <span className="font-semibold text-purple-300/85">backend engineering</span> across
+                GCC. Limited qualified candidates and high competitor demand are slowing
                 pipeline velocity by{" "}
                 <span className="font-semibold text-red-400/85">34%</span>. Arabic &amp; English
                 fluency requirements limiting the candidate pool.
               </p>
 
               <div className="mt-4 space-y-2">
-                <p className="text-[10px] font-semibold uppercase tracking-widest text-purple-400/50">
+                <p className="text-[10px] font-semibold uppercase tracking-widest" style={{ color: "rgba(167,139,250,0.5)" }}>
                   Recommended Actions
                 </p>
                 {[
@@ -668,13 +801,14 @@ export default function ForensicIntelligenceSection() {
                   "Prioritise high-intent passive candidates earlier",
                 ].map((action) => (
                   <div key={action} className="flex items-start gap-2">
-                    <span className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full bg-purple-400/60" />
+                    <span className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: "rgba(167,139,250,0.6)" }} />
                     <span className="text-[11px] text-white/50">{action}</span>
                   </div>
                 ))}
               </div>
             </div>
           </FadeCard>
+          </AnimatedSection>
         </div>
 
         {/* ── ROW 4 — Competitor Activity + Hiring Speed ──────────────────── */}
@@ -683,10 +817,10 @@ export default function ForensicIntelligenceSection() {
           {/* Competitor Activity */}
           <FadeCard delay={0.05} className={CARD} style={CARD_BG}>
             <span aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px"
-              style={{ background: "linear-gradient(90deg,transparent,rgba(34,211,238,0.4) 50%,transparent)" }} />
+              style={{ background: "linear-gradient(90deg,transparent,rgba(167,139,250,0.4) 50%,transparent)" }} />
             <div className="mb-4 flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Radio size={13} className="text-cyan-400/70" />
+                <Radio size={13} style={{ color: "rgba(167,139,250,0.7)" }} />
                 <div>
                   <p className="text-[10px] font-semibold uppercase tracking-widest text-white/30">
                     Market Intelligence
@@ -703,7 +837,7 @@ export default function ForensicIntelligenceSection() {
             <div className="space-y-2.5">
               {[
                 { icon: "↑", color: "#ef4444", text: "TechCorp increased engineering hiring by 35% in Q2", time: "2h ago" },
-                { icon: "→", color: "#f59e0b", text: "Top Backend candidates trending toward FinServ sector", time: "5h ago" },
+                { icon: "→", color: "#9333ea", text: "Top Backend candidates trending toward FinServ sector", time: "5h ago" },
                 { icon: "!", color: "#a78bfa", text: "Surge demand: Backend, ML, DevOps — GCC-wide", time: "8h ago" },
                 { icon: "↓", color: "#22d3ee", text: "Avg offer-to-accept window compressed to 4.2 days", time: "12h ago" },
               ].map(({ icon, color, text, time }) => (
@@ -722,9 +856,9 @@ export default function ForensicIntelligenceSection() {
           {/* Hiring Speed vs Market */}
           <FadeCard delay={0.14} className={CARD} style={CARD_BG}>
             <span aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px"
-              style={{ background: "linear-gradient(90deg,transparent,rgba(110,231,183,0.4) 50%,transparent)" }} />
+              style={{ background: "linear-gradient(90deg,transparent,rgba(167,139,250,0.4) 50%,transparent)" }} />
             <div className="mb-4 flex items-center gap-2">
-              <Activity size={13} className="text-emerald-400/70" />
+              <Activity size={13} style={{ color: "rgba(167,139,250,0.7)" }} />
               <div>
                 <p className="text-[10px] font-semibold uppercase tracking-widest text-white/30">
                   Benchmarking
@@ -735,9 +869,9 @@ export default function ForensicIntelligenceSection() {
 
             <div className="space-y-5">
               {[
-                { label: "Time to Fill", clavo: "15 Days", industry: "40 Days", clavoW: 38, indW: 100, color: "#22d3ee" },
+                { label: "Time to Fill", clavo: "15 Days", industry: "40 Days", clavoW: 38, indW: 100, color: "#a78bfa" },
                 { label: "Screening Time", clavo: "4 Hrs", industry: "12 Hrs", clavoW: 33, indW: 100, color: "#a78bfa" },
-                { label: "Offer Acceptance", clavo: "87%", industry: "72%", clavoW: 87, indW: 72, color: "#6ee7b7" },
+                { label: "Offer Acceptance", clavo: "87%", industry: "72%", clavoW: 87, indW: 72, color: "#a78bfa" },
               ].map(({ label, clavo, industry, clavoW, indW, color }, idx) => (
                 <div key={label} className="space-y-1.5">
                   <div className="flex items-center justify-between text-[11px]">
@@ -794,15 +928,15 @@ export default function ForensicIntelligenceSection() {
             <span className="font-bold text-white/90">hiring decisions</span>
           </p>
           <motion.a
-            href="#demo"
+            href="/book-demo"
             aria-label="Book a Live Demo — see Clavo Intelligence live"
-            className="group inline-flex cursor-pointer items-center gap-2 overflow-hidden rounded-xl px-6 py-3 text-sm font-bold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-400"
+            className="group inline-flex cursor-pointer items-center gap-2 overflow-hidden rounded-xl px-6 py-3 text-sm font-bold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-purple-400"
             style={{
-              background: "linear-gradient(135deg, #d97706 0%, #b45309 100%)",
-              boxShadow: "0 0 24px rgba(217,119,6,0.40)",
+              background: "linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)",
+              boxShadow: "0 0 24px rgba(139,92,246,0.40)",
               touchAction: "manipulation",
             }}
-            whileHover={{ scale: 1.04, boxShadow: "0 0 36px rgba(217,119,6,0.65)" }}
+            whileHover={{ scale: 1.04, boxShadow: "0 0 36px rgba(139,92,246,0.65)" }}
             whileTap={{ scale: 0.97 }}
             transition={{ type: "spring", stiffness: 360, damping: 22 }}
           >

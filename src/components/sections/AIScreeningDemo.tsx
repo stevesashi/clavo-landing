@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
@@ -50,19 +50,19 @@ const LOADING_STEPS = [
 
 const MATCH_COLORS: Record<string, string> = {
   "Strong Fit": "#6ee7b7",
-  "Moderate Fit": "#fbbf24",
+  "Moderate Fit": "#c084fc",
   "Weak Fit": "#f87171",
 };
 
 const MATCH_BG: Record<string, string> = {
   "Strong Fit": "rgba(110,231,183,0.10)",
-  "Moderate Fit": "rgba(251,191,36,0.10)",
+  "Moderate Fit": "rgba(192,132,252,0.10)",
   "Weak Fit": "rgba(248,113,113,0.10)",
 };
 
 const MATCH_BORDER: Record<string, string> = {
   "Strong Fit": "rgba(110,231,183,0.25)",
-  "Moderate Fit": "rgba(251,191,36,0.25)",
+  "Moderate Fit": "rgba(192,132,252,0.25)",
   "Weak Fit": "rgba(248,113,113,0.25)",
 };
 
@@ -379,7 +379,7 @@ export default function AIScreeningDemo() {
         className="relative overflow-hidden py-28 px-4"
         style={{
           background:
-            "linear-gradient(180deg, #030608 0%, #050d14 50%, #030608 100%)",
+            "radial-gradient(ellipse 70% 60% at 90% 80%, rgba(167,139,250,0.09) 0%, transparent 55%), radial-gradient(ellipse 50% 40% at 10% 20%, rgba(124,58,237,0.07) 0%, transparent 50%), #020508",
         }}
       >
         {/* Ambient glow */}
@@ -410,7 +410,8 @@ export default function AIScreeningDemo() {
             </p>
             <h2
               id="cv-screener-heading"
-              className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl"
+              className="text-4xl font-extrabold text-white sm:text-5xl md:text-6xl lg:text-7xl"
+              style={{ lineHeight: 1.1, letterSpacing: "-0.02em" }}
             >
               Screen Any CV Against{" "}
               <span className="bg-gradient-to-r from-emerald-300 to-purple-300 bg-clip-text text-transparent">

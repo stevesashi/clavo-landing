@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion, useReducedMotion } from "framer-motion";
 
@@ -6,13 +6,13 @@ import { motion, useReducedMotion } from "framer-motion";
 // Styled as real brand marks — will swap for actual logos when available.
 
 const PARTNERS = [
-  { initials: "TH", name: "TalentHub GCC",       color: "#fbbf24" },
+  { initials: "TH", name: "TalentHub GCC",       color: "#c084fc" },
   { initials: "GR", name: "Gulf Recruit",         color: "#a78bfa" },
-  { initials: "AP", name: "APAC TalentGroup",     color: "#67e8f9" },
+  { initials: "KH", name: "Khaleeji Talent",      color: "#67e8f9" },
   { initials: "NE", name: "Neon Staffing",        color: "#6ee7b7" },
-  { initials: "SG", name: "SingaHire",            color: "#fb923c" },
+  { initials: "RH", name: "Riyadh HireGroup",     color: "#a855f7" },
   { initials: "HF", name: "HireFlow",             color: "#f472b6" },
-  { initials: "MG", name: "Majid Group",          color: "#fbbf24" },
+  { initials: "MG", name: "Majid Group",          color: "#c084fc" },
   { initials: "XP", name: "Expansion People Co.", color: "#a78bfa" },
 ];
 
@@ -69,7 +69,7 @@ export default function TrustBar() {
           transition={{ type: "spring", stiffness: 220, damping: 26 }}
         >
           Trusted by fast-scaling hiring teams across{" "}
-          <span className="text-white/50">GCC & APAC — startups, agencies, and growth-stage companies</span>
+          <span className="text-white/50">GCC — startups, agencies, and growth-stage companies</span>
         </motion.p>
 
         {/* Marquee track */}
@@ -106,7 +106,7 @@ export default function TrustBar() {
         >
           <span className="h-px w-10 bg-white/10" aria-hidden="true" />
           <span className="text-xs text-white/22 italic">
-            Featuring Clavo AI Design Partners · <span className="text-amber-400/50 not-italic font-semibold">Early Access Now Open</span>
+            Featuring Clavo AI Design Partners · <span className="text-purple-400/50 not-italic font-semibold">Early Access Now Open</span>
           </span>
           <span className="h-px w-10 bg-white/10" aria-hidden="true" />
         </motion.div>

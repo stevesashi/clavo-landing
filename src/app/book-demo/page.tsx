@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight, Brain, BarChart3, Zap, Flame, Star, Shield } from "lucide-react";
@@ -17,7 +17,7 @@ const FIREFLIES = Array.from({ length: 22 }, (_, i) => ({
   size: 1.5 + sr(i * 3) * 2, op: 0.25 + sr(i * 17) * 0.55,
   dur: 4 + sr(i * 5) * 7, delay: sr(i * 11) * 9,
   fx: (sr(i * 19) - 0.5) * 40, fy: (sr(i * 23) - 0.5) * 30,
-  color: i % 5 === 0 ? "rgba(217,119,6,0.9)" : i % 3 === 0 ? "rgba(167,139,250,0.9)" : "rgba(110,231,183,0.9)",
+  color: i % 5 === 0 ? "rgba(139,92,246,0.9)" : i % 3 === 0 ? "rgba(167,139,250,0.9)" : "rgba(110,231,183,0.9)",
 }));
 
 const BG_STARS = Array.from({ length: 40 }, (_, i) => ({
@@ -50,7 +50,7 @@ function NightForestClearingBackground() {
           style={{ background: "radial-gradient(circle, rgba(109,40,217,0.13) 0%, transparent 70%)", filter: "blur(60px)" }} />
         {/* Ambient gold upper-center wash */}
         <div className="absolute left-1/4 top-0 h-[400px] w-[700px]"
-          style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(217,119,6,0.07) 0%, transparent 65%)", filter: "blur(50px)" }} />
+          style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(139,92,246,0.07) 0%, transparent 65%)", filter: "blur(50px)" }} />
         {mounted && BG_STARS.map((s, i) => (
           <div key={i} className="absolute rounded-full"
             style={{
@@ -82,9 +82,9 @@ function NightForestClearingBackground() {
             <div className="absolute inset-y-0 right-0 w-[18%]"
               style={{ background: "linear-gradient(to left, rgba(10,40,20,0.12) 0%, transparent 100%)", filter: "blur(12px)", animation: "bd-mist 11s ease-in-out infinite reverse" }} />
             <div className="absolute inset-x-[20%]"
-              style={{ top: "8%", bottom: "20%", background: "radial-gradient(ellipse at 50% 42%, rgba(217,119,6,0.09) 0%, rgba(139,92,246,0.05) 40%, transparent 68%)", animation: "bd-glow 6s ease-in-out infinite" }} />
+              style={{ top: "8%", bottom: "20%", background: "radial-gradient(ellipse at 50% 42%, rgba(139,92,246,0.09) 0%, rgba(139,92,246,0.05) 40%, transparent 68%)", animation: "bd-glow 6s ease-in-out infinite" }} />
             <div className="absolute inset-x-[28%] bottom-[14%]"
-              style={{ height: 180, background: "radial-gradient(ellipse at 50% 100%, rgba(217,119,6,0.06) 0%, transparent 70%)", filter: "blur(20px)" }} />
+              style={{ height: 180, background: "radial-gradient(ellipse at 50% 100%, rgba(139,92,246,0.06) 0%, transparent 70%)", filter: "blur(20px)" }} />
           </>
         )}
         {mounted && FIREFLIES.map((f, i) => (
@@ -157,7 +157,7 @@ function CalendlyEmbed() {
 
 const BULLETS = [
   { icon: Brain,     color: "#a78bfa", title: "AI screening & interviews in action",  sub: "Watch Clavo autonomously screen, score, and interview candidates — live." },
-  { icon: BarChart3, color: "#fbbf24", title: "Your pipeline, from 40 days to 15",    sub: "See the exact workflow that cuts time-to-hire by 62% and cost per hire by 72%." },
+  { icon: BarChart3, color: "#c084fc", title: "Your pipeline, from 40 days to 15",    sub: "See the exact workflow that cuts time-to-hire by 62% and cost per hire by 72%." },
   { icon: Zap,       color: "#6ee7b7", title: "CEO-ready hiring intelligence",          sub: "360° candidate reports, market benchmarks, and exec summaries — automated." },
 ];
 
@@ -170,7 +170,7 @@ const STATS = [
 
 const TESTIMONIALS = [
   { quote: "We filled 3 senior roles in under 2 weeks. Never happened before.",         name: "Fatima Al-Mansoori",  role: "VP Talent · Series B Fintech, Dubai",       color: "#a78bfa" },
-  { quote: "The AI interview reports are better than what my team writes manually.",     name: "Ravi Krishnamurthy", role: "Head of HR · SaaS Scale-up, Singapore",     color: "#fbbf24" },
+  { quote: "The AI interview reports are better than what my team writes manually.",     name: "Ravi Krishnamurthy", role: "Head of HR · SaaS Scale-up, Singapore",     color: "#c084fc" },
 ];
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
@@ -182,7 +182,7 @@ export default function BookDemoPage() {
       <ForestFloor />
 
       {/* ── HERO ── */}
-      <section id="demo-booking" className="relative px-4 pb-20 pt-24" style={{ zIndex: 2 }}>
+      <section id="demo-booking" className="relative px-4 pb-20 pt-36" style={{ zIndex: 2 }}>
         <div className="relative z-10 mx-auto max-w-6xl">
 
           {/* Top copy */}
@@ -191,13 +191,13 @@ export default function BookDemoPage() {
               style={{ borderColor: "rgba(167,139,250,0.30)", background: "rgba(167,139,250,0.09)" }}>
               <span className="h-1.5 w-1.5 rounded-full bg-violet-400" style={{ animation: "pulse 2s ease-in-out infinite" }} aria-hidden="true" />
               <span className="text-xs font-semibold uppercase tracking-widest text-violet-300/90">
-                30-Min Live Demo · No Sales Pitch
+                15-Min Live Demo · No Sales Pitch
               </span>
             </div>
 
             <h1 className="mb-5 text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
               See Clavo Replace Your{" "}
-              <span className="bg-gradient-to-r from-amber-300 via-amber-400 to-purple-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-purple-300 via-purple-400 to-purple-400 bg-clip-text text-transparent">
                 Entire Hiring Workflow
               </span>
               {" "}— Live
@@ -210,18 +210,18 @@ export default function BookDemoPage() {
             {/* Founder offer strip */}
             <div className="mx-auto mb-2 inline-flex flex-col gap-1.5 rounded-xl border px-5 py-3"
               style={{
-                borderColor: "rgba(217,119,6,0.32)",
-                background: "linear-gradient(135deg, rgba(217,119,6,0.10) 0%, rgba(180,83,9,0.07) 100%)",
-                boxShadow: "0 0 28px rgba(217,119,6,0.10)",
+                borderColor: "rgba(245,158,11,0.35)",
+                background: "linear-gradient(135deg, rgba(245,158,11,0.10) 0%, rgba(180,83,9,0.08) 100%)",
+                boxShadow: "0 0 28px rgba(245,158,11,0.10)",
               }}>
               <div className="flex items-center gap-2.5">
-                <Flame size={13} className="shrink-0 text-amber-400" aria-hidden="true" />
-                <p className="text-sm font-semibold text-amber-300">
+                <Flame size={13} className="shrink-0" style={{ color: "#f59e0b" }} aria-hidden="true" />
+                <p className="text-sm font-semibold" style={{ color: "#fbbf24" }}>
                   Limited Founder Offer — Lock in{" "}
-                  <span className="font-extrabold text-amber-300">$699/month for life</span>
+                  <span className="font-extrabold" style={{ color: "#fbbf24" }}>$1,199/month for life</span>
                 </p>
               </div>
-              <p className="pl-[21px] text-xs font-medium text-white/45">Scroll to see full details</p>
+              <p className="pl-[21px] text-xs font-medium" style={{ color: "rgba(251,191,36,0.55)" }}>Scroll to see full details</p>
             </div>
           </div>
 
@@ -230,7 +230,7 @@ export default function BookDemoPage() {
             {/* Outer glow layer — sits behind the card */}
             <div aria-hidden="true" className="pointer-events-none absolute -inset-8 rounded-[40px]"
               style={{
-                background: "radial-gradient(ellipse at 50% 30%, rgba(109,40,217,0.22) 0%, rgba(217,119,6,0.08) 55%, transparent 75%)",
+                background: "radial-gradient(ellipse at 50% 30%, rgba(109,40,217,0.22) 0%, rgba(139,92,246,0.08) 55%, transparent 75%)",
                 filter: "blur(32px)",
               }} />
 
@@ -245,11 +245,11 @@ export default function BookDemoPage() {
 
               {/* Top edge shimmer */}
               <span aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 z-10 h-px"
-                style={{ background: "linear-gradient(90deg, transparent 0%, rgba(217,119,6,0.65) 30%, rgba(167,139,250,0.65) 70%, transparent 100%)" }} />
+                style={{ background: "linear-gradient(90deg, transparent 0%, rgba(139,92,246,0.65) 30%, rgba(167,139,250,0.65) 70%, transparent 100%)" }} />
 
               {/* Inner corner glows */}
               <span aria-hidden="true" className="pointer-events-none absolute -left-16 -top-16 h-48 w-48 rounded-full"
-                style={{ background: "radial-gradient(circle, rgba(217,119,6,0.14) 0%, transparent 70%)", filter: "blur(24px)" }} />
+                style={{ background: "radial-gradient(circle, rgba(139,92,246,0.14) 0%, transparent 70%)", filter: "blur(24px)" }} />
               <span aria-hidden="true" className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full"
                 style={{ background: "radial-gradient(circle, rgba(139,92,246,0.13) 0%, transparent 70%)", filter: "blur(24px)" }} />
 
@@ -266,7 +266,7 @@ export default function BookDemoPage() {
                   {/* Subtle gradient overlay for perceived contrast — behind the iframe */}
                   <div aria-hidden="true" className="pointer-events-none absolute inset-0 rounded-2xl"
                     style={{
-                      background: "radial-gradient(ellipse at 50% 0%, rgba(245,158,11,0.06) 0%, rgba(109,40,217,0.08) 45%, transparent 70%)",
+                      background: "radial-gradient(ellipse at 50% 0%, rgba(147,51,234,0.06) 0%, rgba(109,40,217,0.08) 45%, transparent 70%)",
                     }} />
                   <CalendlyEmbed />
                 </div>
@@ -294,7 +294,7 @@ export default function BookDemoPage() {
           <div className="mt-8 flex flex-wrap items-center justify-center gap-5">
             {[
               { icon: Shield, label: "No credit card required" },
-              { icon: Star,   label: "Trusted by teams across GCC & APAC" },
+              { icon: Star,   label: "Trusted by teams across GCC" },
             ].map(({ icon: Icon, label }) => (
               <div key={label} className="flex items-center gap-1.5">
                 <Icon size={11} className="text-white/35" aria-hidden="true" />
@@ -326,30 +326,30 @@ export default function BookDemoPage() {
       <section className="relative px-4 py-14" style={{ zIndex: 2 }} aria-labelledby="founder-offer-heading">
         <div className="mx-auto max-w-2xl">
           <div className="relative overflow-hidden rounded-2xl border p-8 text-center"
-            style={{ borderColor: "rgba(239,68,68,0.28)", background: "rgba(239,68,68,0.06)", boxShadow: "0 0 48px rgba(239,68,68,0.08)" }}>
+            style={{ borderColor: "rgba(245,158,11,0.30)", background: "rgba(245,158,11,0.05)", boxShadow: "0 0 48px rgba(245,158,11,0.08)" }}>
             <span aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px"
-              style={{ background: "linear-gradient(90deg, transparent, rgba(239,68,68,0.55) 50%, transparent)" }} />
+              style={{ background: "linear-gradient(90deg, transparent, rgba(245,158,11,0.55) 50%, transparent)" }} />
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border px-4 py-1.5"
-              style={{ borderColor: "rgba(239,68,68,0.32)", background: "rgba(239,68,68,0.09)" }}>
-              <Flame size={12} className="text-red-400" aria-hidden="true" />
-              <span className="text-xs font-semibold uppercase tracking-widest text-red-400/90">Limited Founder Offer — 7 Spots</span>
+              style={{ borderColor: "rgba(245,158,11,0.32)", background: "rgba(245,158,11,0.09)" }}>
+              <Flame size={12} style={{ color: "#f59e0b" }} aria-hidden="true" />
+              <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: "#fbbf24" }}>Limited Founder Offer — 7 Spots</span>
             </div>
             <h2 id="founder-offer-heading" className="mb-4 text-2xl font-extrabold text-white sm:text-3xl">
-              Lock In <span className="text-amber-300">$699/month</span> Forever
+              Lock In <span style={{ color: "#fbbf24" }}>$1,199/month</span> Forever
             </h2>
             <p className="mx-auto max-w-md text-sm leading-relaxed text-white/60">
               The first 7 companies to book a demo and sign up get lifetime access at{" "}
-              <span className="font-semibold text-amber-300">$699/month</span> — instead of the standard $999/month. Price locks in permanently, even as we scale.
+              <span className="font-semibold" style={{ color: "#fbbf24" }}>$1,199/month</span> — instead of the standard $1,999/month. Price locks in permanently, even as we scale.
             </p>
             <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-white/50">
-              Full access to Clavo's end-to-end AI hiring system — screening, interviews, and 360° reports included.
+              Full access to Clavo's end-to-end AI hiring system — screening, interviews, 360° reports, and National Compliance Hub included.
             </p>
             <p className="mt-3 text-xs text-white/35">No long-term contracts. Cancel anytime.</p>
             <p className="mt-3 text-xs text-white/28">Early partners also get priority support and first access to new features.</p>
             <div className="mt-6 flex items-center justify-center gap-3 text-xs">
-              <span className="line-through text-white/25">$999/mo standard</span>
+              <span className="line-through text-white/25">$1,999/mo standard</span>
               <span className="text-white/20">·</span>
-              <span className="font-semibold text-red-400/80">4 of 7 spots remaining</span>
+              <span className="font-semibold" style={{ color: "rgba(251,191,36,0.80)" }}>4 of 7 spots remaining</span>
             </div>
           </div>
         </div>
@@ -382,21 +382,21 @@ export default function BookDemoPage() {
       {/* ── FINAL URGENCY ── */}
       <section className="relative px-4 py-20 pb-52" style={{ zIndex: 2 }} aria-labelledby="urgency-heading">
         <div className="relative mx-auto max-w-xl overflow-hidden rounded-2xl border border-white/[0.09] p-10 text-center"
-          style={{ background: "rgba(13,17,36,0.80)", backdropFilter: "blur(32px)", WebkitBackdropFilter: "blur(32px)", boxShadow: "0 0 80px rgba(217,119,6,0.10)" }}>
+          style={{ background: "rgba(13,17,36,0.80)", backdropFilter: "blur(32px)", WebkitBackdropFilter: "blur(32px)", boxShadow: "0 0 80px rgba(139,92,246,0.10)" }}>
           <span aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px"
-            style={{ background: "linear-gradient(90deg, transparent, rgba(217,119,6,0.55) 35%, rgba(139,92,246,0.45) 65%, transparent)" }} />
-          <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-amber-400/65">Don&apos;t miss your slot</p>
+            style={{ background: "linear-gradient(90deg, transparent, rgba(139,92,246,0.55) 35%, rgba(139,92,246,0.45) 65%, transparent)" }} />
+          <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-purple-400/65">Don&apos;t miss your slot</p>
           <h2 id="urgency-heading" className="mb-3 text-2xl font-extrabold text-white sm:text-3xl">
             Your next great hire is{" "}
-            <span className="bg-gradient-to-r from-amber-300 to-purple-400 bg-clip-text text-transparent">15 days away.</span>
+            <span className="bg-gradient-to-r from-purple-300 to-purple-400 bg-clip-text text-transparent">15 days away.</span>
           </h2>
           <p className="mx-auto mb-8 max-w-sm text-sm leading-relaxed text-white/50">
             Demo slots fill fast. Book yours now and see Clavo AI transform your pipeline in 30 minutes.
           </p>
           <a href="#demo-booking"
             onClick={(e) => { e.preventDefault(); document.getElementById("demo-booking")?.scrollIntoView({ behavior: "smooth" }); }}
-            className="group inline-flex items-center gap-2.5 rounded-full px-8 py-4 text-sm font-bold text-white transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-400"
-            style={{ background: "linear-gradient(135deg, #d97706 0%, #b45309 55%, #7c3aed 100%)", boxShadow: "0 0 32px rgba(217,119,6,0.45), 0 0 64px rgba(217,119,6,0.12)", touchAction: "manipulation" }}>
+            className="group inline-flex items-center gap-2.5 rounded-full px-8 py-4 text-sm font-bold text-white transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-purple-400"
+            style={{ background: "linear-gradient(135deg, #7c3aed 0%, #6d28d9 55%, #7c3aed 100%)", boxShadow: "0 0 32px rgba(139,92,246,0.45), 0 0 64px rgba(139,92,246,0.12)", touchAction: "manipulation" }}>
             Book a Live Demo
             <ArrowRight size={15} aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-0.5" />
           </a>

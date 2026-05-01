@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
@@ -84,7 +84,7 @@ function ForestButton({ children }: { children: React.ReactNode }) {
   return (
     <Link href="/book-demo" aria-label="Book a live demo of Clavo AI">
       <motion.span
-        className="group relative inline-flex cursor-pointer items-center gap-3 overflow-hidden rounded-full px-8 py-4 text-base font-semibold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-400"
+        className="group relative inline-flex cursor-pointer items-center gap-3 overflow-hidden rounded-full px-8 py-4 text-base font-semibold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-purple-400"
         style={{
           background: "linear-gradient(135deg, rgba(255,180,50,0.18) 0%, rgba(255,120,20,0.12) 100%)",
           border: "1px solid rgba(255,180,60,0.28)",
@@ -229,9 +229,9 @@ function Scene1Hook() {
                   style={{ background: "rgba(255,180,50,0.07)" }}
                   role="status"
                 >
-                  <Sparkles size={12} className="text-amber-400" aria-hidden="true" />
-                  <span className="text-xs font-semibold tracking-wide text-amber-300/80">
-                    Built for fast-scaling teams across GCC &amp; APAC · Setup in under 5 minutes
+                  <Sparkles size={12} className="text-purple-400" aria-hidden="true" />
+                  <span className="text-xs font-semibold tracking-wide text-purple-300/80">
+                    Built for fast-scaling teams across GCC · Setup in under 5 minutes
                   </span>
                 </div>
               </motion.div>
@@ -248,7 +248,7 @@ function Scene1Hook() {
               >
                 Hire{" "}
                 <span
-                  className="bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-300 bg-clip-text text-transparent"
+                  className="bg-gradient-to-r from-purple-300 via-yellow-200 to-purple-300 bg-clip-text text-transparent"
                   style={{ filter: "drop-shadow(0 0 24px rgba(255,180,60,0.5))" }}
                 >
                   3x Faster.
@@ -256,7 +256,7 @@ function Scene1Hook() {
                 <br />
                 Cut Recruitment{" "}
                 <span
-                  className="bg-gradient-to-r from-amber-300 via-yellow-200 to-green-300 bg-clip-text text-transparent"
+                  className="bg-gradient-to-r from-purple-300 via-yellow-200 to-green-300 bg-clip-text text-transparent"
                   style={{ filter: "drop-shadow(0 0 24px rgba(255,180,60,0.4))" }}
                 >
                   Costs by 70%.
@@ -282,11 +282,11 @@ function Scene1Hook() {
                 viewport={VIEWPORT}
                 transition={{ ...SPRING_SOFT, delay: 0.28 }}
                 className="flex items-center gap-2 text-sm text-white/32"
-                aria-label="Built for fast-scaling teams across GCC & APAC. Setup in under 5 minutes."
+                aria-label="Built for fast-scaling teams across GCC. Setup in under 5 minutes."
               >
-                <span className="h-px w-6 bg-amber-400/40" aria-hidden="true" />
-                Built for fast-scaling teams across GCC &amp; APAC. Setup in under 5 minutes.
-                <span className="h-px w-6 bg-amber-400/40" aria-hidden="true" />
+                <span className="h-px w-6 bg-purple-400/40" aria-hidden="true" />
+                Built for fast-scaling teams across GCC. Setup in under 5 minutes.
+                <span className="h-px w-6 bg-purple-400/40" aria-hidden="true" />
               </motion.p>
 
               {/* CTAs */}
@@ -352,7 +352,7 @@ function Scene1Hook() {
                         Top Match Identified
                       </span>
                     </div>
-                    <span className="rounded-full border border-amber-400/20 bg-amber-400/10 px-2 py-0.5 text-[10px] font-bold text-amber-300">
+                    <span className="rounded-full border border-amber-400/20 bg-purple-400/10 px-2 py-0.5 text-[10px] font-bold text-purple-300">
                       LIVE
                     </span>
                   </div>
@@ -361,7 +361,7 @@ function Scene1Hook() {
                   <div className="mb-5 flex items-center gap-3">
                     <div
                       className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white"
-                      style={{ background: "linear-gradient(135deg, #fbbf24, #f97316)" }}
+                      style={{ background: "linear-gradient(135deg, #c084fc, #9333ea)" }}
                       aria-hidden="true"
                     >A</div>
                     <div>
@@ -375,7 +375,7 @@ function Scene1Hook() {
                     <div>
                       <p className="text-[10px] uppercase tracking-widest text-white/30">AI Score</p>
                       <motion.p
-                        className="mt-0.5 bg-gradient-to-r from-amber-300 to-emerald-300 bg-clip-text text-5xl font-extrabold text-transparent"
+                        className="mt-0.5 bg-gradient-to-r from-purple-300 to-emerald-300 bg-clip-text text-5xl font-extrabold text-transparent"
                         initial={{ opacity: 0, scale: 0.7 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={VIEWPORT}
@@ -397,7 +397,7 @@ function Scene1Hook() {
                         />
                         <defs>
                           <linearGradient id="scoreGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" stopColor="#fbbf24" />
+                            <stop offset="0%" stopColor="#c084fc" />
                             <stop offset="100%" stopColor="#6ee7b7" />
                           </linearGradient>
                         </defs>
@@ -409,7 +409,7 @@ function Scene1Hook() {
                   {/* Progress bars */}
                   <div className="flex flex-col gap-3" aria-label="Match breakdown">
                     {[
-                      { label: "ATS Proficiency", value: 94, color: "#fbbf24", delay: 0.65 },
+                      { label: "ATS Proficiency", value: 94, color: "#c084fc", delay: 0.65 },
                       { label: "Communication",   value: 88, color: "#a78bfa", delay: 0.75 },
                       { label: "Leadership",      value: 91, color: "#6ee7b7", delay: 0.85 },
                     ].map((bar) => (
@@ -498,7 +498,7 @@ function Scene1Hook() {
 // ─────────────────────────────────────────────────────────────────────────────
 
 const SCORE_BARS = [
-  { label: "ATS Proficiency",        value: 94, color: "#fbbf24" },
+  { label: "ATS Proficiency",        value: 94, color: "#c084fc" },
   { label: "Stakeholder Management", value: 91, color: "#a78bfa" },
   { label: "Communication",          value: 88, color: "#6ee7b7" },
   { label: "Cultural Alignment",     value: 96, color: "#67e8f9" },
@@ -509,7 +509,7 @@ const BG_CANDIDATES = [
     name: "A. Rahman", role: "Recruiter · 3 yrs", score: 62,
     bars: [
       { label: "ATS Proficiency",    v: 45, color: "#f87171" },
-      { label: "Stakeholder Mgmt",   v: 58, color: "#fbbf24" },
+      { label: "Stakeholder Mgmt",   v: 58, color: "#c084fc" },
       { label: "Communication",      v: 72, color: "#6ee7b7" },
       { label: "Cultural Alignment", v: 63, color: "#67e8f9" },
     ],
@@ -518,7 +518,7 @@ const BG_CANDIDATES = [
   {
     name: "L. Chen", role: "HR Specialist · 5 yrs", score: 71,
     bars: [
-      { label: "ATS Proficiency",    v: 78, color: "#fbbf24" },
+      { label: "ATS Proficiency",    v: 78, color: "#c084fc" },
       { label: "Stakeholder Mgmt",   v: 65, color: "#a78bfa" },
       { label: "Communication",      v: 44, color: "#f87171" },
       { label: "Cultural Alignment", v: 80, color: "#67e8f9" },
@@ -528,7 +528,7 @@ const BG_CANDIDATES = [
   {
     name: "M. Hassan", role: "TA Manager · 4 yrs", score: 55,
     bars: [
-      { label: "ATS Proficiency",    v: 60, color: "#fbbf24" },
+      { label: "ATS Proficiency",    v: 60, color: "#c084fc" },
       { label: "Stakeholder Mgmt",   v: 42, color: "#f87171" },
       { label: "Communication",      v: 58, color: "#6ee7b7" },
       { label: "Cultural Alignment", v: 47, color: "#f87171" },
@@ -538,7 +538,7 @@ const BG_CANDIDATES = [
   {
     name: "P. Williams", role: "Recruiter · 2 yrs", score: 68,
     bars: [
-      { label: "ATS Proficiency",    v: 72, color: "#fbbf24" },
+      { label: "ATS Proficiency",    v: 72, color: "#c084fc" },
       { label: "Stakeholder Mgmt",   v: 55, color: "#a78bfa" },
       { label: "Communication",      v: 63, color: "#6ee7b7" },
       { label: "Cultural Alignment", v: 38, color: "#f87171" },
@@ -609,7 +609,7 @@ function Scene2Insight() {
           viewport={VIEWPORT}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-amber-400/55">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-purple-400/55">
             AI Screening Engine
           </p>
           <h2
@@ -619,7 +619,7 @@ function Scene2Insight() {
           >
             The Right Candidate,{" "}
             <span
-              className="bg-gradient-to-r from-amber-300 to-emerald-300 bg-clip-text text-transparent"
+              className="bg-gradient-to-r from-purple-300 to-emerald-300 bg-clip-text text-transparent"
             >
               Identified in Seconds
             </span>
@@ -680,7 +680,7 @@ function Scene2Insight() {
                       <p style={{ fontSize: 8, textTransform: "uppercase", letterSpacing: "0.06em", color: "rgba(255,255,255,0.28)", margin: 0 }}>AI Score</p>
                       <p style={{
                         fontSize: 26, fontWeight: 800, margin: "1px 0 0",
-                        background: "linear-gradient(to right, #fbbf24, #6ee7b7)",
+                        background: "linear-gradient(to right, #c084fc, #6ee7b7)",
                         WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
                       }}>{c.score}</p>
                     </div>
@@ -690,7 +690,7 @@ function Scene2Insight() {
                       display: "flex", alignItems: "center", justifyContent: "center",
                       flexShrink: 0,
                     }}>
-                      <Brain size={14} style={{ color: "#fbbf24" }} />
+                      <Brain size={14} style={{ color: "#c084fc" }} />
                     </div>
                   </div>
 
@@ -698,10 +698,10 @@ function Scene2Insight() {
                   <div style={{ marginBottom: 9 }}>
                     <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 3 }}>
                       <span style={{ fontSize: 8, textTransform: "uppercase", letterSpacing: "0.05em", color: "rgba(255,255,255,0.28)" }}>Match Confidence</span>
-                      <span style={{ fontSize: 8, fontWeight: 700, color: "#fbbf24" }}>{c.score}%</span>
+                      <span style={{ fontSize: 8, fontWeight: 700, color: "#c084fc" }}>{c.score}%</span>
                     </div>
                     <div style={{ height: 2, borderRadius: 99, background: "rgba(255,255,255,0.06)", overflow: "hidden" }}>
-                      <div style={{ width: `${c.score}%`, height: "100%", borderRadius: 99, background: "linear-gradient(90deg, #fbbf24, #6ee7b7)" }} />
+                      <div style={{ width: `${c.score}%`, height: "100%", borderRadius: 99, background: "linear-gradient(90deg, #c084fc, #6ee7b7)" }} />
                     </div>
                   </div>
 
@@ -750,7 +750,7 @@ function Scene2Insight() {
               <div className="mt-3">
                 <p className="text-[10px] uppercase tracking-widest text-white/30">AI Behavioral Score</p>
                 <motion.p
-                  className="mt-0.5 bg-gradient-to-r from-amber-300 to-emerald-300 bg-clip-text text-5xl font-extrabold text-transparent"
+                  className="mt-0.5 bg-gradient-to-r from-purple-300 to-emerald-300 bg-clip-text text-5xl font-extrabold text-transparent"
                   initial={shouldReduce ? {} : { opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={VIEWPORT}
@@ -763,7 +763,7 @@ function Scene2Insight() {
             </div>
             <motion.div
               className="flex h-12 w-12 items-center justify-center rounded-2xl"
-              style={{ background: "rgba(255,180,50,0.14)", color: "#fbbf24" }}
+              style={{ background: "rgba(255,180,50,0.14)", color: "#c084fc" }}
               initial={shouldReduce ? {} : { rotate: -20, opacity: 0 }}
               whileInView={{ rotate: 0, opacity: 1 }}
               viewport={VIEWPORT}
@@ -778,14 +778,14 @@ function Scene2Insight() {
           <div className="mb-6">
             <div className="mb-1 flex items-center justify-between">
               <span className="text-[10px] uppercase tracking-wide text-white/35">Match Confidence</span>
-              <span className="text-[10px] font-bold text-amber-300">91%</span>
+              <span className="text-[10px] font-bold text-purple-300">91%</span>
             </div>
             <div className="relative h-1.5 overflow-hidden rounded-full bg-white/[0.06]">
               <motion.div
                 className="absolute inset-y-0 left-0 rounded-full"
                 style={{
-                  background: "linear-gradient(90deg, #fbbf24, #6ee7b7)",
-                  boxShadow: "0 0 8px rgba(251,191,36,0.5)",
+                  background: "linear-gradient(90deg, #c084fc, #6ee7b7)",
+                  boxShadow: "0 0 8px rgba(192,132,252,0.5)",
                 }}
                 initial={{ width: 0 }}
                 whileInView={{ width: "91%" }}
@@ -837,7 +837,7 @@ function Scene2Insight() {
             transition={{ delay: 0.9, duration: 0.8 }}
           >
             <span className="text-[10px] uppercase tracking-wide text-white/25">Key Skills</span>
-            <span className="rounded-full border border-amber-400/20 bg-amber-400/10 px-2.5 py-0.5 text-[10px] font-semibold text-amber-300">
+            <span className="rounded-full border border-amber-400/20 bg-purple-400/10 px-2.5 py-0.5 text-[10px] font-semibold text-purple-300">
               ATS Systems
             </span>
           </motion.div>

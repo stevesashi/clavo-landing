@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
@@ -15,7 +15,7 @@ export default function DemoSection() {
     <section
       aria-labelledby="demo-heading"
       className="relative overflow-hidden py-28 px-4"
-      style={{ background: "linear-gradient(180deg, #030608 0%, #04090e 50%, #030608 100%)" }}
+      style={{ background: "radial-gradient(ellipse 80% 50% at 80% 30%, rgba(124,58,237,0.10) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 20% 80%, rgba(167,139,250,0.06) 0%, transparent 50%), #030608" }}
     >
       {/* Ambient orb */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 flex items-center justify-center">
@@ -34,7 +34,8 @@ export default function DemoSection() {
             Product Demo
           </p>
           <h2 id="demo-heading"
-            className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
+            className="text-4xl font-extrabold text-white sm:text-5xl md:text-6xl lg:text-7xl"
+            style={{ lineHeight: 1.1, letterSpacing: "-0.02em" }}>
             See Clavo AI{" "}
             <span className="bg-gradient-to-r from-purple-300 to-cyan-300 bg-clip-text text-transparent">
               in Action
@@ -66,7 +67,7 @@ export default function DemoSection() {
           {/* Fake browser chrome */}
           <div className="flex items-center gap-2 border-b border-white/[0.06] px-5 py-3">
             <span aria-hidden="true" className="h-3 w-3 rounded-full bg-red-500/60" />
-            <span aria-hidden="true" className="h-3 w-3 rounded-full bg-amber-400/60" />
+            <span aria-hidden="true" className="h-3 w-3 rounded-full bg-purple-400/60" />
             <span aria-hidden="true" className="h-3 w-3 rounded-full bg-emerald-400/60" />
             <div className="mx-4 flex-1 rounded-md border border-white/[0.06] bg-white/[0.03] px-3 py-1 text-xs text-white/25">
               app.clavoai.com/dashboard

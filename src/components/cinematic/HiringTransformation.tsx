@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import { Mail, AlertTriangle, FileSpreadsheet } from "lucide-react";
@@ -62,10 +62,10 @@ const SPRING   = { type: "spring", stiffness: 180, damping: 26 } as const;
 // Signal particles that cross the divider seam left → right
 const SIGNALS = [
   { y: 14, dur: 2.1, delay: 0.0, color: "rgba(168,85,247,0.95)" },
-  { y: 29, dur: 1.8, delay: 0.8, color: "rgba(251,191,36,0.90)"  },
+  { y: 29, dur: 1.8, delay: 0.8, color: "rgba(192,132,252,0.90)"  },
   { y: 47, dur: 2.4, delay: 1.6, color: "rgba(168,85,247,0.80)"  },
   { y: 63, dur: 2.0, delay: 0.4, color: "rgba(103,232,249,0.85)" },
-  { y: 79, dur: 1.9, delay: 2.2, color: "rgba(251,191,36,0.85)"  },
+  { y: 79, dur: 1.9, delay: 2.2, color: "rgba(192,132,252,0.85)"  },
   { y: 91, dur: 2.3, delay: 1.1, color: "rgba(168,85,247,0.70)"  },
 ];
 
@@ -109,7 +109,7 @@ const SPOKES: [number, number, number, number][] = [
 const FEED = [
   { text: "CV parsed · Sarah Chen",         color: "rgba(52,211,153,0.9)",  fresh: true  },
   { text: "Interview scheduled · 2:00 PM",  color: "rgba(139,92,246,0.8)",  fresh: false },
-  { text: "360 report generated",           color: "rgba(251,191,36,0.8)",  fresh: false },
+  { text: "360 report generated",           color: "rgba(192,132,252,0.8)",  fresh: false },
   { text: "Candidate shortlisted · 94%",    color: "rgba(52,211,153,0.7)",  fresh: false },
 ];
 
@@ -337,7 +337,7 @@ function LiveSystemPanel() {
             <animateMotion dur="9s" repeatCount="indefinite" begin="-4.5s" path={RING} />
           </circle>
           {/* Inner ring — amber priority candidate */}
-          <circle r="4" fill="rgba(251,191,36,0.96)">
+          <circle r="4" fill="rgba(192,132,252,0.96)">
             <animateMotion dur="13s" repeatCount="indefinite" begin="-3s" path={RING} />
           </circle>
           {/* Outer ring — data packet dot (cyan) */}
@@ -388,22 +388,22 @@ function LiveSystemPanel() {
             fill="rgba(52,211,153,0.45)" fontFamily="monospace" dominantBaseline="middle">RANKING</text>
 
           {/* Scoring — TOP MATCH ★ (191, 207) */}
-          <circle cx="191" cy="207" r="26" fill="none" stroke="rgba(251,191,36,0.20)">
+          <circle cx="191" cy="207" r="26" fill="none" stroke="rgba(192,132,252,0.20)">
             <animate attributeName="r" values="26;38;26" dur="2.4s" repeatCount="indefinite" />
             <animate attributeName="opacity" values="0.20;0;0.20" dur="2.4s" repeatCount="indefinite" />
           </circle>
-          <circle cx="191" cy="207" r="19" fill="none" stroke="rgba(251,191,36,0.16)">
+          <circle cx="191" cy="207" r="19" fill="none" stroke="rgba(192,132,252,0.16)">
             <animate attributeName="r" values="19;27;19" dur="2.4s" repeatCount="indefinite" begin="-0.7s" />
             <animate attributeName="opacity" values="0.16;0;0.16" dur="2.4s" repeatCount="indefinite" begin="-0.7s" />
           </circle>
           <circle cx="191" cy="207" r="16" fill="rgba(120,80,0,0.35)"
-            stroke="rgba(251,191,36,0.75)" strokeWidth="2" />
+            stroke="rgba(192,132,252,0.75)" strokeWidth="2" />
           <text x="191" y="212" textAnchor="middle" fontSize={12}
-            fill="rgba(251,191,36,0.94)" fontFamily="monospace">★</text>
+            fill="rgba(192,132,252,0.94)" fontFamily="monospace">★</text>
           <text x="191" y="231" textAnchor="middle" fontSize={7}
-            fill="rgba(251,191,36,0.65)" fontFamily="monospace">SCORING</text>
+            fill="rgba(192,132,252,0.65)" fontFamily="monospace">SCORING</text>
           <text x="191" y="239" textAnchor="middle" fontSize={6.5}
-            fill="rgba(251,191,36,0.45)" fontFamily="monospace">TOP MATCH</text>
+            fill="rgba(192,132,252,0.45)" fontFamily="monospace">TOP MATCH</text>
 
           {/* ── Outer square nodes ── */}
 
@@ -418,14 +418,14 @@ function LiveSystemPanel() {
             fill="rgba(103,232,249,0.40)" fontFamily="monospace">AI NOTES</text>
 
           {/* 360 Report — lower right (231, 231) */}
-          <circle cx="231" cy="231" r="11" fill="rgba(251,191,36,0.10)"
-            stroke="rgba(251,191,36,0.32)" strokeWidth="1.2">
+          <circle cx="231" cy="231" r="11" fill="rgba(192,132,252,0.10)"
+            stroke="rgba(192,132,252,0.32)" strokeWidth="1.2">
             <animate attributeName="opacity" values="0.75;1;0.75" dur="4.5s" repeatCount="indefinite" begin="-1.8s" />
           </circle>
           <text x="231" y="235" textAnchor="middle" fontSize={6.5}
-            fill="rgba(251,191,36,0.72)" fontFamily="monospace" fontWeight="bold">360</text>
+            fill="rgba(192,132,252,0.72)" fontFamily="monospace" fontWeight="bold">360</text>
           <text x="246" y="234" textAnchor="start" fontSize={6.5}
-            fill="rgba(251,191,36,0.38)" fontFamily="monospace">360 REPORT</text>
+            fill="rgba(192,132,252,0.38)" fontFamily="monospace">360 REPORT</text>
 
           {/* Competitor Mapping — lower left (69, 231) */}
           <circle cx="69" cy="231" r="11" fill="rgba(239,68,68,0.08)"
@@ -500,7 +500,7 @@ export default function HiringTransformation() {
           className="text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl"
         >
           Hiring is Broken.{" "}
-          <span className="bg-gradient-to-r from-amber-300 to-purple-400 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-purple-300 to-purple-400 bg-clip-text text-transparent">
             Clavo Fixes It.
           </span>
         </h2>
@@ -543,7 +543,7 @@ export default function HiringTransformation() {
               width: "20px",
               left: "-10px",
               background:
-                "linear-gradient(to bottom, transparent 0%, rgba(168,85,247,0.50) 22%, rgba(251,191,36,0.40) 78%, transparent 100%)",
+                "linear-gradient(to bottom, transparent 0%, rgba(168,85,247,0.50) 22%, rgba(192,132,252,0.40) 78%, transparent 100%)",
               animation: "ht-divider-glow 2.8s ease-in-out infinite",
             }}
           />
@@ -554,7 +554,7 @@ export default function HiringTransformation() {
               width: "1px",
               left: "-0.5px",
               background:
-                "linear-gradient(to bottom, transparent 0%, rgba(168,85,247,0.95) 18%, rgba(251,191,36,0.92) 82%, transparent 100%)",
+                "linear-gradient(to bottom, transparent 0%, rgba(168,85,247,0.95) 18%, rgba(192,132,252,0.92) 82%, transparent 100%)",
             }}
           />
           {/* Data signal particles crossing chaos → clarity */}
@@ -580,9 +580,9 @@ export default function HiringTransformation() {
               top: "50%",
               left: "-8px",
               marginTop: "-8px",
-              background: "linear-gradient(135deg, #c084fc, #fbbf24)",
+              background: "linear-gradient(135deg, #c084fc, #c084fc)",
               boxShadow:
-                "0 0 12px rgba(192,132,252,1), 0 0 24px rgba(192,132,252,0.55), 0 0 8px rgba(251,191,36,0.75)",
+                "0 0 12px rgba(192,132,252,1), 0 0 24px rgba(192,132,252,0.55), 0 0 8px rgba(192,132,252,0.75)",
             }}
           />
         </div>

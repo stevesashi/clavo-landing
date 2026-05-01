@@ -1,7 +1,7 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
-import { Check, Zap, Crown, Headphones, Flame, ArrowRight, Lock, Users, Globe } from "lucide-react";
+import { Check, Zap, Crown, Headphones, Flame, ArrowRight, Lock, Users, Globe, Sparkles } from "lucide-react";
 import GlobalBackground from "@/components/cinematic/GlobalBackground";
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
@@ -17,11 +17,11 @@ const BENEFITS = [
   },
   {
     icon: Crown,
-    color: "#fbbf24",
-    border: "rgba(251,191,36,0.20)",
-    glow: "rgba(251,191,36,0.07)",
+    color: "#c084fc",
+    border: "rgba(192,132,252,0.20)",
+    glow: "rgba(192,132,252,0.07)",
     title: "Founder pricing — locked forever",
-    sub: "Secure $699/month for life. This rate disappears the moment we go public.",
+    sub: "Secure $1,199/month for life. This rate disappears the moment we go public.",
   },
   {
     icon: Headphones,
@@ -30,6 +30,14 @@ const BENEFITS = [
     glow: "rgba(110,231,183,0.07)",
     title: "Direct onboarding + white-glove support",
     sub: "Our founding team sets up your pipeline personally. No ticket queues. No waiting.",
+  },
+  {
+    icon: Sparkles,
+    color: "#f472b6",
+    border: "rgba(244,114,182,0.20)",
+    glow: "rgba(244,114,182,0.07)",
+    title: "Personalized For You",
+    sub: "Each of our 7 founding partners gets features built around their actual workflow.",
   },
 ];
 
@@ -67,7 +75,9 @@ export default function EarlyAccessPage() {
     <div className="relative min-h-screen" style={{ background: "#03050a" }}>
 
       {/* Background — same as homepage */}
-      <GlobalBackground />
+      <div style={{ position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none" }}>
+        <GlobalBackground />
+      </div>
 
       {/* Fixed treeline */}
       <div aria-hidden="true" className="pointer-events-none fixed inset-x-0 bottom-0 z-0">
@@ -80,9 +90,10 @@ export default function EarlyAccessPage() {
         <div className="absolute inset-x-0 bottom-0 h-32" style={{ background: "linear-gradient(to top, rgba(60,110,80,0.10) 0%, transparent 100%)", filter: "blur(2px)" }} />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-3xl px-4 pb-48 pt-24">
+      <div className="mx-auto px-4 pb-48" style={{ position: "relative", zIndex: 10, paddingTop: "120px", maxWidth: "1400px" }}>
 
         {/* ── HERO ─────────────────────────────────────────────────────────── */}
+        <div className="mx-auto max-w-3xl">
         <div className="mb-12 text-center">
 
           {/* Badge */}
@@ -96,7 +107,7 @@ export default function EarlyAccessPage() {
 
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
             Get Early Access to the{" "}
-            <span className="bg-gradient-to-r from-amber-300 via-amber-400 to-purple-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-purple-300 via-purple-400 to-purple-400 bg-clip-text text-transparent">
               Future of Hiring
             </span>
           </h1>
@@ -113,12 +124,12 @@ export default function EarlyAccessPage() {
             background: "rgba(8,14,24,0.82)",
             backdropFilter: "blur(32px)",
             WebkitBackdropFilter: "blur(32px)",
-            boxShadow: "0 0 80px rgba(167,139,250,0.08), 0 0 40px rgba(217,119,6,0.06), 0 12px 60px rgba(0,0,0,0.7)",
+            boxShadow: "0 0 80px rgba(167,139,250,0.08), 0 0 40px rgba(139,92,246,0.06), 0 12px 60px rgba(0,0,0,0.7)",
           }}>
 
           {/* Top shimmer */}
           <span aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px"
-            style={{ background: "linear-gradient(90deg, transparent, rgba(217,119,6,0.50) 35%, rgba(167,139,250,0.45) 65%, transparent)" }} />
+            style={{ background: "linear-gradient(90deg, transparent, rgba(139,92,246,0.50) 35%, rgba(167,139,250,0.45) 65%, transparent)" }} />
 
           {submitted ? (
 
@@ -133,7 +144,7 @@ export default function EarlyAccessPage() {
               <p className="mb-2 max-w-sm text-base leading-relaxed text-white/50">
                 We&apos;ll reach out personally when your access window opens.
               </p>
-              <p className="mb-8 text-sm text-amber-400/70">
+              <p className="mb-8 text-sm text-purple-400/70">
                 Founder spots are limited — you&apos;re in early.
               </p>
 
@@ -243,9 +254,9 @@ export default function EarlyAccessPage() {
                 className="group mt-1 flex w-full items-center justify-center gap-2.5 rounded-xl py-4 text-base font-bold text-white transition-opacity hover:opacity-90"
                 style={{
                   background: canSubmit && !loading
-                    ? "linear-gradient(135deg, #d97706 0%, #b45309 50%, #7c3aed 100%)"
+                    ? "linear-gradient(135deg, #7c3aed 0%, #6d28d9 50%, #7c3aed 100%)"
                     : "rgba(255,255,255,0.06)",
-                  boxShadow: canSubmit && !loading ? "0 0 32px rgba(217,119,6,0.40), 0 0 64px rgba(217,119,6,0.10)" : "none",
+                  boxShadow: canSubmit && !loading ? "0 0 32px rgba(139,92,246,0.40), 0 0 64px rgba(139,92,246,0.10)" : "none",
                   color: canSubmit && !loading ? "#fff" : "rgba(255,255,255,0.20)",
                   cursor: canSubmit && !loading ? "pointer" : "not-allowed",
                   transition: "background 0.3s, box-shadow 0.3s, color 0.3s",
@@ -265,38 +276,39 @@ export default function EarlyAccessPage() {
         {/* ── FOUNDER OFFER ────────────────────────────────────────────────── */}
         <div className="relative mb-14 overflow-hidden rounded-2xl border p-8 text-center"
           style={{
-            borderColor: "rgba(251,191,36,0.22)",
-            background: "rgba(217,119,6,0.05)",
-            boxShadow: "0 0 50px rgba(217,119,6,0.07)",
+            borderColor: "rgba(192,132,252,0.22)",
+            background: "rgba(139,92,246,0.05)",
+            boxShadow: "0 0 50px rgba(139,92,246,0.07)",
           }}>
           <span aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px"
-            style={{ background: "linear-gradient(90deg, transparent, rgba(251,191,36,0.55) 50%, transparent)" }} />
+            style={{ background: "linear-gradient(90deg, transparent, rgba(192,132,252,0.55) 50%, transparent)" }} />
 
           <div className="mb-3 inline-flex items-center gap-2 rounded-full border px-4 py-1.5"
-            style={{ borderColor: "rgba(251,191,36,0.25)", background: "rgba(251,191,36,0.07)" }}>
-            <Crown size={11} className="text-amber-400" aria-hidden="true" />
-            <span className="text-xs font-semibold uppercase tracking-widest text-amber-400/80">Founder Pricing</span>
+            style={{ borderColor: "rgba(192,132,252,0.25)", background: "rgba(192,132,252,0.07)" }}>
+            <Crown size={11} className="text-purple-400" aria-hidden="true" />
+            <span className="text-xs font-semibold uppercase tracking-widest text-purple-400/80">Founder Pricing</span>
           </div>
 
           <h2 className="mb-3 text-2xl font-extrabold text-white sm:text-3xl">
-            <span className="text-amber-300">$699/month</span>
+            <span className="text-purple-300">$1,199/month</span>
             {" "}— locked in forever.
           </h2>
           <p className="mx-auto max-w-md text-base leading-relaxed text-white/45">
-            The first 7 companies to join receive lifetime access at $699/month instead of $999/month.
+            The first 7 companies to join receive lifetime access at $1,199/month instead of $1,999/month.
             The price never increases — even as we scale and add features.
           </p>
           <p className="mt-4 text-sm font-semibold text-red-400/60">
             4 of 7 spots remaining.
           </p>
         </div>
+        </div>{/* end narrow wrapper */}
 
         {/* ── WHY JOIN ─────────────────────────────────────────────────────── */}
         <div className="mb-14">
           <p className="mb-6 text-center text-xs font-semibold uppercase tracking-widest text-white/22">
             Why join early
           </p>
-          <div className="grid gap-4 sm:grid-cols-3">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, minmax(0, 1fr))", gap: 16, width: "100%" }}>
             {BENEFITS.map(({ icon: Icon, color, border, glow, title, sub }) => (
               <div key={title} className="rounded-2xl border p-6"
                 style={{ borderColor: border, background: glow }}>

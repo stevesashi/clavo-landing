@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useRef, useState } from "react";
 import {
@@ -41,7 +41,7 @@ const CAPABILITIES: Cap[] = [
     description: "Automatically filter and rank candidates in seconds",
     detail:
       "Our AI reads every CV against your job description — scoring experience, skills, and cultural fit before a human ever looks. 400 CVs processed in under 4 hours.",
-    color: "#67e8f9",
+    color: "#a78bfa",
     metric: "400 CVs",
     metricLabel: "processed in under 4 hours",
     tags: ["CV Analysis", "Auto-Ranking", "Bias-Free"],
@@ -65,7 +65,7 @@ const CAPABILITIES: Cap[] = [
     description: "Get deep candidate insights across skills and behavior",
     detail:
       "Auto-generated reports covering role fit, behavioral patterns, communication style, and experience depth — with a clear hire/no-hire recommendation per candidate.",
-    color: "#fbbf24",
+    color: "#a78bfa",
     metric: "94%",
     metricLabel: "prediction accuracy vs hire outcome",
     tags: ["360° Analysis", "Hire/No-Hire", "Role Fit"],
@@ -77,7 +77,7 @@ const CAPABILITIES: Cap[] = [
     description: "Assist human interviews with real-time AI guidance",
     detail:
       "Clavo listens to live interviews, surfaces follow-up questions in real time, flags key moments, and adds instant context — so nothing important gets missed.",
-    color: "#6ee7b7",
+    color: "#a78bfa",
     metric: "Real-time",
     metricLabel: "AI guidance during live interviews",
     tags: ["Live Analysis", "Smart Prompts", "Moment Flags"],
@@ -89,7 +89,7 @@ const CAPABILITIES: Cap[] = [
     description: "Capture and summarize every interview automatically",
     detail:
       "No more scribbling. Clavo transcribes every session, highlights standout answers, and delivers a structured summary to your dashboard within minutes.",
-    color: "#f472b6",
+    color: "#a78bfa",
     metric: "< 1 min",
     metricLabel: "to full structured interview summary",
     tags: ["Auto-Transcript", "Smart Summary", "Highlights"],
@@ -100,10 +100,10 @@ const CAPABILITIES: Cap[] = [
     title: "AI Competitor Mapping",
     description: "Track where top candidates are going — and why",
     detail:
-      "Real-time salary benchmarks, offer trends, and talent movement across 200+ companies in GCC & APAC. Know exactly what it takes to win the best candidates.",
-    color: "#fb923c",
+      "Real-time salary benchmarks, offer trends, and talent movement across 200+ companies in GCC. Know exactly what it takes to win the best candidates.",
+    color: "#a78bfa",
     metric: "200+",
-    metricLabel: "companies tracked across GCC & APAC",
+    metricLabel: "companies tracked across GCC",
     tags: ["Salary Intel", "Offer Trends", "Talent Flow"],
   },
   {
@@ -113,10 +113,10 @@ const CAPABILITIES: Cap[] = [
     description: "Built for the markets where you actually hire",
     detail:
       "Clavo is purpose-built for GCC, India, and Southeast Asia — with multilingual AI screening, localized evaluation frameworks, and native support for national programs like NAFIS. One platform, every market.",
-    color: "#4ade80",
+    color: "#a78bfa",
     metric: "Any Language",
     metricLabel: "Interview candidates in Arabic, Hindi, Spanish, French & more",
-    tags: ["NAFIS Ready", "Multilingual AI", "GCC & APAC"],
+    tags: ["NAFIS Ready", "Multilingual AI", "GCC"],
   },
 ];
 
@@ -496,7 +496,7 @@ function CompetitorPanel({ color }: { color: string }) {
         <span className="text-[13px] font-bold uppercase tracking-widest" style={{ color }}>
           Talent Intelligence
         </span>
-        <span className="text-[13px] text-white/30">GCC & APAC · Q2 2025</span>
+        <span className="text-[13px] text-white/30">GCC · Q2 2025</span>
       </div>
       <div className="flex flex-col gap-2">
         {companies.map((c, i) => (
@@ -668,11 +668,11 @@ export default function CapabilitiesSection() {
       <section
         aria-labelledby="cap-heading"
         className="relative overflow-hidden py-28 px-4"
-        style={{ background: "linear-gradient(180deg, #040a0d 0%, #030608 100%)" }}
+        style={{ background: "radial-gradient(ellipse 80% 50% at 20% 50%, rgba(124,58,237,0.12) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 80% 80%, rgba(167,139,250,0.06) 0%, transparent 50%), #030608" }}
       >
         <div className="mx-auto max-w-6xl">
           <div className="mb-16 text-center">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-cyan-400/60">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-widest" style={{ color: "rgba(167,139,250,0.6)" }}>
               The Full Stack
             </p>
             <h2
@@ -680,7 +680,7 @@ export default function CapabilitiesSection() {
               className="mb-5 text-3xl font-extrabold tracking-tight text-white sm:text-4xl"
             >
               Your Entire Hiring System —{" "}
-              <span className="bg-gradient-to-r from-cyan-300 via-purple-300 to-amber-300 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-cyan-300 via-purple-300 to-purple-300 bg-clip-text text-transparent">
                 Powered by Clavo
               </span>
             </h2>
@@ -736,7 +736,7 @@ export default function CapabilitiesSection() {
       >
         <div
           className="sticky top-0 h-screen"
-          style={{ background: "linear-gradient(180deg, #040a0d 0%, #030608 100%)" }}
+          style={{ background: "radial-gradient(ellipse 80% 50% at 20% 50%, rgba(124,58,237,0.12) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 80% 80%, rgba(167,139,250,0.06) 0%, transparent 50%), #030608" }}
         >
           {/* Ambient color glow — plain div + CSS transition avoids Framer
               Motion trying to interpolate from "none" → gradient (which throws) */}
@@ -768,7 +768,7 @@ export default function CapabilitiesSection() {
               </p>
               <h2 className="mb-3 text-4xl font-extrabold tracking-tight text-white xl:text-5xl" style={{ lineHeight: 1.08 }}>
                 Your Entire Hiring System —{" "}
-                <span className="bg-gradient-to-r from-cyan-300 via-purple-300 to-amber-300 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-purple-300 to-purple-400 bg-clip-text text-transparent">
                   Powered by Clavo
                 </span>
               </h2>
@@ -1031,7 +1031,7 @@ export default function CapabilitiesSection() {
           Natural height, no sticky, no blank space risk. */}
       <div
         className="block lg:hidden px-4 py-16"
-        style={{ background: "linear-gradient(180deg, #040a0d 0%, #030608 100%)" }}
+        style={{ background: "radial-gradient(ellipse 80% 50% at 20% 50%, rgba(124,58,237,0.12) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 80% 80%, rgba(167,139,250,0.06) 0%, transparent 50%), #030608" }}
       >
         <div className="mb-10 text-center">
           <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-cyan-400/60">
@@ -1039,7 +1039,7 @@ export default function CapabilitiesSection() {
           </p>
           <h2 className="mb-4 text-2xl font-extrabold text-white">
             Your Entire Hiring System —{" "}
-            <span className="bg-gradient-to-r from-cyan-300 via-purple-300 to-amber-300 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-purple-300 to-purple-400 bg-clip-text text-transparent">
               Powered by Clavo
             </span>
           </h2>

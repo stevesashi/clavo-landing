@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import BeachScrollBackground from "@/components/cinematic/BeachScrollBackground";
@@ -134,13 +134,13 @@ export default function PrivacyPage() {
 
       {/* Top border */}
       <span aria-hidden="true" className="pointer-events-none fixed inset-x-0 top-0 z-10 h-px"
-        style={{ background: "linear-gradient(90deg, transparent, rgba(217,119,6,0.40) 35%, rgba(139,92,246,0.35) 65%, transparent)" }} />
+        style={{ background: "linear-gradient(90deg, transparent, rgba(139,92,246,0.40) 35%, rgba(139,92,246,0.35) 65%, transparent)" }} />
 
       <div className="relative z-10 mx-auto max-w-3xl px-4 pb-32 pt-28">
 
         {/* Header */}
         <div className="mb-14 border-b border-white/[0.07] pb-10">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-amber-400/55">Legal</p>
+          <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-purple-400/55">Legal</p>
           <h1 className="mb-3 text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
             Privacy Policy
           </h1>
@@ -160,7 +160,7 @@ export default function PrivacyPage() {
             {SECTIONS.map(({ id, title }) => (
               <li key={id}>
                 <a href={`#${id}`}
-                  className="text-sm text-white/45 transition-colors duration-150 hover:text-amber-300/80">
+                  className="text-sm text-white/45 transition-colors duration-150 hover:text-purple-300/80">
                   {title}
                 </a>
               </li>
@@ -180,7 +180,7 @@ export default function PrivacyPage() {
                 {content.map((block, i) => (
                   <div key={i}>
                     {"subtitle" in block && block.subtitle && (
-                      <p className="mb-1.5 text-sm font-semibold text-amber-300/75">{block.subtitle}</p>
+                      <p className="mb-1.5 text-sm font-semibold text-purple-300/75">{block.subtitle}</p>
                     )}
                     {"body" in block && block.body && (
                       <p className="text-base leading-relaxed text-white/55">{block.body}</p>
@@ -189,7 +189,7 @@ export default function PrivacyPage() {
                       <ul className="mt-3 flex flex-col gap-2">
                         {block.list.map((item) => (
                           <li key={item} className="flex items-start gap-2.5">
-                            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-400/50" aria-hidden="true" />
+                            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-purple-400/50" aria-hidden="true" />
                             <span className="text-base leading-relaxed text-white/55">{item}</span>
                           </li>
                         ))}
@@ -200,7 +200,7 @@ export default function PrivacyPage() {
                         style={{ background: "rgba(255,255,255,0.025)" }}>
                         <p className="text-sm font-semibold text-white/70">{block.contact.name}</p>
                         <a href={`mailto:${block.contact.email}`}
-                          className="mt-1 block text-sm text-amber-300/80 hover:text-amber-300 transition-colors">
+                          className="mt-1 block text-sm text-purple-300/80 hover:text-purple-300 transition-colors">
                           {block.contact.email}
                         </a>
                         <p className="mt-3 text-sm text-white/35">{block.contact.note}</p>

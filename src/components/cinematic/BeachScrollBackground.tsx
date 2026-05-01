@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 
@@ -157,9 +157,9 @@ export default function BeachScrollBackground() {
               width:      56,
               height:     56,
               background:
-                "radial-gradient(circle at 38% 38%, #fffbe8 0%, #fde68a 40%, #d97706 100%)",
+                "radial-gradient(circle at 38% 38%, #fffbe8 0%, #fde68a 40%, #7c3aed 100%)",
               boxShadow:
-                "0 0 40px rgba(253,230,138,0.55), 0 0 80px rgba(253,230,138,0.20), 0 0 160px rgba(217,119,6,0.12)",
+                "0 0 40px rgba(253,230,138,0.55), 0 0 80px rgba(253,230,138,0.20), 0 0 160px rgba(139,92,246,0.12)",
               animation: "bsb-moon 6s ease-in-out infinite",
             }}
           />

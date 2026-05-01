@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+﻿import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -32,7 +32,7 @@ function CreativePricing({
         <div className="relative">
           <h2 className="text-4xl md:text-5xl font-bold font-handwritten text-zinc-900 dark:text-white rotate-[-1deg]">
             {title}
-            <div className="absolute -right-12 top-0 text-amber-500 rotate-12">
+            <div className="absolute -right-12 top-0 text-purple-500 rotate-12">
               ✨
             </div>
             <div className="absolute -left-8 bottom-0 text-blue-500 -rotate-12">
@@ -76,7 +76,7 @@ function CreativePricing({
             <div className="relative p-6">
               {tier.popular && (
                 <div
-                  className="absolute -top-2 -right-2 bg-amber-400 text-zinc-900
+                  className="absolute -top-2 -right-2 bg-purple-400 text-zinc-900
                   font-handwritten px-3 py-1 rounded-full rotate-12 text-sm border-2 border-zinc-900"
                 >
                   Popular!
@@ -89,7 +89,7 @@ function CreativePricing({
                     "w-12 h-12 rounded-full mb-4",
                     "flex items-center justify-center",
                     "border-2 border-zinc-900 dark:border-white",
-                    tier.color === "amber" && "text-amber-500",
+                    tier.color === "amber" && "text-purple-500",
                     tier.color === "blue" && "text-blue-500",
                     tier.color === "purple" && "text-purple-500"
                   )}
@@ -138,11 +138,11 @@ function CreativePricing({
                   "hover:translate-x-[-2px] hover:translate-y-[-2px]",
                   tier.popular
                     ? [
-                        "bg-amber-400 text-zinc-900",
+                        "bg-purple-400 text-zinc-900",
                         "hover:bg-amber-300",
-                        "active:bg-amber-400",
+                        "active:bg-purple-400",
                         "dark:hover:bg-amber-300",
-                        "dark:active:bg-amber-400",
+                        "dark:active:bg-purple-400",
                       ]
                     : [
                         "bg-zinc-50 dark:bg-zinc-800",

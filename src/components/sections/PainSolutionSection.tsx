@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion, useReducedMotion } from "framer-motion";
 import { X, Check, ArrowRight } from "lucide-react";
@@ -29,7 +29,7 @@ export default function PainSolutionSection() {
     <section
       aria-labelledby="pain-solution-heading"
       className="relative overflow-hidden py-28 px-4"
-      style={{ background: "linear-gradient(180deg, #04090e 0%, #030608 100%)" }}
+      style={{ background: "radial-gradient(ellipse 80% 60% at 50% 50%, rgba(124,58,237,0.07) 0%, transparent 60%), #020408" }}
     >
       {/* Ambient split glows */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
@@ -51,7 +51,7 @@ export default function PainSolutionSection() {
           <h2 id="pain-solution-heading"
             className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
             Why Hiring Teams{" "}
-            <span className="bg-gradient-to-r from-red-400 to-amber-300 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-red-400 to-purple-300 bg-clip-text text-transparent">
               Switch to Clavo
             </span>
           </h2>

@@ -69,7 +69,7 @@ export default function GlobalBackground() {
       <div
         aria-hidden="true"
         className="pointer-events-none fixed inset-0"
-        style={{ zIndex: 1, mixBlendMode: "screen" }}
+        style={{ zIndex: 0 }}
       >
         {/* Drifting glow orbs — blur reduced from 56px to 24px */}
         {ORBS.map((o, i) => (

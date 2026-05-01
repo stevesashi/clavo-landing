@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
@@ -27,7 +27,7 @@ const RADAR_METRICS: { label: string; multiline?: string[]; value: number; color
   { label: "Technical Depth",  multiline: ["Technical", "Depth"],  value: 88, color: "#a78bfa" },
   { label: "Communication",                                          value: 92, color: "#67e8f9" },
   { label: "Cultural Fit",     multiline: ["Cultural", "Fit"],      value: 85, color: "#6ee7b7" },
-  { label: "Problem Solving",  multiline: ["Problem", "Solving"],   value: 90, color: "#fbbf24" },
+  { label: "Problem Solving",  multiline: ["Problem", "Solving"],   value: 90, color: "#c084fc" },
   { label: "Leadership",                                             value: 87, color: "#f87171" },
 ];
 
@@ -35,7 +35,7 @@ const SKILL_BARS = [
   { label: "Technical Depth",    value: 88, color: "#a78bfa" },
   { label: "Communication",      value: 92, color: "#67e8f9" },
   { label: "Cultural Fit",       value: 85, color: "#6ee7b7" },
-  { label: "Problem Solving",    value: 90, color: "#fbbf24" },
+  { label: "Problem Solving",    value: 90, color: "#c084fc" },
   { label: "Leadership",         value: 87, color: "#f87171" },
 ];
 
@@ -238,7 +238,7 @@ function CodeEditor() {
   const kw = "text-sky-400";       // keywords
   const fn = "text-violet-300";    // function names
   const vr = "text-slate-200";     // variables / identifiers
-  const nu = "text-amber-400";     // numbers
+  const nu = "text-purple-400";     // numbers
   const op = "text-slate-500";     // operators / punctuation
 
   const lines: ReactNode[] = [
@@ -290,9 +290,9 @@ const FLAG_CFG = {
   },
   caution: {
     icon: <AlertTriangle size={13} />,
-    color: "#d97706",
-    bg: "rgba(217,119,6,0.11)",
-    border: "rgba(217,119,6,0.25)",
+    color: "#7c3aed",
+    bg: "rgba(139,92,246,0.11)",
+    border: "rgba(139,92,246,0.25)",
     label: "CAUTION",
   },
   fail: {
@@ -355,7 +355,7 @@ function ExpandableRow({
 }) {
   const [open, setOpen] = useState(false);
   const isStrength = variant === "strength";
-  const color = isStrength ? "#14b8a6" : "#d97706";
+  const color = isStrength ? "#14b8a6" : "#7c3aed";
   const Icon = isStrength ? CheckCircle2 : AlertTriangle;
 
   return (
@@ -593,7 +593,7 @@ export default function Candidate360ReportPreview({
                   <div className="flex flex-wrap items-center gap-2 mb-1">
                     <div
                       className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white"
-                      style={{ background: "linear-gradient(135deg, #fbbf24, #f97316)" }}
+                      style={{ background: "linear-gradient(135deg, #c084fc, #9333ea)" }}
                       aria-hidden="true"
                     >
                       DR
@@ -605,10 +605,10 @@ export default function Candidate360ReportPreview({
                       TA Corporate &amp; Technical
                     </span>
                     <span
-                      className="rounded-full border px-2.5 py-0.5 text-[10px] font-semibold text-amber-300"
+                      className="rounded-full border px-2.5 py-0.5 text-[10px] font-semibold text-purple-300"
                       style={{
-                        borderColor: "rgba(251,191,36,0.30)",
-                        background: "rgba(251,191,36,0.09)",
+                        borderColor: "rgba(192,132,252,0.30)",
+                        background: "rgba(192,132,252,0.09)",
                       }}
                     >
                       High-Value Target
@@ -906,8 +906,8 @@ export default function Candidate360ReportPreview({
                     <span className="h-1.5 w-1.5 rounded-full bg-teal-400" />
                     {passCount} PASS
                   </span>
-                  <span className="flex items-center gap-1.5 text-[10px] font-semibold text-amber-400">
-                    <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
+                  <span className="flex items-center gap-1.5 text-[10px] font-semibold text-purple-400">
+                    <span className="h-1.5 w-1.5 rounded-full bg-purple-400" />
                     {cautionCount} CAUTION
                   </span>
                   <span className="flex items-center gap-1.5 text-[10px] font-semibold text-red-400">
@@ -949,8 +949,8 @@ export default function Candidate360ReportPreview({
                   {/* Potential Friction Points */}
                   <div>
                     <div className="mb-2.5 flex items-center gap-1.5">
-                      <span className="h-1.5 w-1.5 rounded-full bg-amber-400" aria-hidden="true" />
-                      <span className="text-[9px] font-bold uppercase tracking-widest text-amber-400/68">
+                      <span className="h-1.5 w-1.5 rounded-full bg-purple-400" aria-hidden="true" />
+                      <span className="text-[9px] font-bold uppercase tracking-widest text-purple-400/68">
                         Potential Friction Points
                       </span>
                       <span className="text-[9px] text-white/22">— click to expand</span>
@@ -999,16 +999,16 @@ export default function Candidate360ReportPreview({
               </p>
               <div className="flex flex-col gap-2 sm:flex-row">
                 <motion.a
-                  href="#demo"
+                  href="/book-demo"
                   onClick={onClose}
                   aria-label="Book a live demo of Clavo AI"
-                  className="group flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl py-3 text-sm font-semibold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400"
+                  className="group flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl py-3 text-sm font-semibold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-400"
                   style={{
-                    background: "linear-gradient(135deg, #d97706 0%, #b45309 100%)",
-                    boxShadow: "0 0 20px rgba(217,119,6,0.35)",
+                    background: "linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)",
+                    boxShadow: "0 0 20px rgba(139,92,246,0.35)",
                     touchAction: "manipulation",
                   }}
-                  whileHover={{ scale: 1.02, boxShadow: "0 0 32px rgba(217,119,6,0.55)" }}
+                  whileHover={{ scale: 1.02, boxShadow: "0 0 32px rgba(139,92,246,0.55)" }}
                   whileTap={{ scale: 0.97 }}
                   transition={{ type: "spring", stiffness: 380, damping: 22 }}
                 >
