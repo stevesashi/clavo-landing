@@ -181,7 +181,7 @@ const ResponsiveHeroBanner: React.FC<ResponsiveHeroBannerProps> = ({
                             <img
                                 src="/logo-purple.png"
                                 alt="Clavo AI"
-                                style={{ height: 100, width: "auto", objectFit: "contain" }}
+                                style={{ height: 125, width: "auto", objectFit: "contain" }}
                             />
                         </a>
                         <nav className="hidden md:flex items-center gap-2">
