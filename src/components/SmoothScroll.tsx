@@ -5,10 +5,15 @@ import Lenis from "lenis";
 
 export default function SmoothScroll() {
   useEffect(() => {
+    if (window.innerWidth < 1024) return; // native scroll on mobile/tablet
+
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      duration: 0.8,
+      easing: (t) => 1 - Math.pow(1 - t, 3),
       smoothWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 2,
+      syncTouch: false,
     });
 
     function raf(time: number) {

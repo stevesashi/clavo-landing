@@ -429,9 +429,7 @@ export default function AIScreeningDemo() {
           <motion.div
             className="relative overflow-hidden rounded-3xl border border-white/[0.08]"
             style={{
-              background: "rgba(6,14,18,0.85)",
-              backdropFilter: "blur(32px)",
-              WebkitBackdropFilter: "blur(32px)",
+              background: "rgba(6,14,18,0.95)",
               boxShadow:
                 "0 0 80px rgba(52,211,153,0.07), 0 8px 64px rgba(0,0,0,0.70)",
             }}

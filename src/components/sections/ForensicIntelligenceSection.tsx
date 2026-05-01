@@ -42,9 +42,7 @@ function useCountUp(target: number, duration = 1.8, decimals = 0) {
 const CARD =
   "relative overflow-hidden rounded-2xl border border-white/[0.08] p-5";
 const CARD_BG: React.CSSProperties = {
-  background: "rgba(255,255,255,0.04)",
-  backdropFilter: "blur(12px)",
-  WebkitBackdropFilter: "blur(12px)",
+  background: "rgba(10,8,20,0.80)",
   boxShadow: "0 0 20px rgba(139,92,246,0.04)",
   transition: "all 0.3s ease",
 };
@@ -364,7 +362,7 @@ export default function ForensicIntelligenceSection() {
     resize();
     window.addEventListener('resize', resize);
 
-    const drops = Array.from({ length: 60 }, () => ({
+    const drops = Array.from({ length: 25 }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
       length: Math.random() * 30 + 10,
@@ -376,42 +374,48 @@ export default function ForensicIntelligenceSection() {
     }));
 
     let animId: number;
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      drops.forEach(d => {
-        d.y += d.speedY;
-        d.x += d.speedX;
-
-        if (d.y > canvas.height) {
-          d.y = -d.length;
-          d.x = Math.random() * canvas.width;
-        }
-
-        const gradient = ctx.createLinearGradient(d.x, d.y, d.x, d.y + d.length);
-        gradient.addColorStop(0, `rgba(${d.hue},${d.opacity})`);
-        gradient.addColorStop(0.5, `rgba(${d.hue},${d.opacity * 0.6})`);
-        gradient.addColorStop(1, `rgba(${d.hue},0)`);
-
-        ctx.beginPath();
-        ctx.moveTo(d.x, d.y);
-        ctx.lineTo(d.x, d.y + d.length);
-        ctx.strokeStyle = gradient;
-        ctx.lineWidth = d.width;
-        ctx.stroke();
-
-        ctx.beginPath();
-        ctx.arc(d.x, d.y, d.width + 0.5, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${d.hue},${d.opacity * 1.5})`;
-        ctx.fill();
-      });
-
+    let lastTime = 0;
+    const frameInterval = 1000 / 30;
+    const animate = (currentTime: number) => {
+      if (currentTime - lastTime >= frameInterval) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drops.forEach(d => {
+          d.y += d.speedY;
+          d.x += d.speedX;
+          if (d.y > canvas.height) {
+            d.y = -d.length;
+            d.x = Math.random() * canvas.width;
+          }
+          const gradient = ctx.createLinearGradient(d.x, d.y, d.x, d.y + d.length);
+          gradient.addColorStop(0, `rgba(${d.hue},${d.opacity})`);
+          gradient.addColorStop(0.5, `rgba(${d.hue},${d.opacity * 0.6})`);
+          gradient.addColorStop(1, `rgba(${d.hue},0)`);
+          ctx.beginPath();
+          ctx.moveTo(d.x, d.y);
+          ctx.lineTo(d.x, d.y + d.length);
+          ctx.strokeStyle = gradient;
+          ctx.lineWidth = d.width;
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(d.x, d.y, d.width + 0.5, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${d.hue},${d.opacity * 1.5})`;
+          ctx.fill();
+        });
+        lastTime = currentTime;
+      }
       animId = requestAnimationFrame(animate);
     };
-    animate();
-
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) { animId = requestAnimationFrame(animate); }
+        else { cancelAnimationFrame(animId); }
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(canvas);
     return () => {
       cancelAnimationFrame(animId);
+      observer.disconnect();
       window.removeEventListener('resize', resize);
     };
   }, []);
@@ -429,7 +433,7 @@ export default function ForensicIntelligenceSection() {
           style={{
             width: "100%", height: "100%",
             objectFit: "cover", objectPosition: "top center",
-            animation: "kenBurnsForensic 20s ease-in-out infinite",
+            animation: "kenBurnsForensic 40s ease-in-out infinite",
           }}
         />
       </div>

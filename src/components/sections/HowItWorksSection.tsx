@@ -124,9 +124,7 @@ export default function HowItWorksSection() {
               whileHover={shouldReduce ? {} : { y: -4 }}
               className="group relative flex flex-col gap-5 overflow-hidden rounded-2xl border border-white/[0.07] p-7 transition-colors duration-300 hover:border-white/[0.13]"
               style={{
-                background: "rgba(8,14,20,0.72)",
-                backdropFilter: "blur(24px)",
-                WebkitBackdropFilter: "blur(24px)",
+                background: "rgba(8,14,20,0.90)",
                 boxShadow: "0 4px 36px rgba(0,0,0,0.45)",
               }}
             >

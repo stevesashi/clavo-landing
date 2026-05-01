@@ -123,9 +123,7 @@ function MetricCard({
       whileHover={shouldReduce ? {} : { y: -6 }}
       className="group relative flex flex-col gap-5 md:gap-6 overflow-hidden rounded-2xl border border-white/[0.07] p-5 md:p-7 transition-colors duration-300 hover:border-white/[0.12]"
       style={{
-        background: "rgba(7, 14, 11, 0.75)",
-        backdropFilter: "blur(24px)",
-        WebkitBackdropFilter: "blur(24px)",
+        background: "rgba(7, 14, 11, 0.90)",
         boxShadow: `0 4px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.03) inset`,
       }}
     >
@@ -198,7 +196,7 @@ export default function MetricsSection() {
     resize();
     window.addEventListener('resize', resize);
 
-    const drops = Array.from({ length: 60 }, () => ({
+    const drops = Array.from({ length: 25 }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
       length: Math.random() * 30 + 10,
@@ -210,42 +208,48 @@ export default function MetricsSection() {
     }));
 
     let animId: number;
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      drops.forEach(d => {
-        d.y += d.speedY;
-        d.x += d.speedX;
-
-        if (d.y > canvas.height) {
-          d.y = -d.length;
-          d.x = Math.random() * canvas.width;
-        }
-
-        const gradient = ctx.createLinearGradient(d.x, d.y, d.x, d.y + d.length);
-        gradient.addColorStop(0, `rgba(${d.hue},${d.opacity})`);
-        gradient.addColorStop(0.5, `rgba(${d.hue},${d.opacity * 0.6})`);
-        gradient.addColorStop(1, `rgba(${d.hue},0)`);
-
-        ctx.beginPath();
-        ctx.moveTo(d.x, d.y);
-        ctx.lineTo(d.x, d.y + d.length);
-        ctx.strokeStyle = gradient;
-        ctx.lineWidth = d.width;
-        ctx.stroke();
-
-        ctx.beginPath();
-        ctx.arc(d.x, d.y, d.width + 0.5, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${d.hue},${d.opacity * 1.5})`;
-        ctx.fill();
-      });
-
+    let lastTime = 0;
+    const frameInterval = 1000 / 30;
+    const animate = (currentTime: number) => {
+      if (currentTime - lastTime >= frameInterval) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drops.forEach(d => {
+          d.y += d.speedY;
+          d.x += d.speedX;
+          if (d.y > canvas.height) {
+            d.y = -d.length;
+            d.x = Math.random() * canvas.width;
+          }
+          const gradient = ctx.createLinearGradient(d.x, d.y, d.x, d.y + d.length);
+          gradient.addColorStop(0, `rgba(${d.hue},${d.opacity})`);
+          gradient.addColorStop(0.5, `rgba(${d.hue},${d.opacity * 0.6})`);
+          gradient.addColorStop(1, `rgba(${d.hue},0)`);
+          ctx.beginPath();
+          ctx.moveTo(d.x, d.y);
+          ctx.lineTo(d.x, d.y + d.length);
+          ctx.strokeStyle = gradient;
+          ctx.lineWidth = d.width;
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(d.x, d.y, d.width + 0.5, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${d.hue},${d.opacity * 1.5})`;
+          ctx.fill();
+        });
+        lastTime = currentTime;
+      }
       animId = requestAnimationFrame(animate);
     };
-    animate();
-
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) { animId = requestAnimationFrame(animate); }
+        else { cancelAnimationFrame(animId); }
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(canvas);
     return () => {
       cancelAnimationFrame(animId);
+      observer.disconnect();
       window.removeEventListener('resize', resize);
     };
   }, []);

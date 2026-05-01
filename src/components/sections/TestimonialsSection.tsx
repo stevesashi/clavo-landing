@@ -90,9 +90,7 @@ function TestimonialCard({
       whileHover={shouldReduce ? {} : { y: -4 }}
       className="group relative flex flex-col gap-5 overflow-hidden rounded-2xl border border-white/[0.07] p-7 transition-colors duration-300 hover:border-white/[0.13]"
       style={{
-        background: "rgba(7,14,20,0.75)",
-        backdropFilter: "blur(24px)",
-        WebkitBackdropFilter: "blur(24px)",
+        background: "rgba(7,14,20,0.90)",
         boxShadow: "0 4px 36px rgba(0,0,0,0.45)",
       }}
     >
@@ -155,7 +153,7 @@ export default function TestimonialsSection() {
     resize();
     window.addEventListener('resize', resize);
 
-    const stars = Array.from({ length: 40 }, () => ({
+    const stars = Array.from({ length: 18 }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
       size: Math.random() * 1.5 + 0.5,
@@ -168,38 +166,47 @@ export default function TestimonialsSection() {
 
     let animId: number;
     let frame = 0;
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    let lastTime = 0;
+    const frameInterval = 1000 / 30;
+    const animate = (currentTime: number) => {
       frame++;
-      stars.forEach(s => {
-        s.y += s.speedY;
-        s.x += s.speedX;
-        if (s.y < 0) s.y = canvas.height;
-        if (s.y > canvas.height) s.y = 0;
-        if (s.x < 0) s.x = canvas.width;
-        if (s.x > canvas.width) s.x = 0;
-
-        const twinkle = Math.sin(frame * s.twinkleSpeed + s.twinklePhase);
-        const currentOpacity = s.opacity * (0.5 + twinkle * 0.5);
-
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(200,180,255,${currentOpacity})`;
-        ctx.fill();
-
-        if (s.size > 1) {
+      if (currentTime - lastTime >= frameInterval) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        stars.forEach(s => {
+          s.y += s.speedY;
+          s.x += s.speedX;
+          if (s.y < 0) s.y = canvas.height;
+          if (s.y > canvas.height) s.y = 0;
+          if (s.x < 0) s.x = canvas.width;
+          if (s.x > canvas.width) s.x = 0;
+          const twinkle = Math.sin(frame * s.twinkleSpeed + s.twinklePhase);
+          const currentOpacity = s.opacity * (0.5 + twinkle * 0.5);
           ctx.beginPath();
-          ctx.arc(s.x, s.y, s.size * 3, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(167,139,250,${currentOpacity * 0.15})`;
+          ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(200,180,255,${currentOpacity})`;
           ctx.fill();
-        }
-      });
+          if (s.size > 1) {
+            ctx.beginPath();
+            ctx.arc(s.x, s.y, s.size * 3, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(167,139,250,${currentOpacity * 0.15})`;
+            ctx.fill();
+          }
+        });
+        lastTime = currentTime;
+      }
       animId = requestAnimationFrame(animate);
     };
-    animate();
-
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) { animId = requestAnimationFrame(animate); }
+        else { cancelAnimationFrame(animId); }
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(canvas);
     return () => {
       cancelAnimationFrame(animId);
+      observer.disconnect();
       window.removeEventListener('resize', resize);
     };
   }, []);
@@ -217,7 +224,7 @@ export default function TestimonialsSection() {
           style={{
             width: "100%", height: "100%",
             objectFit: "cover", objectPosition: "center",
-            animation: "kenBurnsTestimonials 24s ease-in-out infinite",
+            animation: "kenBurnsTestimonials 48s ease-in-out infinite",
           }}
         />
       </div>
@@ -347,9 +354,7 @@ export default function TestimonialsSection() {
         <motion.div
           className="mt-16 overflow-hidden rounded-3xl border border-white/[0.08]"
           style={{
-            background: "rgba(6,14,18,0.78)",
-            backdropFilter: "blur(28px)",
-            WebkitBackdropFilter: "blur(28px)",
+            background: "rgba(6,14,18,0.92)",
             boxShadow: "0 0 60px rgba(110,231,183,0.06), 0 8px 48px rgba(0,0,0,0.6)",
           }}
           initial={{ opacity: 0, y: 40 }}

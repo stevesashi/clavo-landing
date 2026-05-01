@@ -53,9 +53,7 @@ function FeatureCard({
       whileHover={shouldReduce ? {} : { y: -4 }}
       className="group relative overflow-hidden rounded-2xl border border-white/[0.07] p-6 transition-colors duration-300 hover:border-white/[0.12]"
       style={{
-        background: "rgba(8, 16, 12, 0.7)",
-        backdropFilter: "blur(20px)",
-        WebkitBackdropFilter: "blur(20px)",
+        background: "rgba(8, 16, 12, 0.85)",
         boxShadow: "0 4px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.03) inset",
       }}
     >

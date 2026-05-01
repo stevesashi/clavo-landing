@@ -18,7 +18,7 @@ export default function ScrollSection() {
     resize();
     window.addEventListener("resize", resize);
 
-    const particles = Array.from({ length: 20 }, () => ({
+    const particles = Array.from({ length: 10 }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
       size: Math.random() * 2 + 1,
@@ -28,26 +28,38 @@ export default function ScrollSection() {
     }));
 
     let animId: number;
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(p => {
-        p.y -= p.speedY;
-        p.x += p.speedX;
-        if (p.y < 0) {
-          p.y = canvas.height;
-          p.x = Math.random() * canvas.width;
-        }
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(167,139,250,${p.opacity})`;
-        ctx.fill();
-      });
+    let lastTime = 0;
+    const frameInterval = 1000 / 30;
+    const animate = (currentTime: number) => {
+      if (currentTime - lastTime >= frameInterval) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+          p.y -= p.speedY;
+          p.x += p.speedX;
+          if (p.y < 0) {
+            p.y = canvas.height;
+            p.x = Math.random() * canvas.width;
+          }
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(167,139,250,${p.opacity})`;
+          ctx.fill();
+        });
+        lastTime = currentTime;
+      }
       animId = requestAnimationFrame(animate);
     };
-    animate();
-
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) { animId = requestAnimationFrame(animate); }
+        else { cancelAnimationFrame(animId); }
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(canvas);
     return () => {
       cancelAnimationFrame(animId);
+      observer.disconnect();
       window.removeEventListener("resize", resize);
     };
   }, []);
@@ -63,7 +75,7 @@ export default function ScrollSection() {
           style={{
             width: "100%", height: "100%",
             objectFit: "cover", objectPosition: "center top",
-            animation: "kenBurns2 22s ease-in-out infinite",
+            animation: "kenBurns2 40s ease-in-out infinite",
           }}
         />
 
