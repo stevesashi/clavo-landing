@@ -1,5 +1,4 @@
-import Navbar from "@/components/layout/Navbar";
-import ClavoPricingBlocks from "@/components/ui/pricing-blocks";
+﻿import ClavoPricingBlocks from "@/components/ui/pricing-blocks";
 import StickyCTA from "@/components/layout/StickyCTA";
 import { Check, Shield, Zap, Clock, Users, BarChart3, MessageSquare, Award } from "lucide-react";
 
@@ -8,7 +7,7 @@ import { Check, Shield, Zap, Clock, Users, BarChart3, MessageSquare, Award } fro
 export const metadata = {
   title: "Pricing — Clavo AI",
   description:
-    "Simple, transparent pricing for GCC & APAC hiring teams. Starting at $499/month. No hidden fees.",
+    "Simple, transparent pricing for GCC hiring teams. Starting at $499/month. No hidden fees.",
 };
 
 // ─── "Included in every plan" items ──────────────────────────────────────────
@@ -40,7 +39,7 @@ const FAQ = [
   },
   {
     q: "What regions does Clavo AI cover?",
-    a: "Clavo AI is purpose-built for fast-scaling teams across GCC & APAC — UAE, Saudi Arabia, Qatar, Singapore, and beyond.",
+    a: "Clavo AI is purpose-built for fast-scaling teams across the GCC — UAE, Saudi Arabia, Qatar, Kuwait, Bahrain, and Oman.",
   },
   {
     q: "How does the Enterprise plan work?",
@@ -56,8 +55,6 @@ export default function PricingPage() {
       className="relative min-h-screen overflow-x-hidden"
       style={{ background: "linear-gradient(180deg, #030608 0%, #050b14 40%, #030608 100%)" }}
     >
-      <Navbar />
-
       {/* ── Background ambient glows ── */}
       <div aria-hidden="true" className="pointer-events-none fixed inset-0 overflow-hidden">
         <div
@@ -66,7 +63,7 @@ export default function PricingPage() {
         />
         <div
           className="absolute right-1/4 top-1/2 h-96 w-96 rounded-full blur-3xl"
-          style={{ background: "rgba(217,119,6,0.05)" }}
+          style={{ background: "rgba(139,92,246,0.05)" }}
         />
       </div>
 
@@ -74,7 +71,7 @@ export default function PricingPage() {
 
         {/* ── HEADER ─────────────────────────────────────────────────────── */}
         <section className="px-4 pb-12 pt-36 text-center">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-amber-400/60">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-purple-400/60">
             Pricing
           </p>
           <h1 className="mx-auto max-w-3xl text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
@@ -82,14 +79,14 @@ export default function PricingPage() {
             <span
               className="bg-clip-text text-transparent"
               style={{
-                backgroundImage: "linear-gradient(135deg, #fbbf24 0%, #22d3ee 100%)",
+                backgroundImage: "linear-gradient(135deg, #f0a500 0%, #fbbf24 40%, #c084fc 100%)",
               }}
             >
               Smarter Hiring
             </span>
           </h1>
           <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-white/40">
-            Transparent plans for every stage of your GCC &amp; APAC recruiting journey.
+            Transparent plans for every stage of your GCC recruiting journey.
             No hidden fees. Cancel anytime.
           </p>
 
@@ -99,7 +96,7 @@ export default function PricingPage() {
               "15-day hiring cycle",
               "No setup fees",
               "Cancel anytime",
-              "GCC & APAC focused",
+              "GCC focused",
             ].map((chip) => (
               <span
                 key={chip}
@@ -138,7 +135,7 @@ export default function PricingPage() {
                 role="listitem"
                 className="flex items-center gap-2 rounded-full border border-white/[0.07] bg-white/[0.03] px-3.5 py-2 text-xs font-medium text-white/55"
               >
-                <span className="text-amber-400/70" aria-hidden="true">{icon}</span>
+                <span className="text-purple-400/70" aria-hidden="true">{icon}</span>
                 {label}
               </span>
             ))}
@@ -147,7 +144,7 @@ export default function PricingPage() {
 
         {/* ── COMPARISON TABLE ───────────────────────────────────────────── */}
         <section
-          className="mx-auto max-w-4xl overflow-x-auto px-4 pb-16"
+          className="pricing-table-wrap mx-auto max-w-4xl overflow-x-auto px-4 pb-16"
           aria-label="Plan feature comparison"
         >
           <table className="w-full min-w-[560px] border-collapse text-sm">
@@ -161,12 +158,12 @@ export default function PricingPage() {
                     key={name}
                     className="pb-4 text-center text-[11px] font-bold uppercase tracking-widest"
                     style={{
-                      color: i === 1 ? "#fbbf24" : i === 0 ? "#a78bfa" : "#22d3ee",
+                      color: i === 0 ? "#818cf8" : i === 1 ? "#f0a500" : "#34d399",
                     }}
                   >
                     {name}
                     {i === 1 && (
-                      <span className="ml-1.5 rounded-full bg-amber-400/15 px-1.5 py-0.5 text-[9px] font-extrabold text-amber-400">
+                      <span className="ml-1.5 rounded-full px-1.5 py-0.5 text-[9px] font-extrabold" style={{ background: "rgba(240,165,0,0.15)", color: "#f0a500" }}>
                         Popular
                       </span>
                     )}
@@ -175,51 +172,67 @@ export default function PricingPage() {
               </tr>
             </thead>
             <tbody>
-              {[
-                ["Active Roles",                    "2",        "5",          "Unlimited"],
-                ["Recruiter Seats",                 "1",        "2",          "Custom"],
-                ["AI CV Screening",                 "✓",        "✓",          "✓"],
-                ["AI Video Interviews",             "✓",        "✓",          "✓"],
-                ["Candidate Reports",               "Basic",    "360° Advanced","360° Advanced"],
-                ["AI Notes + Interview Insights",   "—",        "✓",          "✓"],
-                ["Talent Mapping",                  "—",        "✓",          "✓"],
-                ["WhatsApp Integration",            "—",        "✓",          "✓"],
-                ["AI Co-Pilot (Live Interviews)",   "—",        "✓",          "✓"],
-                ["Analytics",                       "Basic",    "Advanced",   "Advanced"],
-                ["AI Sourcing Agent",               "—",        "—",          "✓"],
-                ["Custom AI Models",                "—",        "—",          "✓"],
-                ["ATS Integrations",                "—",        "—",          "✓"],
-                ["Custom Workflows",                "—",        "—",          "✓"],
-                ["Dedicated Account Manager",       "—",        "—",          "✓"],
-                ["Support",                         "Basic",    "Priority",   "SLA + Dedicated"],
-              ].map(([feature, ...cols]) => (
+              {([
+                ["Active Roles",                  "5",          "10",           "Unlimited"      ],
+                ["Recruiter Seats",               "2",          "5",            "Custom"         ],
+                ["AI CV Screening",               "Unlimited",  "Unlimited",    "Unlimited"      ],
+                ["AI Video Interviews",           "—",          "2,500 min/mo", "Unlimited"      ],
+                ["Candidate Reports",             "Basic",      "360° Advanced","360° Advanced"  ],
+                ["Nationalization Dashboard",     "1 Country",  "6 Countries",  "6 Countries"    ],
+                ["Penalty Calculator & ROI",      "✓",          "✓",            "✓"              ],
+                ["Government Report Export",      "✓",          "✓",            "✓"              ],
+                ["Smart Notes + Insights",        "—",          "✓",            "✓"              ],
+                ["Talent Mapping",                "—",          "✓",            "✓"              ],
+                ["AI Co-Pilot (Live Interviews)", "—",          "✓",            "✓"              ],
+                ["WhatsApp Integration",          "—",          "✓",            "✓"              ],
+                ["Analytics",                     "Basic",      "Advanced",     "Advanced"       ],
+                ["AI Sourcing Agent",             "—",          "—",            "✓"              ],
+                ["Custom AI Models",              "—",          "—",            "✓"              ],
+                ["ATS Integrations",              "✓",          "✓",            "✓"              ],
+                ["Custom Workflows",              "—",          "—",            "✓"              ],
+                ["White-Label Option",            "—",          "—",            "✓"              ],
+                ["Dedicated Account Manager",     "—",          "—",            "✓"              ],
+                ["Support",                       "Email",      "Priority",     "Dedicated + SLA"],
+              ] as string[][]).map(([feature, ...cols]) => (
                 <tr
                   key={feature}
                   className="border-b"
                   style={{ borderColor: "rgba(255,255,255,0.05)" }}
                 >
                   <td className="py-3 text-xs text-white/50">{feature}</td>
-                  {cols.map((val, ci) => (
-                    <td
-                      key={ci}
-                      className="py-3 text-center text-xs"
-                      style={{
-                        color:
-                          val === "—"
-                            ? "rgba(255,255,255,0.18)"
-                            : val === "✓"
-                            ? ci === 1
-                              ? "#fbbf24"
-                              : ci === 0
-                              ? "#a78bfa"
-                              : "#22d3ee"
-                            : "rgba(255,255,255,0.62)",
-                        fontWeight: val === "✓" ? 700 : 400,
-                      }}
-                    >
-                      {val}
-                    </td>
-                  ))}
+                  {cols.map((val, ci) => {
+                    const isPremium =
+                      val === "✓" ||
+                      val === "Unlimited" ||
+                      val === "360° Advanced" ||
+                      val === "Full" ||
+                      val === "Advanced" ||
+                      val === "Custom" ||
+                      val === "Dedicated + SLA";
+                    const isMuted =
+                      val === "Basic" ||
+                      val === "View Only" ||
+                      val === "Email";
+                    const isDash = val === "—";
+                    const colAccent = ci === 0 ? "#818cf8" : ci === 1 ? "#f0a500" : "#34d399";
+                    const color = isDash
+                      ? "rgba(255,255,255,0.2)"
+                      : isPremium
+                      ? colAccent
+                      : isMuted
+                      ? "rgba(255,255,255,0.5)"
+                      : "#ffffff";
+                    const fontWeight = isDash || isMuted ? 400 : 700;
+                    return (
+                      <td
+                        key={ci}
+                        className="py-3 text-center text-xs"
+                        style={{ color, fontWeight }}
+                      >
+                        {val}
+                      </td>
+                    );
+                  })}
                 </tr>
               ))}
             </tbody>
@@ -270,10 +283,10 @@ export default function PricingPage() {
           <div
             className="mx-auto max-w-3xl rounded-3xl border border-white/[0.07] p-10 text-center"
             style={{
-              background: "linear-gradient(135deg, rgba(139,92,246,0.07) 0%, rgba(217,119,6,0.08) 100%)",
+              background: "linear-gradient(135deg, rgba(139,92,246,0.07) 0%, rgba(139,92,246,0.08) 100%)",
               backdropFilter: "blur(20px)",
               WebkitBackdropFilter: "blur(20px)",
-              boxShadow: "0 0 80px rgba(217,119,6,0.08), 0 0 0 1px rgba(255,255,255,0.04) inset",
+              boxShadow: "0 0 80px rgba(139,92,246,0.08), 0 0 0 1px rgba(255,255,255,0.04) inset",
             }}
           >
             {/* Top accent line */}
@@ -282,10 +295,10 @@ export default function PricingPage() {
               className="pointer-events-none absolute inset-x-0 top-0 h-px rounded-t-3xl"
               style={{
                 background:
-                  "linear-gradient(90deg, transparent, rgba(217,119,6,0.6) 40%, rgba(139,92,246,0.4) 70%, transparent)",
+                  "linear-gradient(90deg, transparent, rgba(139,92,246,0.6) 40%, rgba(139,92,246,0.4) 70%, transparent)",
               }}
             />
-            <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-amber-400/60">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-purple-400/60">
               Still deciding?
             </p>
             <h2 className="mb-3 text-2xl font-extrabold text-white sm:text-3xl">
@@ -298,10 +311,10 @@ export default function PricingPage() {
             <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
               <a
                 href="/book-demo"
-                className="inline-flex items-center gap-2 rounded-xl px-7 py-3.5 text-sm font-bold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-400"
+                className="inline-flex items-center gap-2 rounded-xl px-7 py-3.5 text-sm font-bold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-purple-400"
                 style={{
-                  background: "linear-gradient(135deg, #d97706 0%, #b45309 100%)",
-                  boxShadow: "0 0 24px rgba(217,119,6,0.45)",
+                  background: "linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)",
+                  boxShadow: "0 0 24px rgba(139,92,246,0.45)",
                   touchAction: "manipulation",
                 }}
               >

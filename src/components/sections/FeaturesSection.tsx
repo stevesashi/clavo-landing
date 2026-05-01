@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion, useReducedMotion } from "framer-motion";
 import {
@@ -138,9 +138,9 @@ const FEATURES = [
     icon: <Radar size={20} />,
     title: "Know Who to Hire — Before Your Competitors Do",
     description:
-      "Real-time market radar tracks competitor salaries at Noon, Careem, and fast-scaling companies across GCC & APAC. Get URGENT alerts the moment a top candidate is about to leave your pipeline — act before the offer lands.",
+      "Real-time market radar tracks competitor salaries at Noon, Careem, and fast-scaling companies across GCC. Get URGENT alerts the moment a top candidate is about to leave your pipeline — act before the offer lands.",
     chips: ["Market Velocity", "Live Talent Vortex", "Counter-Intelligence", "Talent Leak Alerts"],
-    accent: "#fbbf24",
+    accent: "#c084fc",
     delay: 0.06,
     stat: "40%",
     statLabel: "faster market velocity vs last quarter",
@@ -183,13 +183,13 @@ const FEATURES = [
 // ─── Secondary capability pills ─────────────────────────────────────────────
 
 const CAPABILITIES = [
-  { icon: <Brain size={14} />, label: "AI Interview Studio", color: "#fbbf24" },
+  { icon: <Brain size={14} />, label: "AI Interview Studio", color: "#c084fc" },
   { icon: <MessageSquare size={14} />, label: "WhatsApp Integration", color: "#6ee7b7" },
   { icon: <Shield size={14} />, label: "Bias-Free Scoring", color: "#a78bfa" },
   { icon: <Zap size={14} />, label: "4h Screening Speed", color: "#67e8f9" },
   { icon: <Users size={14} />, label: "Golden Top 5 Ranking", color: "#f87171" },
-  { icon: <TrendingUp size={14} />, label: "Market Counter-Intel", color: "#fbbf24" },
-  { icon: <Target size={14} />, label: "Critical Talent Leaks", color: "#fb923c" },
+  { icon: <TrendingUp size={14} />, label: "Market Counter-Intel", color: "#c084fc" },
+  { icon: <Target size={14} />, label: "Critical Talent Leaks", color: "#a855f7" },
   { icon: <Clock size={14} />, label: "15-Day Time to Hire", color: "#6ee7b7" },
 ];
 
@@ -204,14 +204,14 @@ export default function FeaturesSection() {
       className="relative overflow-hidden py-28 px-4"
       style={{
         background:
-          "linear-gradient(180deg, #030608 0%, #04090e 50%, #030608 100%)",
+          "radial-gradient(ellipse 60% 50% at 0% 0%, rgba(124,58,237,0.1) 0%, transparent 50%), radial-gradient(ellipse 60% 50% at 100% 100%, rgba(167,139,250,0.08) 0%, transparent 50%), #030608",
       }}
     >
       {/* Background ambient glow */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
         <div
           className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full blur-3xl"
-          style={{ background: "rgba(251,191,36,0.04)" }}
+          style={{ background: "rgba(192,132,252,0.04)" }}
         />
         <div
           className="absolute right-1/4 bottom-1/4 h-96 w-96 rounded-full blur-3xl"
@@ -229,29 +229,29 @@ export default function FeaturesSection() {
           viewport={VIEWPORT}
           transition={SPRING}
         >
-          <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-amber-400/60">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-purple-400/60">
             The Platform
           </p>
           <h2
             id="features-heading"
-            className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl"
-            style={{ textShadow: "0 0 60px rgba(255,180,60,0.12)" }}
+            className="text-4xl font-extrabold text-white sm:text-5xl md:text-6xl lg:text-7xl"
+            style={{ lineHeight: 1.1, letterSpacing: "-0.02em", textShadow: "0 0 60px rgba(255,180,60,0.12)" }}
           >
             Four Modules.{" "}
             <span
-              className="bg-gradient-to-r from-amber-300 to-cyan-300 bg-clip-text text-transparent"
+              className="bg-gradient-to-r from-purple-300 to-cyan-300 bg-clip-text text-transparent"
             >
               One Intelligence.
             </span>
           </h2>
           <p className="mt-4 max-w-2xl mx-auto text-base leading-relaxed text-white/40">
             From market radar to CEO-level analytics — every screen of Clavo AI is purpose-built
-            for high-growth companies competing across GCC & APAC's fast-moving talent markets.
+            for high-growth companies competing across GCC's fast-moving talent markets.
           </p>
         </motion.div>
 
         {/* 4-card grid */}
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="features-grid grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {FEATURES.map((f) => (
             <FeatureCard key={f.title} {...f} />
           ))}
@@ -299,7 +299,7 @@ export default function FeaturesSection() {
           aria-label="Clavo AI industry sourcing health benchmarks"
         >
           {[
-            { v: "15d", l: "Time to Hire", b: "vs 40d market avg", c: "#fbbf24" },
+            { v: "15d", l: "Time to Hire", b: "vs 40d market avg", c: "#c084fc" },
             { v: "87%", l: "Offer Acceptance", b: "vs 72% avg", c: "#6ee7b7" },
             { v: "91%", l: "9-Month Retention", b: "vs 68% avg", c: "#a78bfa" },
             { v: "AED 4.2k", l: "Cost per Hire", b: "vs AED 15k avg", c: "#67e8f9" },

@@ -1,4 +1,4 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
 
 /* ── Tailwind v4 theme extensions ────────────────────────────────────────── */
 
@@ -38,10 +38,10 @@
 
 :root {
   /* Semantic color tokens — clavo-pro design system */
-  --color-primary: #06b6d4;        /* cyan-500  */
-  --color-primary-light: #67e8f9;  /* cyan-300  */
-  --color-accent: #7c3aed;         /* purple-700 */
-  --color-accent-light: #a78bfa;   /* purple-400 */
+  --color-primary: #a78bfa;        /* gold      */
+  --color-primary-light: #c084fc;  /* amber-400 */
+  --color-accent: #a78bfa;         /* gold      */
+  --color-accent-light: #c084fc;   /* amber-400 */
   --color-surface: rgba(255, 255, 255, 0.04);
   --color-surface-hover: rgba(255, 255, 255, 0.07);
   --color-border: rgba(255, 255, 255, 0.10);
@@ -68,6 +68,11 @@ html {
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -75,10 +80,11 @@ body {
   font-size: var(--text-base);
   line-height: var(--leading-body);
   color: var(--color-text);
-  background: #0e0420;
+  background: #0a0810;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  overscroll-behavior-y: none;
 }
 
 /* ── Focus Styles — never hide focus rings ──────────────────────────────── */
@@ -108,19 +114,190 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0e0420;
+  background: #0a0810;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(124, 58, 237, 0.4);
+  background: rgba(167, 139, 250, 0.4);
   border-radius: 99px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(6, 182, 212, 0.5);
+  background: rgba(167, 139, 250, 0.6);
 }
 
 /* ── Selection ──────────────────────────────────────────────────────────── */
 
 ::selection {
-  background: rgba(6, 182, 212, 0.25);
+  background: rgba(167, 139, 250, 0.2);
   color: #ffffff;
+}
+
+/* ── Cinematic noise grain overlay ──────────────────────────────────────────── */
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* ── FeaturesSection background animations ──────────────────────────────────── */
+
+@keyframes kenBurns3 {
+  0%   { transform: scale(1)    translateX(0px)   translateY(0px); }
+  33%  { transform: scale(1.06) translateX(-15px) translateY(-10px); }
+  66%  { transform: scale(1.03) translateX(10px)  translateY(-5px); }
+  100% { transform: scale(1)    translateX(0px)   translateY(0px); }
+}
+
+@keyframes glowPulse3 {
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 1; }
+}
+
+@keyframes shimmerCard {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* ── ScrollSection background animations ────────────────────────────────────── */
+
+@keyframes kenBurns2 {
+  0%   { transform: scale(1)    translateX(0px)   translateY(0px); }
+  25%  { transform: scale(1.05) translateX(-10px) translateY(-8px); }
+  50%  { transform: scale(1.08) translateX(-18px) translateY(5px); }
+  75%  { transform: scale(1.04) translateX(8px)   translateY(-5px); }
+  100% { transform: scale(1)    translateX(0px)   translateY(0px); }
+}
+
+@keyframes glowPulse2 {
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 1; }
+}
+
+@keyframes kenBurnsForensic {
+  0%   { transform: scale(1)    translateY(0px); }
+  50%  { transform: scale(1.06) translateY(-15px); }
+  100% { transform: scale(1)    translateY(0px); }
+}
+
+@keyframes kenBurnsTestimonials {
+  0%   { transform: scale(1) translateX(0); }
+  50%  { transform: scale(1.05) translateX(-10px); }
+  100% { transform: scale(1) translateX(0); }
+}
+
+@keyframes glowPulseTestimonials {
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 1; }
+}
+
+.font-instrument-serif {
+  font-family: var(--font-instrument-serif), Georgia, serif;
+}
+
+/* ── Bold Inter for all headings — overrides Tailwind font-* utilities ── */
+/* Specificity (0,1,1) beats Tailwind utilities at (0,1,0), and unlayered CSS  */
+/* beats @layer utilities regardless, so this applies globally without !important */
+
+.dark h1, .dark h2, .dark h3 {
+  font-family: var(--font-instrument-serif), Georgia, serif;
+  font-weight: 700;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-instrument-serif), Georgia, serif;
+  font-weight: 700;
+}
+
+/* ── About page section background animations ────────────────────────────── */
+
+@keyframes kenBurnsAbout1 {
+  0%, 100% { transform: scale(1) translate(0, 0); }
+  50% { transform: scale(1.08) translate(-15px, -10px); }
+}
+@keyframes kenBurnsAbout2 {
+  0%, 100% { transform: scale(1) translate(0, 0); }
+  50% { transform: scale(1.06) translate(10px, -8px); }
+}
+@keyframes kenBurnsAbout3 {
+  0%, 100% { transform: scale(1) translate(0, 0); }
+  50% { transform: scale(1.07) translate(-10px, 8px); }
+}
+
+/* ── About page lavender cloud animations ────────────────────────────────── */
+
+@keyframes cloudFloat1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(80px, 50px) scale(1.1); }
+  66% { transform: translate(-40px, 100px) scale(0.95); }
+}
+@keyframes cloudFloat2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-100px, -60px) scale(1.15); }
+}
+@keyframes cloudFloat3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-70px, -50px) scale(1.1); }
+  66% { transform: translate(50px, -80px) scale(0.9); }
+}
+@keyframes cloudFloat4 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(60px, 40px) scale(1.2); }
+}
+
+/* ── Mobile Responsive Overrides ───────────────────────────────────────────── */
+
+/* Tablet (≤ 768px) */
+@media (max-width: 768px) {
+  /* Hero */
+  .hero-title  { font-size: clamp(2rem, 7vw, 3.5rem) !important; }
+  .hero-desc   { font-size: 0.9375rem !important; }
+  .hero-logo   { height: 36px !important; }
+  .hero-nav    { display: none !important; }
+  .hero-buttons { flex-direction: column !important; align-items: stretch !important; }
+
+  /* Section headings */
+  h1, h2 { font-size: clamp(1.75rem, 6vw, 3rem) !important; }
+
+  /* Pricing cards */
+  .pricing-cards {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  .pricing-cards > * {
+    rotate: 0deg !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: 22rem !important;
+    margin-bottom: 1rem;
+  }
+
+  /* Pricing table */
+  .pricing-table-wrap { overflow-x: auto !important; }
+
+  /* About grid */
+  .about-grid { grid-template-columns: 1fr !important; }
+
+  /* Scroll demo tablet */
+  .scroll-tablet { width: 100% !important; max-width: 360px !important; }
+
+  /* Features grid */
+  .features-grid { grid-template-columns: 1fr !important; }
+  .features-spotlight { flex-direction: column !important; }
+}
+
+/* Mobile (≤ 480px) */
+@media (max-width: 480px) {
+  .hero-title  { font-size: clamp(1.6rem, 9vw, 2.4rem) !important; }
+  .hero-desc   { font-size: 0.875rem !important; }
+  body { font-size: 0.9375rem; }
+
+  /* Tighten section padding */
+  section { padding-left: 1rem !important; padding-right: 1rem !important; }
+
+  /* Pricing modal full-width */
+  .pricing-modal { border-radius: 1rem !important; margin: 0 0.75rem !important; }
 }
