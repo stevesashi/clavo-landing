@@ -873,7 +873,7 @@ export default function FeaturesSection() {
 
       {/* Content */}
       <div style={{ position: "relative", zIndex: 10 }}>
-        <div style={{ maxWidth: 1300, margin: "0 auto", padding: "0 56px" }}>
+        <div className="features-content-wrap" style={{ maxWidth: 1300, margin: "0 auto", padding: "0 56px" }}>
 
           {/* Heading */}
           <AnimatedSection>
@@ -898,7 +898,7 @@ export default function FeaturesSection() {
           </AnimatedSection>
 
           {/* Tabbed layout */}
-          <div style={{ display: "grid", gridTemplateColumns: "300px 1fr", gap: 24, alignItems: "start" }}>
+          <div className="features-tab-grid" style={{ display: "grid", gridTemplateColumns: "300px 1fr", gap: 24, alignItems: "start" }}>
 
             {/* ── Left nav ── */}
             <AnimatedSection direction="left" delay={0.2}>
@@ -963,6 +963,7 @@ export default function FeaturesSection() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -16 }}
                   transition={{ duration: 0.25, ease: "easeOut" }}
+                  className="features-preview-panel"
                   style={{
                     position: "relative",
                     zIndex: 1,

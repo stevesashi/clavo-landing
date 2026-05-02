@@ -294,4 +294,22 @@ img {
 @media (max-width: 768px) {
   .hero-title { font-size: 28px !important; }
   .hero-buttons { flex-direction: column !important; }
+
+  /* FeaturesSection — collapse desktop tab layout on mobile */
+  .features-content-wrap { padding: 0 16px !important; }
+  .features-tab-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .features-tab-grid > div:first-child {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    gap: 8px !important;
+    padding-bottom: 4px !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .features-tab-grid > div:first-child::-webkit-scrollbar { display: none; }
+  .features-preview-panel { min-height: unset !important; }
 }
