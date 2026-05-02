@@ -239,6 +239,52 @@ const ResponsiveHeroBanner: React.FC<ResponsiveHeroBannerProps> = ({
                 </div>
             </header>
 
+            {/* Mobile nav dropdown */}
+            {mobileMenuOpen && (
+                <div
+                    className="md:hidden relative z-50 mx-4 mt-2 rounded-2xl overflow-hidden"
+                    style={{
+                        background: "rgba(8,6,18,0.96)",
+                        border: "1px solid rgba(167,139,250,0.2)",
+                        boxShadow: "0 8px 32px rgba(0,0,0,0.6)",
+                    }}
+                >
+                    <nav className="flex flex-col p-4 gap-1">
+                        {navLinks.map((link, index) => (
+                            <a
+                                key={index}
+                                href={link.href}
+                                onClick={() => setMobileMenuOpen(false)}
+                                className="px-4 py-3 text-sm font-medium text-white/80 hover:text-white rounded-xl hover:bg-white/[0.06] transition-colors"
+                            >
+                                {link.label}
+                            </a>
+                        ))}
+                        <div className="mt-2 flex flex-col gap-2">
+                            <a
+                                href="/early-access"
+                                onClick={() => setMobileMenuOpen(false)}
+                                className="w-full text-center rounded-xl py-3 text-sm font-semibold"
+                                style={{
+                                    color: "#a78bfa",
+                                    border: "1px solid rgba(167,139,250,0.35)",
+                                    background: "rgba(167,139,250,0.08)",
+                                }}
+                            >
+                                Join Early Access
+                            </a>
+                            <a
+                                href={ctaButtonHref}
+                                onClick={() => setMobileMenuOpen(false)}
+                                className="w-full text-center rounded-xl py-3 text-sm font-semibold text-neutral-900 bg-white"
+                            >
+                                {ctaButtonText}
+                            </a>
+                        </div>
+                    </nav>
+                </div>
+            )}
+
             <div className="z-10 relative">
                 <div className="sm:pt-28 md:pt-32 lg:pt-40 max-w-7xl mx-auto pt-28 px-6 pb-16">
                     <div className="mx-auto max-w-3xl text-center">
