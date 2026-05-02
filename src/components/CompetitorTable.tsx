@@ -14,7 +14,8 @@ const features = [
   { name: "GCC Talent Market Mapping", clavo: true, hirevue: false, eightfold: "limited", paradox: false, workable: false, manatal: "limited" },
   { name: "WhatsApp Candidate Integration", clavo: true, hirevue: false, eightfold: false, paradox: true, workable: "limited", manatal: true },
   { name: "Built for GCC Region", clavo: true, hirevue: false, eightfold: false, paradox: false, workable: "limited", manatal: "limited" },
-  { name: "Annual Pricing", clavo: "$14K", hirevue: "$35K+", eightfold: "$50K+", paradox: "$30K+", workable: "$5K+", manatal: "$2K+" },
+  { name: "Annual Pricing (5 seats)", clavo: "$14K", hirevue: "$35K+", eightfold: "$50K+", paradox: "$30K+", workable: "$5K+", manatal: "$2.1K" },
+  { name: "Per-User Cost", clavo: "Flat", hirevue: "Custom", eightfold: "Custom", paradox: "Custom", workable: "$166/mo", manatal: "$35/mo" },
 ];
 
 const Cell = ({ value }: { value: boolean | string }) => {
@@ -231,8 +232,8 @@ export default function CompetitorTable() {
           <span style={{ color: "#f0a500", fontWeight: 600 }}>Clavo closes it.</span>
         </div>
 
-        <div style={{ textAlign: "center", marginTop: 16, fontSize: 11, color: "rgba(255,255,255,0.35)", fontStyle: "italic" }}>
-          Pricing reflects approximate annual contract starting points based on publicly reported data. Actual pricing varies by company size and configuration.
+        <div style={{ textAlign: "center", marginTop: 16, fontSize: 11, color: "rgba(255,255,255,0.35)", fontStyle: "italic", maxWidth: 800, margin: "16px auto 0" }}>
+          Pricing reflects approximate annual contract starting points based on publicly reported data. Clavo uses flat team pricing — no per-user fees. Other platforms scale cost with team size. Actual pricing varies by company size and configuration.
         </div>
       </div>
     </section>
