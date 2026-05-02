@@ -1235,60 +1235,110 @@ function SolutionPipeline() {
   const shouldReduce = useReducedMotion();
 
   return (
-    <div ref={ref} className="flex flex-wrap items-start justify-center gap-0">
-      {FLOW_STEPS.map((step, i) => {
-        const Icon = step.icon;
-        const isLast = i === FLOW_STEPS.length-1;
-        return (
-          <div key={step.label} className="flex items-center">
-            <motion.div className="flex flex-col items-center gap-2"
-              initial={{ opacity:0, scale:0.65 }}
-              animate={inView ? { opacity:1, scale:1 } : {}}
-              transition={{ ...SPRING, delay:shouldReduce?0:0.18+i*0.22 }}>
+    <div ref={ref}>
 
-              <motion.div className="relative flex h-16 w-16 items-center justify-center rounded-2xl"
-                style={{ background:`${step.color}18`, border:`1px solid ${step.color}40` }}
-                animate={inView && !shouldReduce ? {
-                  boxShadow:[`0 0 0px ${step.color}00`,`0 0 32px ${step.color}65`,`0 0 14px ${step.color}30`,`0 0 32px ${step.color}65`,`0 0 0px ${step.color}00`],
-                } : {}}
-                transition={{ duration:2.6, repeat:Infinity, delay:0.5+i*0.5 }}>
-                {isLast && (
-                  <motion.div className="absolute inset-0 rounded-2xl"
-                    style={{ border:`1px solid ${step.color}55` }}
-                    animate={inView && !shouldReduce ? { scale:[1,1.38,1], opacity:[0.55,0,0.55] } : {}}
-                    transition={{ duration:2, repeat:Infinity, delay:1.5 }} />
-                )}
-                <Icon size={24} style={{ color:step.color }} aria-hidden="true" />
-              </motion.div>
-
-              <motion.div className="text-center"
-                initial={{ opacity:0 }} animate={inView ? { opacity:1 } : {}}
-                transition={{ delay:shouldReduce?0:0.36+i*0.22 }}>
-                <p className="text-sm font-bold text-white/85">{step.label}</p>
-                <p className="text-xs text-white/42">{step.desc}</p>
-              </motion.div>
-            </motion.div>
-
-            {!isLast && (
-              <motion.div className="mx-2 mb-6 flex items-center"
-                initial={{ opacity:0, scaleX:0 }} animate={inView ? { opacity:1, scaleX:1 } : {}}
-                transition={{ delay:shouldReduce?0:0.36+i*0.22, duration:0.28 }}
-                style={{ transformOrigin:"left" }}>
-                <div className="relative h-px w-14 overflow-hidden"
-                  style={{ background:`linear-gradient(90deg,${step.color}40,${FLOW_STEPS[i+1].color}40)` }}>
-                  {inView && !shouldReduce && (
-                    <motion.div className="absolute inset-y-0 w-6 rounded-full"
-                      style={{ background:`linear-gradient(90deg,transparent,${step.color},transparent)` }}
-                      animate={{ x:[-24,56] }}
-                      transition={{ duration:1.1, repeat:Infinity, ease:"linear", delay:0.6+i*0.38 }} />
-                  )}
+      {/* ── Mobile: vertical stack ── */}
+      <div className="flex flex-col items-stretch gap-0 sm:hidden">
+        {FLOW_STEPS.map((step, i) => {
+          const Icon = step.icon;
+          const isLast = i === FLOW_STEPS.length - 1;
+          return (
+            <div key={step.label} className="flex flex-col items-center">
+              <motion.div
+                className="flex w-full items-center gap-4 rounded-2xl px-5 py-4"
+                style={{ background:`${step.color}0d`, border:`1px solid ${step.color}28` }}
+                initial={{ opacity:0, x:-18 }}
+                animate={inView ? { opacity:1, x:0 } : {}}
+                transition={{ ...SPRING, delay:shouldReduce?0:0.14+i*0.16 }}>
+                <motion.div
+                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl"
+                  style={{ background:`${step.color}18`, border:`1px solid ${step.color}40` }}
+                  animate={inView && !shouldReduce ? {
+                    boxShadow:[`0 0 0px ${step.color}00`,`0 0 20px ${step.color}60`,`0 0 0px ${step.color}00`],
+                  } : {}}
+                  transition={{ duration:2.6, repeat:Infinity, delay:0.5+i*0.5 }}>
+                  <Icon size={20} style={{ color:step.color }} aria-hidden="true" />
+                </motion.div>
+                <div>
+                  <p className="text-sm font-bold text-white/90">{step.label}</p>
+                  <p className="text-xs text-white/45">{step.desc}</p>
                 </div>
-                <ArrowRight size={13} style={{ color:`${FLOW_STEPS[i+1].color}55` }} className="-ml-1" aria-hidden="true" />
+                <span className="ml-auto text-xs font-bold tabular-nums" style={{ color:step.color }}>
+                  0{i+1}
+                </span>
               </motion.div>
-            )}
-          </div>
-        );
-      })}
+
+              {!isLast && (
+                <motion.div
+                  className="flex flex-col items-center py-1"
+                  initial={{ opacity:0 }} animate={inView ? { opacity:1 } : {}}
+                  transition={{ delay:shouldReduce?0:0.28+i*0.16 }}>
+                  <div className="h-5 w-px" style={{ background:`linear-gradient(to bottom,${step.color}50,${FLOW_STEPS[i+1].color}50)` }} />
+                  <ArrowRight size={11} style={{ color:`${FLOW_STEPS[i+1].color}60`, transform:"rotate(90deg)" }} aria-hidden="true" />
+                </motion.div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+
+      {/* ── Desktop: horizontal flow ── */}
+      <div className="hidden sm:flex flex-wrap items-start justify-center gap-0">
+        {FLOW_STEPS.map((step, i) => {
+          const Icon = step.icon;
+          const isLast = i === FLOW_STEPS.length-1;
+          return (
+            <div key={step.label} className="flex items-center">
+              <motion.div className="flex flex-col items-center gap-2"
+                initial={{ opacity:0, scale:0.65 }}
+                animate={inView ? { opacity:1, scale:1 } : {}}
+                transition={{ ...SPRING, delay:shouldReduce?0:0.18+i*0.22 }}>
+
+                <motion.div className="relative flex h-16 w-16 items-center justify-center rounded-2xl"
+                  style={{ background:`${step.color}18`, border:`1px solid ${step.color}40` }}
+                  animate={inView && !shouldReduce ? {
+                    boxShadow:[`0 0 0px ${step.color}00`,`0 0 32px ${step.color}65`,`0 0 14px ${step.color}30`,`0 0 32px ${step.color}65`,`0 0 0px ${step.color}00`],
+                  } : {}}
+                  transition={{ duration:2.6, repeat:Infinity, delay:0.5+i*0.5 }}>
+                  {isLast && (
+                    <motion.div className="absolute inset-0 rounded-2xl"
+                      style={{ border:`1px solid ${step.color}55` }}
+                      animate={inView && !shouldReduce ? { scale:[1,1.38,1], opacity:[0.55,0,0.55] } : {}}
+                      transition={{ duration:2, repeat:Infinity, delay:1.5 }} />
+                  )}
+                  <Icon size={24} style={{ color:step.color }} aria-hidden="true" />
+                </motion.div>
+
+                <motion.div className="text-center"
+                  initial={{ opacity:0 }} animate={inView ? { opacity:1 } : {}}
+                  transition={{ delay:shouldReduce?0:0.36+i*0.22 }}>
+                  <p className="text-sm font-bold text-white/85">{step.label}</p>
+                  <p className="text-xs text-white/42">{step.desc}</p>
+                </motion.div>
+              </motion.div>
+
+              {!isLast && (
+                <motion.div className="mx-2 mb-6 flex items-center"
+                  initial={{ opacity:0, scaleX:0 }} animate={inView ? { opacity:1, scaleX:1 } : {}}
+                  transition={{ delay:shouldReduce?0:0.36+i*0.22, duration:0.28 }}
+                  style={{ transformOrigin:"left" }}>
+                  <div className="relative h-px w-14 overflow-hidden"
+                    style={{ background:`linear-gradient(90deg,${step.color}40,${FLOW_STEPS[i+1].color}40)` }}>
+                    {inView && !shouldReduce && (
+                      <motion.div className="absolute inset-y-0 w-6 rounded-full"
+                        style={{ background:`linear-gradient(90deg,transparent,${step.color},transparent)` }}
+                        animate={{ x:[-24,56] }}
+                        transition={{ duration:1.1, repeat:Infinity, ease:"linear", delay:0.6+i*0.38 }} />
+                    )}
+                  </div>
+                  <ArrowRight size={13} style={{ color:`${FLOW_STEPS[i+1].color}55` }} className="-ml-1" aria-hidden="true" />
+                </motion.div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+
     </div>
   );
 }
@@ -1309,10 +1359,10 @@ function SolutionSection() {
         </FadeIn>
 
         <FadeIn delay={0.1}>
-          <GlassCard className="p-10 sm:p-16" accentColor="rgba(240,165,0,0.70)" glowColor="rgba(240,165,0,0.18)" style={{ border: "1px solid rgba(240,165,0,0.22)", boxShadow: "0 0 40px rgba(240,165,0,0.10), 0 4px 32px rgba(0,0,0,0.55), inset 0 0 0 1px rgba(255,255,255,0.04)" }}>
+          <GlassCard className="p-6 sm:p-10 lg:p-16" accentColor="rgba(240,165,0,0.70)" glowColor="rgba(240,165,0,0.18)" style={{ border: "1px solid rgba(240,165,0,0.22)", boxShadow: "0 0 40px rgba(240,165,0,0.10), 0 4px 32px rgba(0,0,0,0.55), inset 0 0 0 1px rgba(255,255,255,0.04)" }}>
             <SolutionPipeline />
             <div className="mt-8 flex justify-center">
-              <p className="rounded-full px-6 py-2.5 text-center text-sm text-white/55" style={{ border: "1px solid rgba(240,165,0,0.30)", background: "rgba(240,165,0,0.05)", boxShadow: "0 0 14px rgba(240,165,0,0.14)" }}>
+              <p className="rounded-full px-4 py-2.5 text-center text-xs sm:text-sm text-white/55" style={{ border: "1px solid rgba(240,165,0,0.30)", background: "rgba(240,165,0,0.05)", boxShadow: "0 0 14px rgba(240,165,0,0.14)" }}>
                 One unified system. Zero fragmentation. Full pipeline intelligence.
               </p>
             </div>
