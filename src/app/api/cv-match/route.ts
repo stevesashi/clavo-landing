@@ -7,13 +7,10 @@ async function extractTextFromFile(file: File): Promise<string> {
   const filename = file.name.toLowerCase();
 
   if (filename.endsWith(".pdf")) {
-    // pdf-parse v2.x uses a class-based API — PDFParse({ data: buffer })
     // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const { PDFParse } = require("pdf-parse");
-    const parser = new PDFParse({ data: buffer });
-    const result = await parser.getText();
-    await parser.destroy();
-    const text = result.text as string;
+    const pdfParse = require("pdf-parse");
+    const data = await pdfParse(buffer);
+    const text = data.text as string;
     console.log(`[cv-match] PDF extracted — ${text.length} chars`);
     return text;
   }
@@ -170,8 +167,8 @@ async function getAIAnalysis(
   scores: ScoreBreakdown
 ): Promise<AIAnalysis> {
   const apiKey = process.env.ANTHROPIC_API_KEY;
-  if (!apiKey) {
-    console.warn("ANTHROPIC_API_KEY not set — using deterministic fallback analysis");
+  if (!apiKey || apiKey.startsWith("your_") || apiKey === "sk-ant-placeholder") {
+    console.warn("ANTHROPIC_API_KEY not configured — using deterministic fallback analysis");
     return buildFallbackAnalysis(cvText, jdText, scores);
   }
 
