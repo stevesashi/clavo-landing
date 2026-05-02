@@ -994,7 +994,7 @@ export default function FeaturesSection() {
                   }}/>
 
                   {/* Main 2-col grid: copy left | visual right */}
-                  <div style={{ display: "grid", gridTemplateColumns: "45% 55%", gap: 0, flex: 1, minHeight: 0 }}>
+                  <div className="features-inner-grid" style={{ display: "grid", gridTemplateColumns: "45% 55%", gap: 0, flex: 1, minHeight: 0 }}>
 
                     {/* Left: copy — owns its own padding */}
                     <div style={{
@@ -1028,7 +1028,7 @@ export default function FeaturesSection() {
                     </div>
 
                     {/* Right: visual fills edge to edge */}
-                    <div style={{
+                    <div className="features-visual" style={{
                       overflow: "hidden",
                       borderLeft: `1px solid ${active.color}20`,
                       display: "flex",

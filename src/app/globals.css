@@ -312,4 +312,6 @@ img {
   }
   .features-tab-grid > div:first-child::-webkit-scrollbar { display: none; }
   .features-preview-panel { min-height: unset !important; }
+  .features-inner-grid { grid-template-columns: 1fr !important; }
+  .features-visual { display: none !important; }
 }
