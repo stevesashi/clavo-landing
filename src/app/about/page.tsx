@@ -1556,7 +1556,6 @@ export default function AboutPage() {
         </div>
         <CompetitorTable />
         <AIPositionSection />
-        <CTASection />
       </main>
     </>
   );
