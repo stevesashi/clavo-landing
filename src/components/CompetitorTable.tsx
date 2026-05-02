@@ -147,7 +147,7 @@ export default function CompetitorTable() {
         background: "linear-gradient(to top, #030608, transparent)", pointerEvents: "none",
       }} />
 
-      <div style={{ position: "relative", zIndex: 10, maxWidth: 1300, margin: "0 auto", padding: "0 32px" }}>
+      <div className="comp-outer" style={{ position: "relative", zIndex: 10, maxWidth: 1300, margin: "0 auto", padding: "0 32px" }}>
 
         {/* Header */}
         <div style={{ textAlign: "center", marginBottom: 60 }}>
@@ -182,14 +182,14 @@ export default function CompetitorTable() {
             background: "linear-gradient(90deg, transparent, rgba(240,165,0,0.65) 50%, transparent)",
           }} />
 
-          <div style={{ overflowX: "auto" }}>
-            <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 900 }}>
+          <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch" } as React.CSSProperties}>
+            <table className="comp-table" style={{ width: "100%", borderCollapse: "collapse", minWidth: 900 }}>
               <thead>
                 <tr style={{ background: "rgba(240,165,0,0.06)", borderBottom: "1px solid rgba(240,165,0,0.18)" }}>
-                  <th style={{ padding: "18px 20px", textAlign: "left", fontSize: 12, fontWeight: 700, color: "rgba(255,255,255,0.5)", letterSpacing: 1, textTransform: "uppercase", width: "34%" }}>
+                  <th className="comp-feat-col" style={{ padding: "18px 20px", textAlign: "left", fontSize: 12, fontWeight: 700, color: "rgba(255,255,255,0.5)", letterSpacing: 1, textTransform: "uppercase", width: "34%" }}>
                     Feature
                   </th>
-                  <th style={{ padding: "18px 12px", textAlign: "center", fontSize: 13, fontWeight: 800, color: "#f0a500", letterSpacing: 0.5, background: "rgba(240,165,0,0.08)", width: "11%" }}>
+                  <th className="comp-clavo-col" style={{ padding: "18px 12px", textAlign: "center", fontSize: 13, fontWeight: 800, color: "#f0a500", letterSpacing: 0.5, background: "rgba(240,165,0,0.08)", width: "11%" }}>
                     Clavo AI
                   </th>
                   <th style={{ padding: "18px 12px", textAlign: "center", fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.45)", width: "11%" }}>HireVue</th>
@@ -205,10 +205,10 @@ export default function CompetitorTable() {
                     key={i}
                     style={{ borderBottom: i < features.length - 1 ? "1px solid rgba(255,255,255,0.035)" : "none" }}
                   >
-                    <td style={{ padding: "15px 20px", fontSize: 13, color: "rgba(255,255,255,0.82)", fontWeight: 500 }}>
+                    <td className="comp-feat-col" style={{ padding: "15px 20px", fontSize: 13, color: "rgba(255,255,255,0.82)", fontWeight: 500 }}>
                       {f.name}
                     </td>
-                    <td style={{ padding: "15px 12px", textAlign: "center", background: "rgba(240,165,0,0.03)" }}>
+                    <td className="comp-clavo-col" style={{ padding: "15px 12px", textAlign: "center", background: "rgba(240,165,0,0.03)" }}>
                       <Cell value={f.clavo} />
                     </td>
                     <td style={{ padding: "15px 12px", textAlign: "center" }}><Cell value={f.hirevue} /></td>
