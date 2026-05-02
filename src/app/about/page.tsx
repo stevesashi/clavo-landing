@@ -1309,10 +1309,10 @@ function SolutionSection() {
         </FadeIn>
 
         <FadeIn delay={0.1}>
-          <GlassCard className="p-10 sm:p-16" accentColor="rgba(167,139,250,0.65)">
+          <GlassCard className="p-10 sm:p-16" accentColor="rgba(240,165,0,0.70)" glowColor="rgba(240,165,0,0.18)" style={{ border: "1px solid rgba(240,165,0,0.22)", boxShadow: "0 0 40px rgba(240,165,0,0.10), 0 4px 32px rgba(0,0,0,0.55), inset 0 0 0 1px rgba(255,255,255,0.04)" }}>
             <SolutionPipeline />
             <div className="mt-8 flex justify-center">
-              <p className="rounded-full border border-white/[0.07] bg-white/[0.03] px-6 py-2.5 text-center text-sm text-white/45">
+              <p className="rounded-full px-6 py-2.5 text-center text-sm text-white/55" style={{ border: "1px solid rgba(240,165,0,0.30)", background: "rgba(240,165,0,0.05)", boxShadow: "0 0 14px rgba(240,165,0,0.14)" }}>
                 One unified system. Zero fragmentation. Full pipeline intelligence.
               </p>
             </div>
