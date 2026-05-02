@@ -1189,7 +1189,7 @@ function ProblemSection() {
           <SectionLabel>The Problem</SectionLabel>
           <h2 id="problem-heading" className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl" style={{ fontWeight:800, color:"#fff", letterSpacing:"-0.02em", lineHeight:1.1 }}>
             Hiring Today{" "}
-            <span className="bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">is Broken</span>
+            <span style={{ color: "#f0a500" }}>is Broken</span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl" style={{ fontFamily:"var(--font-inter), Inter, sans-serif", fontSize:17, lineHeight:1.7, color:"rgba(255,255,255,0.55)", fontWeight:400 }}>Most hiring teams are working against their tools — not with them.</p>
         </FadeIn>
