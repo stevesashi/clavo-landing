@@ -681,9 +681,9 @@ export default function ForensicIntelligenceSection() {
               <PipelineBar
                 label="2 roles"
                 value="2 Roles Filled"
-                icon={<span style={{ color: "#4ade80" }}>✓</span>}
+                icon={<span style={{ color: "#f0a500" }}>✓</span>}
                 pct={40}
-                color="linear-gradient(90deg, #4ade80, #22c55e)"
+                color="linear-gradient(90deg, #f0a500, #d97706)"
                 delay={0.22}
               />
               <PipelineBar

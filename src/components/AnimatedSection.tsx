@@ -32,9 +32,9 @@ export default function AnimatedSection({ children, delay = 0, direction = "up" 
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.15 }}
+      viewport={{ once: true, amount: 0.05, margin: "0px 0px -50px 0px" }}
       transition={{
-        duration: 0.8,
+        duration: 0.5,
         delay,
         ease: [0.25, 0.1, 0.25, 1],
       }}

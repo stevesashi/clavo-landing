@@ -6,7 +6,6 @@ import ForensicIntelligenceSection from "@/components/sections/ForensicIntellige
 import TrustBar from "@/components/sections/TrustBar";
 import MetricsSection from "@/components/sections/MetricsSection";
 import DemoSection from "@/components/sections/DemoSection";
-import AIScreeningDemo from "@/components/sections/AIScreeningDemo";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import CTASection from "@/components/sections/CTASection";
 import StickyCTA from "@/components/layout/StickyCTA";
@@ -95,8 +94,6 @@ export default function Home() {
       {/* ── Demo Video ──────────────────────────────────────────────────── */}
       <CinematicWrap><DemoSection /></CinematicWrap>
 
-      {/* ── Interactive AI Screening ─────────────────────────────────────── */}
-      <CinematicWrap><AIScreeningDemo /></CinematicWrap>
 
 
       {/* ── Testimonials + Case Study + Social Proof ────────────────────── */}
