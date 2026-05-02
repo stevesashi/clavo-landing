@@ -3,24 +3,25 @@ import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const features = [
-  { name: "AI CV Screening", clavo: true, hirevue: true, eightfold: true, zenhr: false, bayzat: false, jadeer: true },
-  { name: "AI Video Interviews 24/7", clavo: true, hirevue: true, eightfold: false, zenhr: false, bayzat: false, jadeer: "limited" },
-  { name: "360° Behavioral Reports", clavo: true, hirevue: "limited", eightfold: "limited", zenhr: false, bayzat: false, jadeer: false },
-  { name: "Nationalization Compliance Tracking", clavo: true, hirevue: false, eightfold: false, zenhr: "limited", bayzat: "limited", jadeer: false },
-  { name: "Penalty Calculator (Nafis/Qiwa)", clavo: true, hirevue: false, eightfold: false, zenhr: false, bayzat: false, jadeer: false },
-  { name: "Government Report Auto-Export", clavo: true, hirevue: false, eightfold: false, zenhr: "limited", bayzat: "limited", jadeer: false },
-  { name: "Live AI Recruiter Co-Pilot", clavo: true, hirevue: false, eightfold: false, zenhr: false, bayzat: false, jadeer: false },
-  { name: "Smart Note Taking + Insights", clavo: true, hirevue: "limited", eightfold: false, zenhr: false, bayzat: false, jadeer: false },
-  { name: "GCC Talent Market Mapping", clavo: true, hirevue: false, eightfold: "limited", zenhr: false, bayzat: false, jadeer: "limited" },
-  { name: "WhatsApp Candidate Integration", clavo: true, hirevue: false, eightfold: false, zenhr: false, bayzat: true, jadeer: true },
-  { name: "Built for GCC Region", clavo: true, hirevue: false, eightfold: false, zenhr: true, bayzat: true, jadeer: true },
-  { name: "Transparent Pricing (no $35K+ contracts)", clavo: true, hirevue: false, eightfold: false, zenhr: true, bayzat: true, jadeer: true },
+  { name: "AI CV Screening", clavo: true, hirevue: true, eightfold: true, paradox: "limited", workable: true, manatal: true },
+  { name: "AI Video Interviews 24/7", clavo: true, hirevue: true, eightfold: false, paradox: false, workable: false, manatal: false },
+  { name: "360° Behavioral Reports", clavo: true, hirevue: "limited", eightfold: "limited", paradox: false, workable: false, manatal: false },
+  { name: "Nationalization Compliance Tracking", clavo: true, hirevue: false, eightfold: false, paradox: false, workable: false, manatal: false },
+  { name: "Penalty Calculator (Nafis/Qiwa)", clavo: true, hirevue: false, eightfold: false, paradox: false, workable: false, manatal: false },
+  { name: "Government Report Auto-Export", clavo: true, hirevue: false, eightfold: false, paradox: false, workable: false, manatal: false },
+  { name: "Live AI Recruiter Co-Pilot", clavo: true, hirevue: false, eightfold: false, paradox: "limited", workable: false, manatal: false },
+  { name: "Smart Note Taking + Insights", clavo: true, hirevue: "limited", eightfold: false, paradox: false, workable: false, manatal: false },
+  { name: "GCC Talent Market Mapping", clavo: true, hirevue: false, eightfold: "limited", paradox: false, workable: false, manatal: "limited" },
+  { name: "WhatsApp Candidate Integration", clavo: true, hirevue: false, eightfold: false, paradox: true, workable: "limited", manatal: true },
+  { name: "Built for GCC Region", clavo: true, hirevue: false, eightfold: false, paradox: false, workable: "limited", manatal: "limited" },
+  { name: "Annual Pricing", clavo: "$14K", hirevue: "$35K+", eightfold: "$50K+", paradox: "$30K+", workable: "$5K+", manatal: "$2K+" },
 ];
 
 const Cell = ({ value }: { value: boolean | string }) => {
-  if (value === true) return <span style={{ color: "#f0a500", fontSize: 18, fontWeight: 700 }}>✓</span>;
+  if (value === true) return <span style={{ color: "#a78bfa", fontSize: 18, fontWeight: 700 }}>✓</span>;
   if (value === "limited") return <span style={{ color: "#fbbf24", fontSize: 11, fontWeight: 600 }}>Partial</span>;
-  return <span style={{ color: "rgba(255,255,255,0.2)", fontSize: 18 }}>—</span>;
+  if (value === false) return <span style={{ color: "rgba(255,255,255,0.2)", fontSize: 18 }}>—</span>;
+  return <span style={{ color: "rgba(255,255,255,0.85)", fontSize: 13, fontWeight: 700 }}>{value}</span>;
 };
 
 export default function CompetitorTable() {
@@ -190,9 +191,9 @@ export default function CompetitorTable() {
                   </th>
                   <th style={{ padding: "18px 12px", textAlign: "center", fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.45)" }}>HireVue</th>
                   <th style={{ padding: "18px 12px", textAlign: "center", fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.45)" }}>Eightfold AI</th>
-                  <th style={{ padding: "18px 12px", textAlign: "center", fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.45)" }}>ZenHR</th>
-                  <th style={{ padding: "18px 12px", textAlign: "center", fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.45)" }}>Bayzat</th>
-                  <th style={{ padding: "18px 12px", textAlign: "center", fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.45)" }}>Jadeer.ai</th>
+                  <th style={{ padding: "18px 12px", textAlign: "center", fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.45)" }}>Paradox</th>
+                  <th style={{ padding: "18px 12px", textAlign: "center", fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.45)" }}>Workable</th>
+                  <th style={{ padding: "18px 12px", textAlign: "center", fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.45)" }}>Manatal</th>
                 </tr>
               </thead>
               <tbody>
@@ -209,9 +210,9 @@ export default function CompetitorTable() {
                     </td>
                     <td style={{ padding: "15px 12px", textAlign: "center" }}><Cell value={f.hirevue} /></td>
                     <td style={{ padding: "15px 12px", textAlign: "center" }}><Cell value={f.eightfold} /></td>
-                    <td style={{ padding: "15px 12px", textAlign: "center" }}><Cell value={f.zenhr} /></td>
-                    <td style={{ padding: "15px 12px", textAlign: "center" }}><Cell value={f.bayzat} /></td>
-                    <td style={{ padding: "15px 12px", textAlign: "center" }}><Cell value={f.jadeer} /></td>
+                    <td style={{ padding: "15px 12px", textAlign: "center" }}><Cell value={f.paradox} /></td>
+                    <td style={{ padding: "15px 12px", textAlign: "center" }}><Cell value={f.workable} /></td>
+                    <td style={{ padding: "15px 12px", textAlign: "center" }}><Cell value={f.manatal} /></td>
                   </tr>
                 ))}
               </tbody>
@@ -228,6 +229,10 @@ export default function CompetitorTable() {
         <div style={{ textAlign: "center", marginTop: 32, fontSize: 13, color: "rgba(255,255,255,0.35)" }}>
           Other tools track your compliance gap.{" "}
           <span style={{ color: "#f0a500", fontWeight: 600 }}>Clavo closes it.</span>
+        </div>
+
+        <div style={{ textAlign: "center", marginTop: 16, fontSize: 11, color: "rgba(255,255,255,0.35)", fontStyle: "italic" }}>
+          Pricing reflects approximate annual contract starting points based on publicly reported data. Actual pricing varies by company size and configuration.
         </div>
       </div>
     </section>
