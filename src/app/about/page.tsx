@@ -13,6 +13,7 @@ import {
   Target, Users, Layers, Shield, Sparkles, TrendingUp,
   Clock, FileText, Video, Brain, ChevronDown,
 } from "lucide-react";
+import CompetitorTable from "@/components/CompetitorTable";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -1554,6 +1555,7 @@ export default function AboutPage() {
           <SolutionSection />
         </div>
         <ImpactSection />
+        <CompetitorTable />
         <AIPositionSection />
         <CTASection />
       </main>
