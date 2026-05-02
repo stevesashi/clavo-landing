@@ -916,8 +916,7 @@ export default function CapabilitiesSection() {
                     key={`card-${activeIndex}`}
                     className="relative rounded-2xl p-7"
                     style={{
-                      background: "rgba(7,13,21,0.88)",
-                      backdropFilter: "blur(24px)",
+                      background: "rgba(7,13,21,0.96)",
                       // border is a CSS shorthand — keep it in style, not animate,
                       // so Framer Motion never tries to interpolate it.
                       border: `1px solid ${active.color}20`,

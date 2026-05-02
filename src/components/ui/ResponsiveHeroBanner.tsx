@@ -74,7 +74,7 @@ const ResponsiveHeroBanner: React.FC<ResponsiveHeroBannerProps> = ({
         resize();
         window.addEventListener('resize', resize);
 
-        const particleCount = window.innerWidth < 768 ? 8 : 20;
+        const particleCount = window.innerWidth < 768 ? 4 : 8;
         const particles = Array.from({ length: particleCount }, () => ({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
@@ -85,26 +85,37 @@ const ResponsiveHeroBanner: React.FC<ResponsiveHeroBannerProps> = ({
         }));
 
         let animId: number;
+        let isVisible = false;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => { isVisible = entry.isIntersecting; },
+            { threshold: 0 }
+        );
+        observer.observe(canvas);
+
         const animate = () => {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => {
-                p.y -= p.speedY;
-                p.x += p.speedX;
-                if (p.y < 0) {
-                    p.y = canvas.height;
-                    p.x = Math.random() * canvas.width;
-                }
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(167, 139, 250, ${p.opacity})`;
-                ctx.fill();
-            });
+            if (isVisible) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(p => {
+                    p.y -= p.speedY;
+                    p.x += p.speedX;
+                    if (p.y < 0) {
+                        p.y = canvas.height;
+                        p.x = Math.random() * canvas.width;
+                    }
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(167, 139, 250, ${p.opacity})`;
+                    ctx.fill();
+                });
+            }
             animId = requestAnimationFrame(animate);
         };
         animate();
 
         return () => {
             cancelAnimationFrame(animId);
+            observer.disconnect();
             window.removeEventListener('resize', resize);
         };
     }, []);
@@ -130,7 +141,6 @@ const ResponsiveHeroBanner: React.FC<ResponsiveHeroBannerProps> = ({
                 alt=""
                 className="w-full h-full object-cover absolute top-0 right-0 bottom-0 left-0"
                 style={{
-                    animation: "kenBurns 20s ease-in-out infinite",
                     transformOrigin: "center center",
                 }}
             />
@@ -160,7 +170,6 @@ const ResponsiveHeroBanner: React.FC<ResponsiveHeroBannerProps> = ({
                 className="pointer-events-none absolute inset-0"
                 style={{
                     background: "radial-gradient(ellipse at 85% 20%, rgba(139,92,246,0.15) 0%, transparent 50%)",
-                    animation: "glowPulse 6s ease-in-out infinite",
                 }}
             />
 

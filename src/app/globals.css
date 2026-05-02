@@ -145,17 +145,9 @@ body::after {
 
 /* ── FeaturesSection background animations ──────────────────────────────────── */
 
-@keyframes kenBurns3 {
-  0%   { transform: scale(1)    translateX(0px)   translateY(0px); }
-  33%  { transform: scale(1.06) translateX(-15px) translateY(-10px); }
-  66%  { transform: scale(1.03) translateX(10px)  translateY(-5px); }
-  100% { transform: scale(1)    translateX(0px)   translateY(0px); }
-}
+@keyframes kenBurns3 { from {} to {} }
 
-@keyframes glowPulse3 {
-  0%, 100% { opacity: 0.5; }
-  50%       { opacity: 1; }
-}
+@keyframes glowPulse3 { from {} to {} }
 
 @keyframes shimmerCard {
   0%   { transform: translateX(-100%); }
@@ -164,35 +156,15 @@ body::after {
 
 /* ── ScrollSection background animations ────────────────────────────────────── */
 
-@keyframes kenBurns2 {
-  0%   { transform: scale(1)    translateX(0px)   translateY(0px); }
-  25%  { transform: scale(1.03) translateX(-10px) translateY(-8px); }
-  50%  { transform: scale(1.04) translateX(-18px) translateY(5px); }
-  75%  { transform: scale(1.02) translateX(8px)   translateY(-5px); }
-  100% { transform: scale(1)    translateX(0px)   translateY(0px); }
-}
+@keyframes kenBurns2 { from {} to {} }
 
-@keyframes glowPulse2 {
-  0%, 100% { opacity: 0.5; }
-  50%       { opacity: 1; }
-}
+@keyframes glowPulse2 { from {} to {} }
 
-@keyframes kenBurnsForensic {
-  0%   { transform: scale(1)    translateY(0px); }
-  50%  { transform: scale(1.06) translateY(-15px); }
-  100% { transform: scale(1)    translateY(0px); }
-}
+@keyframes kenBurnsForensic { from {} to {} }
 
-@keyframes kenBurnsTestimonials {
-  0%   { transform: scale(1) translateX(0); }
-  50%  { transform: scale(1.05) translateX(-10px); }
-  100% { transform: scale(1) translateX(0); }
-}
+@keyframes kenBurnsTestimonials { from {} to {} }
 
-@keyframes glowPulseTestimonials {
-  0%, 100% { opacity: 0.5; }
-  50%       { opacity: 1; }
-}
+@keyframes glowPulseTestimonials { from {} to {} }
 
 .font-instrument-serif {
   font-family: var(--font-instrument-serif), Georgia, serif;
@@ -214,18 +186,9 @@ h1, h2, h3 {
 
 /* ── About page section background animations ────────────────────────────── */
 
-@keyframes kenBurnsAbout1 {
-  0%, 100% { transform: scale(1) translate(0, 0); }
-  50% { transform: scale(1.08) translate(-15px, -10px); }
-}
-@keyframes kenBurnsAbout2 {
-  0%, 100% { transform: scale(1) translate(0, 0); }
-  50% { transform: scale(1.06) translate(10px, -8px); }
-}
-@keyframes kenBurnsAbout3 {
-  0%, 100% { transform: scale(1) translate(0, 0); }
-  50% { transform: scale(1.07) translate(-10px, 8px); }
-}
+@keyframes kenBurnsAbout1 { from {} to {} }
+@keyframes kenBurnsAbout2 { from {} to {} }
+@keyframes kenBurnsAbout3 { from {} to {} }
 
 /* ── About page lavender cloud animations ────────────────────────────────── */
 
@@ -319,4 +282,11 @@ h1, h2, h3 {
 
   /* Pricing modal full-width */
   .pricing-modal { border-radius: 1rem !important; margin: 0 0.75rem !important; }
+}
+
+/* ── GPU compositor hints ────────────────────────────────────────────────────── */
+
+img {
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }

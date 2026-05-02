@@ -362,7 +362,7 @@ export default function ForensicIntelligenceSection() {
     resize();
     window.addEventListener('resize', resize);
 
-    const drops = Array.from({ length: 25 }, () => ({
+    const drops = Array.from({ length: 18 }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
       length: Math.random() * 30 + 10,

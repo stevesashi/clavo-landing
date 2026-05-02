@@ -40,9 +40,7 @@ export default function StickyCTA() {
           <div
             className="pointer-events-auto relative flex w-full max-w-lg items-center gap-2 md:gap-3 rounded-xl md:rounded-2xl p-2 pl-3 md:p-3 md:pl-4"
             style={{
-              background: "rgba(5, 8, 10, 0.88)",
-              backdropFilter: "blur(24px)",
-              WebkitBackdropFilter: "blur(24px)",
+              background: "rgba(5, 8, 10, 0.96)",
               border: "1px solid rgba(255,255,255,0.08)",
               boxShadow: "0 0 40px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04) inset",
             }}

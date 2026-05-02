@@ -50,9 +50,7 @@ export default function DemoSection() {
         <motion.div
           className="relative overflow-hidden rounded-3xl border border-white/[0.08]"
           style={{
-            background: "rgba(8,14,20,0.80)",
-            backdropFilter: "blur(28px)",
-            WebkitBackdropFilter: "blur(28px)",
+            background: "rgba(8,14,20,0.96)",
             boxShadow: "0 0 80px rgba(124,58,237,0.15), 0 0 40px rgba(6,182,212,0.08), 0 8px 48px rgba(0,0,0,0.7)",
           }}
           initial={{ opacity: 0, y: 40, scale: 0.96 }}

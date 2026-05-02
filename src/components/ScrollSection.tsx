@@ -18,7 +18,7 @@ export default function ScrollSection() {
     resize();
     window.addEventListener("resize", resize);
 
-    const particles = Array.from({ length: 10 }, () => ({
+    const particles = Array.from({ length: 6 }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
       size: Math.random() * 2 + 1,

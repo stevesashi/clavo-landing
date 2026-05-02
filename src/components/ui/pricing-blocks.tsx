@@ -67,8 +67,6 @@ export default function ClavoPricingBlocks() {
           style={{
             background: "linear-gradient(155deg, #0d0f1e 0%, #161829 55%, #0d0f1e 100%)",
             border: "1px solid rgba(99,102,241,0.28)",
-            backdropFilter: "blur(24px)",
-            WebkitBackdropFilter: "blur(24px)",
             boxShadow: "0 0 0 1px rgba(99,102,241,0.06) inset, 0 8px 40px rgba(0,0,0,0.65), inset 0 0 60px rgba(99,102,241,0.05)",
           }}
           aria-label="Core plan"
@@ -185,8 +183,6 @@ export default function ClavoPricingBlocks() {
           style={{
             background: "linear-gradient(155deg, #081a12 0%, #0d2018 55%, #081a12 100%)",
             border: "1px solid rgba(16,185,129,0.28)",
-            backdropFilter: "blur(24px)",
-            WebkitBackdropFilter: "blur(24px)",
             boxShadow: "0 0 0 1px rgba(16,185,129,0.06) inset, 0 8px 40px rgba(0,0,0,0.65), inset 0 0 60px rgba(16,185,129,0.05)",
           }}
           aria-label="Enterprise plan — Custom pricing"

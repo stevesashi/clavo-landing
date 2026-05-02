@@ -153,7 +153,7 @@ export default function TestimonialsSection() {
     resize();
     window.addEventListener('resize', resize);
 
-    const stars = Array.from({ length: 18 }, () => ({
+    const stars = Array.from({ length: 12 }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
       size: Math.random() * 1.5 + 0.5,

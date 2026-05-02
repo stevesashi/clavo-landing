@@ -89,8 +89,6 @@ function ForestButton({ children }: { children: React.ReactNode }) {
           background: "linear-gradient(135deg, rgba(255,180,50,0.18) 0%, rgba(255,120,20,0.12) 100%)",
           border: "1px solid rgba(255,180,60,0.28)",
           boxShadow: "0 0 20px rgba(255,160,40,0.25)",
-          backdropFilter: "blur(12px)",
-          WebkitBackdropFilter: "blur(12px)",
           touchAction: "manipulation",
           display: "inline-flex",
         }}
@@ -129,9 +127,7 @@ function LanternCard({
     <div
       className={`relative overflow-hidden rounded-3xl border border-white/[0.08] ${className}`}
       style={{
-        background: "rgba(10,20,14,0.70)",
-        backdropFilter: "blur(12px)",
-        WebkitBackdropFilter: "blur(12px)",
+        background: "rgba(10,20,14,0.85)",
         boxShadow: `0 0 32px ${glowColor}, 0 8px 32px rgba(0,0,0,0.5)`,
       }}
     >
@@ -327,9 +323,7 @@ function Scene1Hook() {
               <div
                 className="relative overflow-hidden rounded-2xl border border-white/[0.08]"
                 style={{
-                  background: "rgba(10,18,14,0.75)",
-                  backdropFilter: "blur(12px)",
-                  WebkitBackdropFilter: "blur(12px)",
+                  background: "rgba(10,18,14,0.90)",
                   boxShadow: "0 0 32px rgba(255,180,50,0.12), 0 8px 32px rgba(0,0,0,0.5)",
                 }}
               >

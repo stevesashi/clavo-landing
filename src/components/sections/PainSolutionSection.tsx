@@ -113,9 +113,7 @@ export default function PainSolutionSection() {
           <motion.div
             className="relative overflow-hidden rounded-2xl border border-emerald-500/20 p-8"
             style={{
-              background: "rgba(4,18,12,0.75)",
-              backdropFilter: "blur(24px)",
-              WebkitBackdropFilter: "blur(24px)",
+              background: "rgba(4,18,12,0.90)",
               boxShadow: "0 0 50px rgba(52,211,153,0.09), 0 4px 32px rgba(0,0,0,0.5)",
             }}
             initial={{ opacity: 0, x: 40 }}

@@ -53,8 +53,6 @@ function GlassCard({ children, className = "", style, "aria-label": ariaLabel }:
       aria-label={ariaLabel}
       className={`relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] ${className}`}
       style={{
-        backdropFilter: "blur(24px)",
-        WebkitBackdropFilter: "blur(24px)",
         boxShadow:
           "0 0 0 1px rgba(255,255,255,0.06) inset, 0 8px 48px rgba(0,0,0,0.45), 0 1px 0 rgba(255,255,255,0.08) inset",
         ...style,
