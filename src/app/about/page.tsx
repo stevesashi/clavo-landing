@@ -1554,7 +1554,6 @@ export default function AboutPage() {
           <ProblemSection />
           <SolutionSection />
         </div>
-        <ImpactSection />
         <CompetitorTable />
         <AIPositionSection />
         <CTASection />
