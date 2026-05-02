@@ -14,11 +14,13 @@ const features = [
   { name: "GCC Talent Market Mapping", clavo: true, hirevue: false, eightfold: "limited", paradox: false, workable: false, manatal: "limited" },
   { name: "WhatsApp Candidate Integration", clavo: true, hirevue: false, eightfold: false, paradox: true, workable: "limited", manatal: true },
   { name: "Built for GCC Region", clavo: true, hirevue: false, eightfold: false, paradox: false, workable: "limited", manatal: "limited" },
-  { name: "Annual Pricing (5 seats)", clavo: "$14K", hirevue: "$35K+", eightfold: "$50K+", paradox: "$30K+", workable: "$5K+", manatal: "$2.1K" },
-  { name: "Per-User Cost", clavo: "Flat", hirevue: "Custom", eightfold: "Custom", paradox: "Custom", workable: "$166/mo", manatal: "$35/mo" },
+  { name: "Annual Pricing (5 seats)", clavo: "$14K", hirevue: "$35K+", eightfold: "$50K+", paradox: "$30K+", workable: "$5-6K", manatal: "$2.1K" },
+  { name: "Tools Needed to Match Clavo", clavo: "1", hirevue: "3+", eightfold: "3+", paradox: "3+", workable: "4+", manatal: "4+" },
+  { name: "Stops AED 108K/yr Penalty Risk", clavo: true, hirevue: false, eightfold: false, paradox: false, workable: false, manatal: false },
+  { name: "True Cost of Ownership*", clavo: "$14K", hirevue: "$50K+", eightfold: "$70K+", paradox: "$45K+", workable: "$30K+ + penalty risk", manatal: "$25K+ + penalty risk" },
 ];
 
-const Cell = ({ value }: { value: boolean | string }) => {
+const Cell = ({ value }: { value: boolean | string | number }) => {
   if (value === true) return <span style={{ color: "#a78bfa", fontSize: 18, fontWeight: 700 }}>✓</span>;
   if (value === "limited") return <span style={{ color: "#fbbf24", fontSize: 11, fontWeight: 600 }}>Partial</span>;
   if (value === false) return <span style={{ color: "rgba(255,255,255,0.2)", fontSize: 18 }}>—</span>;
@@ -232,8 +234,18 @@ export default function CompetitorTable() {
           <span style={{ color: "#f0a500", fontWeight: 600 }}>Clavo closes it.</span>
         </div>
 
-        <div style={{ textAlign: "center", marginTop: 16, fontSize: 11, color: "rgba(255,255,255,0.35)", fontStyle: "italic", maxWidth: 800, margin: "16px auto 0" }}>
-          Pricing reflects approximate annual contract starting points based on publicly reported data. Clavo uses flat team pricing — no per-user fees. Other platforms scale cost with team size. Actual pricing varies by company size and configuration.
+        <div style={{ textAlign: "center", marginTop: 16, fontSize: 12, color: "rgba(255,255,255,0.45)", maxWidth: 900, margin: "20px auto 0", lineHeight: 1.7 }}>
+          *True Cost of Ownership = base platform + tools needed to fill feature gaps (separate ATS, video interviewer, compliance tracker, reporting tool) + average annual penalty risk for non-compliant GCC companies (AED 108,000 / ~$29,400). Manatal and Workable look cheaper but require 4+ separate tools to match Clavo&apos;s coverage.
+        </div>
+
+        <div style={{ marginTop: 32, padding: 24, background: "rgba(167,139,250,0.06)", border: "1px solid rgba(167,139,250,0.2)", borderRadius: 16, textAlign: "center", maxWidth: 900, margin: "32px auto 0" }}>
+          <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: 1.5, color: "#a78bfa", marginBottom: 8, textTransform: "uppercase" }}>
+            Bottom Line
+          </div>
+          <div style={{ fontSize: 17, color: "rgba(255,255,255,0.85)", lineHeight: 1.6 }}>
+            The cheapest tool isn&apos;t the one with the lowest sticker price.
+            It&apos;s the one that replaces 4 tools, prevents AED 108K in penalties, and ships in one platform.
+          </div>
         </div>
       </div>
     </section>
