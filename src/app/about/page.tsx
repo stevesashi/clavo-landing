@@ -1393,54 +1393,50 @@ function ImpactSection() {
   );
 }
 
-// ─── SECTION 10 — AI POSITION (EMOTIONAL) ────────────────────────────────────
+// ─── SECTION 10 — EARLY ACCESS CTA ───────────────────────────────────────────
 
 function AIPositionSection() {
-  const shouldReduce = useReducedMotion();
   return (
-    <section aria-labelledby="ai-position-heading" className="relative z-10 px-4 py-10" style={{ background: "transparent", margin: 0, borderTop: "none", borderBottom: "none" }}>
-      <motion.div aria-hidden="true" className="pointer-events-none absolute rounded-full"
-        style={{ width:700, height:700, left:"50%", top:"50%", transform:"translate(-50%,-50%)", background:"radial-gradient(circle,rgba(124,58,237,0.09) 0%,transparent 70%)", filter:"blur(60px)" }}
-        animate={shouldReduce ? {} : { scale:[1,1.12,1], opacity:[0.7,1,0.7] }}
-        transition={{ duration:8, repeat:Infinity, ease:"easeInOut" }} />
-
-      <div className="relative mx-auto max-w-4xl text-center">
+    <section className="relative z-10 px-4 py-20" style={{ background: "transparent" }}>
+      <div className="relative mx-auto max-w-3xl text-center">
         <FadeIn>
-          <SectionLabel>Our Position on AI</SectionLabel>
-          <h2 id="ai-position-heading"
-            className="mb-5 text-4xl sm:text-5xl md:text-6xl lg:text-7xl"
-            style={{ fontWeight:800, color:"#fff", letterSpacing:"-0.02em", lineHeight:1.1, textShadow:"0 0 80px rgba(124,58,237,0.22)" }}>
-            AI + Recruiters.
-            <br />
-            <span className="bg-gradient-to-r from-purple-300 via-violet-200 to-cyan-300 bg-clip-text text-transparent">
-              Not AI vs Recruiters.
-            </span>
-          </h2>
-
-          {/* Animated underline */}
-          <div className="mb-8 flex justify-center">
-            <div className="relative h-0.5 w-64 overflow-hidden rounded-full" style={{ background:"rgba(255,255,255,0.06)" }}>
-              <div className="pulse-ul absolute inset-0 rounded-full" style={{ background:"linear-gradient(90deg,rgba(167,139,250,0.85),rgba(6,182,212,0.85))" }} />
-            </div>
+          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 2, color: "#a78bfa", marginBottom: 16, textTransform: "uppercase" }}>
+            Get Started
           </div>
-        </FadeIn>
-
-        <FadeIn delay={0.14}>
-          <motion.div
-            className="relative overflow-hidden rounded-2xl border border-white/[0.08] p-12"
-            style={{ background:"rgba(6,10,16,0.8)", backdropFilter:"blur(28px)", WebkitBackdropFilter:"blur(28px)" }}
-            animate={shouldReduce ? {} : { boxShadow:["0 4px 32px rgba(0,0,0,0.55),0 0 0px rgba(124,58,237,0)","0 4px 32px rgba(0,0,0,0.55),0 0 56px rgba(124,58,237,0.12)","0 4px 32px rgba(0,0,0,0.55),0 0 0px rgba(124,58,237,0)"] }}
-            transition={{ duration:4.5, repeat:Infinity, ease:"easeInOut" }}>
-            <span aria-hidden="true" className="absolute inset-x-0 top-0 h-px" style={{ background:"linear-gradient(90deg,transparent,rgba(167,139,250,0.65) 50%,transparent)" }} />
-            <p className="mb-7" style={{ fontFamily:"var(--font-inter), Inter, sans-serif", fontSize:17, lineHeight:1.7, color:"rgba(255,255,255,0.55)", fontWeight:400 }}>
-              Clavo is not built to replace recruiters. It is built to equip them — giving them the tools, insights, and speed needed to thrive in a rapidly changing hiring landscape.
-            </p>
-            <div className="mx-auto max-w-lg rounded-xl border border-purple-500/15 bg-purple-500/[0.06] px-8 py-6">
-              <p className="text-base font-semibold text-purple-200/72 leading-relaxed">
-                "This is not automation replacing people. This is intelligence empowering them."
-              </p>
-            </div>
-          </motion.div>
+          <h2 style={{ fontSize: "clamp(32px,4vw,52px)", fontWeight: 800, color: "#fff", lineHeight: 1.1, marginBottom: 20 }}>
+            Ready to hire smarter in the <span style={{ color: "#f0a500" }}>GCC?</span>
+          </h2>
+          <p style={{ fontSize: 17, color: "rgba(255,255,255,0.5)", lineHeight: 1.7, marginBottom: 40, maxWidth: 560, margin: "0 auto 40px" }}>
+            Join teams across Saudi Arabia, UAE, and the wider GCC already on the waitlist.
+          </p>
+          <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
+            <a
+              href="/book-demo"
+              style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                padding: "14px 32px", borderRadius: 12,
+                background: "#f0a500", color: "#000",
+                fontWeight: 700, fontSize: 15, textDecoration: "none",
+                boxShadow: "0 0 32px rgba(240,165,0,0.35)",
+                transition: "opacity 0.15s",
+              }}
+            >
+              Book a Demo
+            </a>
+            <a
+              href="/book-demo"
+              style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                padding: "14px 32px", borderRadius: 12,
+                border: "1px solid rgba(167,139,250,0.35)",
+                background: "rgba(167,139,250,0.07)", color: "#c4b5fd",
+                fontWeight: 600, fontSize: 15, textDecoration: "none",
+                transition: "opacity 0.15s",
+              }}
+            >
+              Join Early Access
+            </a>
+          </div>
         </FadeIn>
       </div>
     </section>
