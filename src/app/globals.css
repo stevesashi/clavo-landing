@@ -295,6 +295,14 @@ img {
   .hero-title { font-size: 28px !important; }
   .hero-buttons { flex-direction: column !important; }
 
+  /* Why Clavo hero — collapse 2-col layout on mobile */
+  .about-hero-grid {
+    grid-template-columns: 1fr !important;
+    padding: 0 !important;
+    gap: 32px !important;
+  }
+  .about-hero-right { display: none !important; }
+
   /* FeaturesSection — collapse desktop tab layout on mobile */
   .features-content-wrap { padding: 0 16px !important; }
   .features-tab-grid {

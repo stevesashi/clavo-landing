@@ -278,7 +278,7 @@ function HeroSection() {
       </div>
 
       <motion.div style={shouldReduce ? {} : { y:contentY }} className="relative z-10 w-full">
-        <div style={{
+        <div className="about-hero-grid" style={{
           display: "grid",
           gridTemplateColumns: "1.3fr 0.7fr",
           gap: 48,
@@ -328,7 +328,7 @@ function HeroSection() {
           </div>
 
           {/* RIGHT — 360° card */}
-          <div
+          <div className="about-hero-right"
             onClick={() => setReportOpen(true)}
             role="button"
             tabIndex={0}
