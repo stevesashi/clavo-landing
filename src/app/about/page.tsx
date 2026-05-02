@@ -1301,7 +1301,7 @@ function SolutionSection() {
           <SectionLabel>The Solution</SectionLabel>
           <h2 id="solution-heading" className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl" style={{ fontWeight:800, color:"#fff", letterSpacing:"-0.02em", lineHeight:1.1 }}>
             What{" "}
-            <span className="bg-gradient-to-r from-purple-300 to-cyan-300 bg-clip-text text-transparent">Clavo Changes</span>
+            <span style={{ color: "#f0a500" }}>Clavo Changes</span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl" style={{ fontFamily:"var(--font-inter), Inter, sans-serif", fontSize:17, lineHeight:1.7, color:"rgba(255,255,255,0.55)", fontWeight:400 }}>
             Clavo AI brings the entire hiring workflow into one intelligent system — from screening to interviews to analytics.
