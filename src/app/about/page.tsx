@@ -302,7 +302,7 @@ function HeroSection() {
               style={{ fontWeight:800, color:"#fff", letterSpacing:"-0.02em", lineHeight:1.1, textShadow:"0 0 80px rgba(124,58,237,0.2)" }}
               initial={{ opacity:0, y:36 }} animate={{ opacity:1, y:0 }} transition={{ ...SPRING, delay:0.2 }}>
               We Didn&apos;t Enter the Market.{" "}
-              <span className="bg-gradient-to-r from-purple-300 via-violet-200 to-cyan-300 bg-clip-text text-transparent">
+              <span style={{ color: "#f0a500" }}>
                 We Created It.
               </span>
             </motion.h1>
