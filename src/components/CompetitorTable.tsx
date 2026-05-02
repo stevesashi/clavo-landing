@@ -186,17 +186,17 @@ export default function CompetitorTable() {
             <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 900 }}>
               <thead>
                 <tr style={{ background: "rgba(240,165,0,0.06)", borderBottom: "1px solid rgba(240,165,0,0.18)" }}>
-                  <th style={{ padding: "18px 20px", textAlign: "left", fontSize: 12, fontWeight: 700, color: "rgba(255,255,255,0.5)", letterSpacing: 1, textTransform: "uppercase" }}>
+                  <th style={{ padding: "18px 20px", textAlign: "left", fontSize: 12, fontWeight: 700, color: "rgba(255,255,255,0.5)", letterSpacing: 1, textTransform: "uppercase", width: "34%" }}>
                     Feature
                   </th>
-                  <th style={{ padding: "18px 12px", textAlign: "center", fontSize: 13, fontWeight: 800, color: "#f0a500", letterSpacing: 0.5, background: "rgba(240,165,0,0.08)" }}>
+                  <th style={{ padding: "18px 12px", textAlign: "center", fontSize: 13, fontWeight: 800, color: "#f0a500", letterSpacing: 0.5, background: "rgba(240,165,0,0.08)", width: "11%" }}>
                     Clavo AI
                   </th>
-                  <th style={{ padding: "18px 12px", textAlign: "center", fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.45)" }}>HireVue</th>
-                  <th style={{ padding: "18px 12px", textAlign: "center", fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.45)" }}>Eightfold AI</th>
-                  <th style={{ padding: "18px 12px", textAlign: "center", fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.45)" }}>Paradox</th>
-                  <th style={{ padding: "18px 12px", textAlign: "center", fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.45)" }}>Workable</th>
-                  <th style={{ padding: "18px 12px", textAlign: "center", fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.45)" }}>Manatal</th>
+                  <th style={{ padding: "18px 12px", textAlign: "center", fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.45)", width: "11%" }}>HireVue</th>
+                  <th style={{ padding: "18px 12px", textAlign: "center", fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.45)", width: "11%" }}>Eightfold AI</th>
+                  <th style={{ padding: "18px 12px", textAlign: "center", fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.45)", width: "11%" }}>Paradox</th>
+                  <th style={{ padding: "18px 12px", textAlign: "center", fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.45)", width: "11%" }}>Workable</th>
+                  <th style={{ padding: "18px 12px", textAlign: "center", fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.45)", width: "11%" }}>Manatal</th>
                 </tr>
               </thead>
               <tbody>
