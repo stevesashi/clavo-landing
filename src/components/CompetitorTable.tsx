@@ -109,7 +109,7 @@ export default function CompetitorTable() {
         <div style={{
           position: "absolute", left: 0, top: "50%", transform: "translateY(-50%)",
           height: 480, width: 480, borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(240,165,0,0.07) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(167,139,250,0.09) 0%, transparent 70%)",
           filter: "blur(40px)",
         }} />
         <div style={{
@@ -147,11 +147,11 @@ export default function CompetitorTable() {
 
         {/* Header */}
         <div style={{ textAlign: "center", marginBottom: 60 }}>
-          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 2, color: "#f0a500", marginBottom: 14, textTransform: "uppercase" }}>
+          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 2, color: "#a78bfa", marginBottom: 14, textTransform: "uppercase" }}>
             Why Clavo
           </div>
           <h2 style={{ fontSize: "clamp(32px,4vw,52px)", fontWeight: 700, color: "#fff", lineHeight: 1.1, marginBottom: 16 }}>
-            Built Different. Built for the GCC.
+            <span style={{ color: "#c4b5fd" }}>Built Different.</span> Built for the GCC.
           </h2>
           <p style={{ fontSize: 17, color: "rgba(255,255,255,0.55)", maxWidth: 720, margin: "0 auto", lineHeight: 1.7 }}>
             Compare Clavo against the global giants and the GCC&apos;s top recruitment platforms.
