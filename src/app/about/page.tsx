@@ -1534,7 +1534,7 @@ export default function AboutPage() {
             }} />
             <div style={{
               position: "absolute", inset: 0,
-              background: "linear-gradient(135deg, rgba(88,28,220,0.55) 0%, rgba(124,58,237,0.45) 40%, rgba(167,139,250,0.35) 70%, rgba(196,181,253,0.2) 100%)",
+              background: "linear-gradient(135deg, rgba(240,165,0,0.5) 0%, rgba(251,191,36,0.4) 40%, rgba(212,147,10,0.3) 70%, rgba(254,215,170,0.18) 100%)",
               mixBlendMode: "color" as React.CSSProperties["mixBlendMode"],
             }} />
             <div style={{
