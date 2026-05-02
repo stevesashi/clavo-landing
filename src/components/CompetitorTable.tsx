@@ -151,7 +151,7 @@ export default function CompetitorTable() {
             Why Clavo
           </div>
           <h2 style={{ fontSize: "clamp(32px,4vw,52px)", fontWeight: 700, color: "#fff", lineHeight: 1.1, marginBottom: 16 }}>
-            <span style={{ color: "#c4b5fd" }}>Built Different.</span> Built for the GCC.
+            Built <span style={{ color: "#c4b5fd" }}>Different.</span> Built for the <span style={{ color: "#f0a500" }}>GCC.</span>
           </h2>
           <p style={{ fontSize: 17, color: "rgba(255,255,255,0.55)", maxWidth: 720, margin: "0 auto", lineHeight: 1.7 }}>
             Compare Clavo against the global giants and the GCC&apos;s top recruitment platforms.
