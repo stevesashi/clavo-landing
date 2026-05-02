@@ -290,3 +290,8 @@ img {
   transform: translateZ(0);
   backface-visibility: hidden;
 }
+
+@media (max-width: 768px) {
+  .hero-title { font-size: 28px !important; }
+  .hero-buttons { flex-direction: column !important; }
+}
