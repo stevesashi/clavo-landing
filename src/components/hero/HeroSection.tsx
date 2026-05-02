@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
 import {
@@ -556,7 +556,7 @@ export default function HeroSection() {
             icon={<Clock size={18} />}
             title="48hr Time-to-Hire"
             description="From first contact to signed offer — faster than any manual pipeline."
-            accentColor="#f59e0b"
+            accentColor="#9333ea"
           />
         </div>
 
