@@ -100,7 +100,7 @@ export default function StickyCTA() {
               whileTap={shouldReduce ? {} : { scale: 0.97 }}
               transition={{ type: "spring", stiffness: 380, damping: 22 }}
             >
-              See It Live
+              Join Early Access
             </motion.a>
 
             {/* Dismiss */}
