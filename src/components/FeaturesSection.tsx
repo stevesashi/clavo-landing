@@ -829,7 +829,7 @@ export default function FeaturesSection() {
         <div style={{
           position: "absolute", inset: 0, zIndex: 1,
           pointerEvents: "none",
-          background: "linear-gradient(135deg, rgba(240,165,0,0.5) 0%, rgba(251,191,36,0.4) 40%, rgba(212,147,10,0.3) 70%, rgba(254,215,170,0.18) 100%)",
+          background: "linear-gradient(135deg, rgba(88,28,220,0.55) 0%, rgba(124,58,237,0.45) 40%, rgba(167,139,250,0.35) 70%, rgba(196,181,253,0.2) 100%)",
           mixBlendMode: "color" as any,
         }}/>
 
@@ -837,7 +837,7 @@ export default function FeaturesSection() {
         <div style={{
           position: "absolute", inset: 0, zIndex: 2,
           pointerEvents: "none",
-          background: "radial-gradient(ellipse at 60% 40%, rgba(240,165,0,0.25) 0%, rgba(212,147,10,0.15) 40%, transparent 70%)",
+          background: "radial-gradient(ellipse at 60% 40%, rgba(139,92,246,0.25) 0%, rgba(109,40,217,0.15) 40%, transparent 70%)",
         }}/>
       </div>
 
@@ -850,7 +850,7 @@ export default function FeaturesSection() {
       {/* Glow pulse */}
       <div style={{
         position: "absolute", inset: 0, zIndex: 2,
-        background: "radial-gradient(ellipse at 80% 40%, rgba(240,165,0,0.08) 0%, transparent 55%)",
+        background: "radial-gradient(ellipse at 80% 40%, rgba(167,139,250,0.08) 0%, transparent 55%)",
         animation: "glowPulse3 7s ease-in-out infinite",
         pointerEvents: "none",
       }}/>
