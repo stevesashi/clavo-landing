@@ -308,7 +308,7 @@ export default function EarlyAccessPage() {
           <p className="mb-6 text-center text-xs font-semibold uppercase tracking-widest text-white/22">
             Why join early
           </p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, minmax(0, 1fr))", gap: 16, width: "100%" }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
             {BENEFITS.map(({ icon: Icon, color, border, glow, title, sub }) => (
               <div key={title} className="rounded-2xl border p-6"
                 style={{ borderColor: border, background: glow }}>
