@@ -4,7 +4,7 @@ import ScrollSection from "@/components/ScrollSection";
 import FeaturesSection from "@/components/FeaturesSection";
 import ForensicIntelligenceSection from "@/components/sections/ForensicIntelligenceSection";
 import TrustBar from "@/components/sections/TrustBar";
-import MetricsSection from "@/components/sections/MetricsSection";
+import CompetitorTable from "@/components/CompetitorTable";
 import DemoSection from "@/components/sections/DemoSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import CTASection from "@/components/sections/CTASection";
@@ -87,8 +87,8 @@ export default function Home() {
       {/* ── Forensic Hiring Intelligence dashboard ───────────────────────── */}
       <CinematicWrap><ForensicIntelligenceSection /></CinematicWrap>
 
-      {/* ── Metrics ─────────────────────────────────────────────────────── */}
-      <CinematicWrap><MetricsSection /></CinematicWrap>
+      {/* ── Competitor comparison table ─────────────────────────────────── */}
+      <CompetitorTable />
 
 
       {/* ── Demo Video ──────────────────────────────────────────────────── */}
